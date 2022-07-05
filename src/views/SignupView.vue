@@ -26,23 +26,33 @@
                         <h1 class="w-11/12  title-flex py-2">Or continue with</h1>
                     </div>
                     
+                    <h2 class="w-11/12 ">Name</h2>                    
+                    <input class="w-11/12  border-2 border-gray-400 rounded-md" type="text" v-model="displayName" :class="{ 'is-invalid': displayNameError }">
+                    <!-- 錯誤訊息的樣式要再調整 -->
+                    <div class="invalid-feedback">
+                        {{ displayNameErrMsg }}
+                    </div>
+
                     <h2 class="w-11/12 ">Email address</h2>                    
                     <input class="w-11/12  border-2 border-gray-400 rounded-md" type="email" v-model="email" :class="{ 'is-invalid': emailError }">
                     <div class="invalid-feedback">
                         {{ emailErrMsg }}
                     </div>
-
+                    
                     <h2 class="w-11/12 ">Password</h2>                    
-                    <input class="w-11/12  border-2 border-gray-400 rounded-md" type="password">
-                    <!-- <div class="invalid-feedback">
+                    <input class="w-11/12  border-2 border-gray-400 rounded-md" type="password" minlength="8" maxlength="20" v-model="password" :class="{ 'is-invalid': passwordError }">
+                    <div class="invalid-feedback">
                         {{ passwordErrMsg }}
-                    </div> -->
-
-                    <div  v-if="noLoginMsg" class="alert alert-danger" role="alert">
-                        <span>{{noLoginMsg}}</span>
                     </div>
 
-                    <button class="w-11/12 bg-purple-600 text-gray-100" @click.prevent="postLogin">Sign in</button>
+                    <!-- 樣式要再改為tailwind寫法 -->
+                    <div v-if="userExistMsg" class="alert alert-danger" role="alert">
+                        <span>{{userExistMsg}}</span>
+                    </div>
+                    <div v-if="userCreateSuccessMsg" class="alert alert-success" role="alert">
+                        <span>{{userCreateSuccessMsg}}</span>
+                    </div>  
+                    <button class="w-11/12 bg-purple-600 text-gray-100" @click.prevent="postSignup">Sign up</button>
                 
                 </div>                
             </div>
@@ -55,20 +65,29 @@
 
 <script>
 export default {
-  name: "login",
+  name: "signup",
   data() {
         return {
+            displayName: '',
             email: '',
             password: '',
-            errors: [],
-            noLoginMsg: '',
+            userExistMsg: '',
+            userCreateSuccessMsg: '',
+            displayNameError: false,
+            displayNameErrMsg: '',
             emailError: false,
             emailErrMsg: "",
-            // passwordError: false,
-            // passwordErrMsg: "",
+            passwordError: false,
+            passwordErrMsg: "",
         }
     },
     watch: {
+      displayName: function(){
+        if(this.displayName.length==0) {
+          this.displayNameError = true;
+          this.displayNameErrMsg = "請輸入姓名"
+        }
+      },
       email: function () {
         var isMail =
           /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
@@ -79,44 +98,48 @@ export default {
           this.emailError = false;
         }
       },
-    //   password: function () {
-    //     if (this.password.length < 8) {
-    //       this.passwordError = true;
-    //       this.passwordErrMsg = "密碼需至少8個字元";
-    //     } else {
-    //       this.passwordError = false;
-    //     }
-    //   },
+      password: function () {
+        if (this.password.length < 8) {
+          this.passwordError = true;
+          this.passwordErrMsg = "密碼需至少8個字元";
+        } else {
+          this.passwordError = false;
+        }
+      },
     },
+  
     methods: {
-        async postLogin() {
+        postSignup() {
+            // console.log(this.axios)
             const submitForm = {
+                displayName: this.displayName,
                 email: this.email,
                 password: this.password
             }
-            // console.log(submitForm)
-            await this.axios.post('/login', submitForm)
-                .then((res) => {
-                  console.log(res.data)
-                  let status = res.data.loginSuccess
-                  let vm = this
-                  switch (status){
-                    case 0, 2 :
-                      vm.noLoginMsg = '找不到此 user 或密碼錯誤'
-                      break;
-                    case 1 :
-                      // this.reload()
-                      vm.$store.dispatch('getLoginStatus')
-                      vm.$router.push('/')
-                      break;
-                  }
-                  
-                })
-                .catch((err)=>{
-                  console.log(err);
-                })
-                }
+            this.axios.post('/signup', submitForm)
+            .then((res) => {
+              console.log(res.data)
+              let status = res.data.hasUser
+              switch (status){
+                case 1 :
+                  this.userCreateSuccessMsg = ''
+                  this.userExistMsg = '此帳號已存在！請登入或使用其他 Email'
+                  break;
+                case 0 :
+                  this.userExistMsg = ''
+                  this.userCreateSuccessMsg = '註冊成功！'
+                //   let navigate = this.$router
+                //   setTimeout(function(){
+                //       navigate.push('/login');
+                //   },1500)
+                  break;
+              }
+            })
+            .catch((err)=>{
+              console.log(err);
+            })
         },
+    }
 };
 </script>
 

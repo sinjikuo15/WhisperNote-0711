@@ -119,13 +119,13 @@ export default {
             this.axios.post('/signup', submitForm)
             .then((res) => {
               console.log(res.data)
-              let status = res.data.hasUser
+              let status = res.data.status
               switch (status){
-                case 1 :
+                case 0 :
                   this.userCreateSuccessMsg = ''
                   this.userExistMsg = '此帳號已存在！請登入或使用其他 Email'
                   break;
-                case 0 :
+                case 1 :
                   this.userExistMsg = ''
                   this.userCreateSuccessMsg = '註冊成功！'
                 //   let navigate = this.$router

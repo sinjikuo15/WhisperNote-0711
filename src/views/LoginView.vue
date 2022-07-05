@@ -33,7 +33,7 @@
                     </div>
 
                     <h2 class="w-11/12 ">Password</h2>                    
-                    <input class="w-11/12  border-2 border-gray-400 rounded-md" type="password">
+                    <input class="w-11/12  border-2 border-gray-400 rounded-md" type="password" v-model="password">
                     <!-- <div class="invalid-feedback">
                         {{ passwordErrMsg }}
                     </div> -->
@@ -101,7 +101,7 @@ export default {
                   let status = res.data.loginSuccess
                   let vm = this
                   switch (status){
-                    case 0, 2 :
+                    case 0 :
                       vm.noLoginMsg = '找不到此 user 或密碼錯誤'
                       break;
                     case 1 :

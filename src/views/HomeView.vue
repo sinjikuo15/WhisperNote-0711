@@ -48,9 +48,84 @@
       </div>
     </div>
   </div>
+
+  
+
+  <button class="add-note-btn" @click="showModal = true">
+    <PlusIcon class="h-8 w-5"/>
+  </button>
+  <vue-final-modal v-model="showModal" classes="modal-container" content-class="modal-content">
+    <button class="modal__close" @click="showModal = false">
+      X
+    </button>
+    <span class="modal__title">新增日記</span>
+    <div class="modal__content">
+      <p>2022/7/4</p>
+      <p>標題</p>
+      <input type="text" placeholder="請輸入標題" v-model="dairyTitle">
+      <p>標籤</p>
+      <select name="groupTag" id="groupTag" v-model="groupTag">
+        <option value="">請選擇</option>
+        <option value="工作">工作</option>
+        <option value="大學">大學</option>
+      </select>
+      <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+      <!-- <button @click="showHtml">show content HTML</button> -->
+    </div>
+    <div class="modal__action">
+      <button @click="addNewDairy">confirm</button>
+      <button @click="showModal = false">cancel</button>
+    </div>
+  </vue-final-modal>
+      
+
 </template>
 
-<style>
+<script> 
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal'
+import { PlusIcon } from '@heroicons/vue/solid'
+
+export default {
+    name: 'app',
+    components: {
+      VueFinalModal,
+      ModalsContainer,
+      PlusIcon 
+    },
+    data() {
+        return {
+            editor: ClassicEditor,
+            editorData: '<p>Content of the editor.</p>',
+            editorConfig: {
+                // The configuration of the editor.
+            },
+            showModal: false,
+            dairyTitle: '',
+            groupTag: '',
+        };
+    },
+    methods: {
+      addNewDairy(){
+        const dairyDetail = {
+          title: this.dairyTitle,
+          permission: this.groupTag,
+          content: this.editorData
+        }
+        this.axios.post('/add-dairy', dairyDetail)
+          .then((res) => {
+            console.log(res.data)
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+      }
+    }
+}
+
+</script>
+
+<style scoped>
 .sidebar{
 height: 100vh;
 border-radius: 10px 0px 0px 10px;
@@ -93,5 +168,47 @@ border-radius: 10px 0px 0px 10px;
     .sidebar {
         display: none;
     }
+}
+/* .add-note-btn{
+  position: fixed;
+} */
+::v-deep .modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+::v-deep .modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  height: 70vh;
+  margin: 1rem 1rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  background: #fff;
+}
+.modal__title {
+  margin: 0 1.5rem 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.modal__content {
+  flex-grow: 1;
+  overflow-y: auto;
+  text-align: left;
+}
+.modal__action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 1rem 0 0;
+}
+.modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 </style>

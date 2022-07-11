@@ -50,7 +50,7 @@
                 </div>                
             </div>
             <div class="md:w-6/12 house">
-                <h1>test0711</h1>
+                
             </div>
         </div>        
     </div>

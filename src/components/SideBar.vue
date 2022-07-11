@@ -73,7 +73,7 @@
 
 <style>
     .sidebar{
-    height: 80vh;
+    height: 90vh;
 
     }
     .sidebar-title{
@@ -113,4 +113,9 @@
     position: relative;
     right:4px;
     }
+    @media screen and (max-width:640px) {
+    .sidebar {
+        display: none;
+    }
+}
 </style>

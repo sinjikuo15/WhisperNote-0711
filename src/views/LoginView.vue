@@ -9,7 +9,7 @@
                     <h1 class="font-black text-2xl md:text-3xl title ">登入您的帳號</h1>
                     <div class="flex justify-center pt-2">
                         <p class="sm:text-sm">或 &nbsp;</p>                     
-                        <p class="font-bold text-blue-500 sm:text-sm"> 開始您的14天試用</p>
+                        <p class="font-bold text-blue-600 sm:text-sm"> 開始您的14天試用</p>
                     </div>
                     <p class="pt-5 font-bold text-gray-700">快速登入</p>
                     <!-- 三個按鈕區 -->
@@ -31,12 +31,12 @@
                     <div class="flex justify-center">
                         <div class="w-11/12 sm:w-full">  
                             <h2 class="font-bold text-start text-gray-700 pt-4">信箱</h2>                    
-                            <input class="w-full border border-gray-300 rounded-md  shadow focus:outline-blue-400 h-10" type="email" v-model="email" :class="{ 'is-invalid': emailError }">
+                            <input class="w-full border border-gray-300 rounded-md  shadow input-focus h-10" type="email" v-model="email" :class="{ 'is-invalid': emailError }">
                             <div class="invalid-feedback">
                                 {{ emailErrMsg }}
                             </div>
                             <h2 class="font-bold text-start text-gray-700 pt-4" >密碼</h2>                    
-                            <input class="w-full  border border-gray-300 rounded-md  shadow focus:outline-blue-400 h-10" type="password" v-model="password">
+                            <input class="w-full  border border-gray-300 rounded-md  shadow input-focus h-10" type="password" v-model="password">
                             <div  v-if="noLoginMsg" class="alert alert-danger" role="alert">
                                 <span>{{noLoginMsg}}</span>
                             </div>
@@ -50,7 +50,7 @@
                                 </a>
                             </div> -->
                             <div class="pt-5">
-                                <button class="w-full bg-blue-600 hover:bg-blue-700 text-gray-100 rounded-md font-bold p-2 mt-1 mb-1 " @click.prevent="postLogin">登入</button>
+                                <button class="w-full btn-primary   font-bold p-2 mt-1 mb-1 " @click.prevent="postLogin">登入</button>
                             </div>                            
                         </div>                        
                     </div>             
@@ -144,6 +144,13 @@ export default {
         background-repeat: no-repeat;
         background-position:center ;
         background-size:cover;
+    }
+    .sign-btn{
+        width: 30%;       
+    }
+    .sign-btn :hover{
+        transform: scale(1.3);
+        transition: 0.5s;               
     }
     /* 分隔線 */
     .title-flex {

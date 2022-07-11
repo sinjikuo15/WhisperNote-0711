@@ -9,31 +9,31 @@
                     <h1 class="font-black text-2xl md:text-3xl title ">註冊您的帳號</h1>
                     <div class="flex justify-center pt-2">
                         <p class="sm:text-sm">或 &nbsp;</p>                     
-                        <p class="font-bold text-indigo-500 sm:text-sm"> 開始您的14天試用</p>
+                        <p class="font-bold text-blue-600 sm:text-sm"> 開始您的14天試用</p>
                     </div>
                     
                     
                     <div class="flex justify-center">
                         <div class="w-11/12 sm:w-full">  
                             <h2 class="font-bold text-start text-gray-700 pt-4">姓名</h2>                    
-                            <input class="w-full border border-gray-300 rounded-md  shadow focus:outline-blue-400 h-10" type="text" v-model="displayName" :class="{ 'is-invalid': displayNameError }">
+                            <input class="w-full border border-gray-300   shadow rounded-md input-focus h-10" type="text" v-model="displayName" :class="{ 'is-invalid': displayNameError }">
                             <!-- 錯誤訊息的樣式要再調整 -->
                             <div class="invalid-feedback">
                                 {{ displayNameErrMsg }}
                             </div>
                             <h2 class="font-bold text-start text-gray-700 pt-4">信箱</h2>                    
-                            <input class="w-full border border-gray-300 rounded-md  shadow focus:outline-blue-400 h-10" type="email" v-model="email" :class="{ 'is-invalid': emailError }">
+                            <input class="w-full border border-gray-300   shadow rounded-md input-focus h-10" type="email" v-model="email" :class="{ 'is-invalid': emailError }">
                             <div class="invalid-feedback">
                                 {{ emailErrMsg }}
                             </div>
                             <h2 class="font-bold text-start text-gray-700 pt-4">密碼</h2>                    
-                            <input class="w-full  border border-gray-300 rounded-md shadow focus:outline-blue-400 h-10" type="password" minlength="8" maxlength="20" v-model="password" :class="{ 'is-invalid': passwordError }">
+                            <input class="w-full border border-gray-300  shadow rounded-md input-focus h-10" type="password" minlength="8" maxlength="20" v-model="password" :class="{ 'is-invalid': passwordError }">
                             <div class="invalid-feedback">
                                 {{ passwordErrMsg }}
                             </div>
                             <div class="flex sm:block md:flex justify-center  py-4">
                                 <div class="flex justify-center ">
-                                    <p class="text-gray-700 text-xs text-start"> 點擊註冊代表您同意<b class="text-indigo-500">WhisperNote</b>之會員與客戶隱私權條款</p>
+                                    <p class="text-gray-700 text-xs text-start"> 點擊註冊代表您同意<b class="text-blue-600">WhisperNote</b>之會員與客戶隱私權條款</p>
                                 </div>                             
                                 
                             </div>
@@ -44,13 +44,13 @@
                             <div v-if="userCreateSuccessMsg" class="alert alert-success" role="alert">
                                 <span>{{userCreateSuccessMsg}}</span>
                             </div>  
-                            <button class="w-full bg-indigo-500 hover:bg-indigo-400 text-gray-100 rounded-md font-bold p-2 mt-1 mb-1" @click.prevent="postSignup">註冊</button>
+                            <button class="w-full btn-primary font-bold p-2 mt-1 mb-1" @click.prevent="postSignup">註冊</button>
                         </div>                        
                     </div>                
                 </div>                
             </div>
             <div class="md:w-6/12 house">
-                <h1>test</h1>
+                <h1>test0711</h1>
             </div>
         </div>        
     </div>

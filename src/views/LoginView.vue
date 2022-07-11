@@ -1,53 +1,62 @@
 <template>
-    <div class="flex justify-center">
-        <div class="flex w-11/12 md:w-10/12 rounded-md border-2 border-blue-200  justify-center ">
-            <div class="flex justify-center w-full sm:w-6/12 bg-gray-200 text-center py-5">
-                <div class="w-full sm:w-10/12">
-                    <figure class=" logo-wrap justify-center logo-center">
+    <div class="flex justify-center py-8">
+        <div class="flex w-11/12 border border-gray-100 rounded-lg justify-center ">
+            <div class="flex justify-center w-full sm:w-8/12 md:w-6/12  text-center py-5">
+                <div class="w-11/12 md:w-10/12 lg:w-8/12">
+                    <figure class=" logo-wrap justify-center logo-center py-5">
                         <img  class="logo" src="../assets/wslogo.jpeg" alt="">
                     </figure>
-                    <h1 class="font-bold text-2xl sm:text-xl">Sign in to your account</h1>
-                    <p class="text-purple-500 sm:text-sm">Or start your 14-day free trial</p>
-                    <p class="pt-5 font-bold ">Sign in with</p>
+                    <h1 class="font-black text-2xl md:text-3xl title ">登入您的帳號</h1>
+                    <div class="flex justify-center pt-2">
+                        <p class="sm:text-sm">或 &nbsp;</p>                     
+                        <p class="font-bold text-blue-500 sm:text-sm"> 開始您的14天試用</p>
+                    </div>
+                    <p class="pt-5 font-bold text-gray-700">快速登入</p>
                     <!-- 三個按鈕區 -->
-                    <div class="py-1 pb-5 flex justify-around">
-                        <a class="sign-btn" href="">
+                    <div class=" pb-5  flex justify-center sm:justify-between ">
+                        <a class="sign-btn " href="">
                             <i class="fa-brands fa-facebook "></i> 
                         </a>                                             
                         <a class="sign-btn" href="">
                             <i class="fa-brands fa-twitter "></i>
                         </a>
                         <a class="sign-btn" href="">
-                            <i class="fa-brands fa-github "></i>
+                            <i class="fa-brands fa-line text-green-600"></i>
                         </a>
                     </div>
                     <!-- 分隔線 -->
                     <div class="flex justify-center">
-                        <h1 class="w-11/12  title-flex py-2">Or continue with</h1>
+                        <h1 class="w-11/12 sm:w-full  title-flex  ">或由信箱登入</h1>
                     </div>
-                    
-                    <h2 class="w-11/12 ">Email address</h2>                    
-                    <input class="w-11/12  border-2 border-gray-400 rounded-md" type="email" v-model="email" :class="{ 'is-invalid': emailError }">
-                    <div class="invalid-feedback">
-                        {{ emailErrMsg }}
-                    </div>
-
-                    <h2 class="w-11/12 ">Password</h2>                    
-                    <input class="w-11/12  border-2 border-gray-400 rounded-md" type="password" v-model="password">
-                    <!-- <div class="invalid-feedback">
-                        {{ passwordErrMsg }}
-                    </div> -->
-
-                    <div  v-if="noLoginMsg" class="alert alert-danger" role="alert">
-                        <span>{{noLoginMsg}}</span>
-                    </div>
-
-                    <button class="w-11/12 bg-purple-600 text-gray-100" @click.prevent="postLogin">Sign in</button>
-                
+                    <div class="flex justify-center">
+                        <div class="w-11/12 sm:w-full">  
+                            <h2 class="font-bold text-start text-gray-700 pt-4">信箱</h2>                    
+                            <input class="w-full border border-gray-300 rounded-md  shadow focus:outline-blue-400 h-10" type="email" v-model="email" :class="{ 'is-invalid': emailError }">
+                            <div class="invalid-feedback">
+                                {{ emailErrMsg }}
+                            </div>
+                            <h2 class="font-bold text-start text-gray-700 pt-4" >密碼</h2>                    
+                            <input class="w-full  border border-gray-300 rounded-md  shadow focus:outline-blue-400 h-10" type="password" v-model="password">
+                            <div  v-if="noLoginMsg" class="alert alert-danger" role="alert">
+                                <span>{{noLoginMsg}}</span>
+                            </div>
+                            <!-- <div class="flex sm:block md:flex justify-between py-4">
+                                <div class="flex justify-center">
+                                    <input type="checkbox" name="" id="">
+                                    <p class="text-gray-700 font-bold"> 記住我</p>
+                               </div>                               
+                                <a href="">
+                                    <p class="text-indigo-500 font-bold hover:underline">忘記您的密碼?</p>
+                                </a>
+                            </div> -->
+                            <div class="pt-5">
+                                <button class="w-full bg-blue-600 hover:bg-blue-700 text-gray-100 rounded-md font-bold p-2 mt-1 mb-1 " @click.prevent="postLogin">登入</button>
+                            </div>                            
+                        </div>                        
+                    </div>             
                 </div>                
             </div>
-            <div class="sm:w-6/12 house">
-                
+            <div class="md:w-6/12 house">                
             </div>
         </div>        
     </div>

@@ -123,9 +123,9 @@
   </div>
 
 <!-- modal -->
-  <button class="add-note-btn" @click="showModal = true">
-    <PlusIcon class="h-8 w-5"/>
-  </button>
+  <div class="fixed bottom-10 right-10 inline-block w-10 h-10 bg-blue-600 rounded-full" @click="showModal = true">
+      <PlusIcon class="h-6 w-6 text-[#fff] mt-2 ml-2"/>
+  </div>
   <vue-final-modal v-model="showModal" classes="modal-container" content-class="modal-content">
     <button class="modal__close" @click="showModal = false">
       <XIcon class="h-8 w-5"/>
@@ -315,9 +315,6 @@ height: 80vh;
         display: none;
     }
 }
-/* .add-note-btn{
-  position: fixed;
-} */
 ::v-deep .modal-container {
   display: flex;
   justify-content: center;

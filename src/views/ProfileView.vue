@@ -1,5 +1,20 @@
 <template>
+<div class="flex py-5">
+<SideBar></SideBar>
+
+</div>
    
-  123
+ 
 
 </template>
+
+<script>
+import SideBar from '../components/SideBar.vue'
+
+export default{
+  components: {
+        SideBar
+    },
+}
+
+</script>

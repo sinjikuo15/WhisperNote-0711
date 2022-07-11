@@ -123,12 +123,11 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal'
 import { PlusIcon } from '@heroicons/vue/solid'
 import { XIcon } from '@heroicons/vue/solid'
-import sideBar from '../components/SideBar.vue'
-import SideBar from '../components/SideBar.vue';
+import SideBar from '../components/SideBar.vue'
 
 export default {
   components: {
-        sideBar
+        SideBar
     },
     name: 'app',
     components: {

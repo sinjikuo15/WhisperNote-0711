@@ -11,7 +11,7 @@
       
       <ul class="pt-5 text-gray-900">
         <li class="">
-          <a class="flex " href="">
+          <a class="flex " href="/">
             <div class="w-2/12 ">
               <i class="fa-solid fa-house md:text-xl home"></i>              
             </div>     

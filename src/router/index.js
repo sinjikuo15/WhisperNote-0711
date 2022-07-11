@@ -6,6 +6,7 @@ import ProfileView from '../views/ProfileView.vue'
 import AllDiaryView from '../views/AllDiaryView.vue'
 import DiaryView from '../views/DiaryView.vue'
 
+
 const routes = [
   {
     path: '/',

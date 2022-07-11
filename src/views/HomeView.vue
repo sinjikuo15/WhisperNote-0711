@@ -1,76 +1,7 @@
 <template>
  <div class="flex py-5">
     <!-- sidebar -->
-    <div class=" sm:w-4/12 lg:w-3/12 xl:w-2/12 sidebar  py-8  bg-gray-800 text-gray-50 ">
-      <div class="bg-gray-900  py-4">
-        <div class="flex mr-3 ml-3 ">
-        <figure class="logo-wrap w-2/12 ">
-          <img class="logo" src="../assets/wslogo.jpeg" alt="">          
-        </figure>
-        <h1 class="w-9/12 text-2xl md:text-2xl font-black sidebar-title pl-1 pt-1 md:pt-2 xl:pt-1 logo-a">WhisperNote</h1>
-      </div>
-      </div>
-      
-      <ul class="pt-5 text-gray-900">
-        <li class="">
-          <a class="flex " href="">
-            <div class="w-2/12 ">
-              <i class="fa-solid fa-house md:text-xl home"></i>              
-            </div>     
-            <p class="w-9/12 md:text-xl">首頁</p>        
-          </a>          
-        </li>
-        <li class="">
-          <a class="flex" href="">
-            <div class="w-2/12">
-              <i class="fa-solid fa-calendar-days md:text-xl "></i>             
-            </div>     
-            <p class="w-9/12 md:text-xl">日記</p>        
-          </a>          
-        </li>
-        <li class="">
-          <a class="flex" href="">
-            <div class="w-2/12">
-              <i class="fa-solid fa-user md:text-xl"></i>             
-            </div>     
-            <p class="w-9/12 md:text-xl">角色</p>        
-          </a>          
-        </li>
-        <li class="">
-          <a class="flex" href="">
-            <div class="w-2/12">
-              <i class="fa-solid fa-users md:text-xl friends"></i>             
-            </div>     
-            <p class="w-9/12 md:text-xl ">朋友</p>        
-          </a>          
-        </li> 
-        <li class="">
-          <a class="flex" href="">
-            <div class="w-2/12">
-              <i class="fa-solid fa-file md:text-xl"></i>             
-            </div>     
-            <p class="w-9/12 md:text-xl">會員資料</p>        
-          </a>          
-        </li> 
-        <li class="">
-          <a class="flex" href="/signup">
-            <div class="w-2/12">
-              <i class="fa-solid fa-clipboard-check md:text-xl"></i>             
-            </div>     
-            <p class="w-9/12 md:text-xl">註冊</p>        
-          </a>          
-        </li> 
-        <li class="">
-          <a class="flex" href="/login">
-            <div class="w-2/12">
-              <i class="fa-solid fa-arrow-right-to-bracket md:text-xl login"></i>             
-            </div>     
-            <p class="w-9/12 md:text-xl">登入</p>        
-          </a>          
-        </li>              
-       
-      </ul>      
-    </div>
+    <SideBar></SideBar>
     <!-- 右邊日記的部分 -->
     <div class="w-full sm:w-8/12 border border-gray-300 diary">
       <!-- <div class="flex"> -->
@@ -81,8 +12,7 @@
             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                 <svg class="w-5 h-5 text-gray-500 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
             </div>
-            <input type="text" id="simple-search" class=" border-gray-300 text-blue-900 text-sm  focus:border-blue-500
-            focus:ring-blue-400 block w-full pl-10 p-2.5  " placeholder="Search" required="">
+            <input type="text" id="simple-search" class=" border-gray-300 text-blue-900 text-sm input-focus rounded-md block w-full pl-10 p-2.5  " placeholder="Search" required="">
         </div>
         <div class="flex w-3/12  justify-center">
           <a href="flex items-center">
@@ -193,15 +123,20 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal'
 import { PlusIcon } from '@heroicons/vue/solid'
 import { XIcon } from '@heroicons/vue/solid'
+import SideBar from '../components/SideBar.vue'
 
 export default {
+  components: {
+        SideBar
+    },
     name: 'app',
     components: {
-      VueFinalModal,
-      ModalsContainer,
-      PlusIcon,
-      XIcon,
-    },
+    VueFinalModal,
+    ModalsContainer,
+    PlusIcon,
+    XIcon,
+    SideBar
+},
     data() {
         return {
             editor: ClassicEditor,

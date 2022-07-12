@@ -1,7 +1,9 @@
 <template>
-  <div class="flex sm:py-5">
-    <SideBar></SideBar>
-    <div class="flex w-full sm:w-8/12 sm:border  border-gray-300 justify-center py-8"> 
+  <NavBar></NavBar>
+  <div class="flex justify-center lg:py-3">
+    <div class="flex w-full lg:w-11/12 justify-center">
+      <SideBar></SideBar>
+    <div class="flex w-full sm:w-8/12  sm:border lg:w-7/12  border-gray-300 justify-center py-5"> 
       <div class="flex w-11/12 border sm:border-none rounded-md justify-center ">
         <div class="w-10/12 pt-3">
           <h1 class="block text- font-black text-gray-700">Website</h1>
@@ -53,24 +55,37 @@
             <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white btn-primary">Save</button>
             </div>
           </div>
-        
-          
       </div>  
-          
-    </div>    
+    </div>
+    </div>
+        
   </div>
    
  
 
 </template>
 
-<script>
+<script >
 import SideBar from '../components/SideBar.vue'
+import NavBar from '../components/NavBar.vue'
+
 
 export default{
   components: {
-        SideBar
+        SideBar,
+        NavBar
     },
 }
 
-</script>
+</script >
+<style scoped>
+
+@media screen and (max-width:640px) {
+    .sidebar,
+    .search-bar
+         {
+        display: none;
+    } 
+    
+}
+</style>

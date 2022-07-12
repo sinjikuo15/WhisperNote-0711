@@ -1,35 +1,16 @@
 <template>
- <div class="flex py-5">
+  <!-- navbar -->
+  <NavBar></NavBar>
+  <div class="flex py-3 justify-center"> 
+    <div class="flex w-full lg:w-11/12 justify-center">
     <!-- sidebar -->
     <SideBar></SideBar>
-    <!-- 右邊日記的部分 -->
-    <div class="w-full sm:w-8/12 border border-gray-300 ">
-      <!-- <div class="flex"> -->
-      
-    <form class="flex items-center pl-1">   
-        <label for="simple-search" class="sr-only">Search</label>
-        <div class="relative w-10/12">
-            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                <svg class="w-5 h-5 text-gray-500 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-            </div>
-            <input type="text" id="simple-search" class=" border-gray-300  text-sm input-focus rounded-md block w-full pl-10 p-2.5  " placeholder="Search" required="">
-        </div>
-        <div class="flex w-3/12  justify-center">
-          <a href="flex items-center">
-            <i class="fa-regular fa-bell block text-xl p-3  text-gray-500 hover:text-red-400"></i>
-          </a>
-          <figure class="user-wrap p-1 pr-1">
-            <img class="user" src="https://i.pinimg.com/736x/fa/1f/25/fa1f2501f67e22f7c44478af0f7ae8aa.jpg" alt="">
-          </figure>
-        </div>    
-    </form>
-
-      <!-- </div> -->
+    <!-- 右邊日記的部分 -->    
+    <div class="w-full sm:w-8/12 lg:w-7/12 border border-gray-300 ">     
       <div class="text-center flex justify-around  py-8 bg-gray-200  ">
         <h2 class="text-start text-2xl"> ＜ </h2>
         <h1 class="font-bold text-xl">6月 2022</h1>
-        <h2 class="font-bold text-2xl"> ＞</h2>
-        
+        <h2 class="font-bold text-2xl"> ＞</h2>        
       </div>
       <div class="grid grid-flow-col text-center bg-gray-100 text-gray-400 border-t border-b border-gray-300 font-bold">
         <h3 class="w1/7">週日</h3>
@@ -51,6 +32,8 @@
       </div>
     </div>
   </div>
+</div>
+    
 
 <!-- modal -->
   <div class="fixed bottom-10 right-10 inline-block w-10 h-10 bg-blue-600 rounded-full" @click="showModal = true">
@@ -124,10 +107,12 @@ import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal'
 import { PlusIcon } from '@heroicons/vue/solid'
 import { XIcon } from '@heroicons/vue/solid'
 import SideBar from '../components/SideBar.vue'
+import NavBar from '../components/NavBar.vue'
 
 export default {
   components: {
-        SideBar
+        SideBar,
+        NavBar
     },
     name: 'app',
     components: {
@@ -135,7 +120,8 @@ export default {
     ModalsContainer,
     PlusIcon,
     XIcon,
-    SideBar
+    SideBar,
+    NavBar
 },
     data() {
         return {
@@ -183,27 +169,7 @@ export default {
 </script>
 
 <style scoped>
-.sidebar{
-height: 80vh;
 
-}
-.sidebar-title{
-  font-family: 'Prompt', sans-serif;
-}
-.sidebar ul li a{
-  font-weight: 600;
-  padding: 10px 15px 10px 15px;
-  font-size: 1rem;
-  color:rgb(250, 250, 250);
-  margin-left: 12px;
-  margin-right: 12px;
-  border-radius: 10px;
-}
-.sidebar ul li a:hover{
-  color: white;
-  background-color: rgb(17, 24, 39);
-  
-}
 .logo-wrap{
   width: 50px;
         
@@ -246,9 +212,10 @@ height: 80vh;
 
 
 @media screen and (max-width:640px) {
-    .sidebar {
+    .sidebar,.search-bar{
         display: none;
     }
+    
 }
 ::v-deep .modal-container {
   display: flex;

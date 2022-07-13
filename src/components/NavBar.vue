@@ -18,18 +18,18 @@
         </div>
         <!-- 使用者登出登入註冊 -->
         <div class="flex w-8/12 sm:w-6/12 lg:w-4/12 justify-end">
-          <a class="flex  w-3/12 justify-center" href="/signup">
-            <div class="flex items-center  text-blue-600 hover:text-blue-700">
+          <div class="flex  w-3/12 justify-center" >
+            <a class="flex items-center  text-blue-600 hover:text-blue-700" href="/signup">
               <i class="fa-solid fa-clipboard-check block text-xl pr-1"></i>
               <p class="w-9/12 md:text-base">註冊</p>        
-            </div>     
-          </a> 
-          <a class="flex w-3/12 justify-center" href="/login">
-            <div class="flex items-center  text-blue-600 hover:text-blue-700">
+            </a>     
+          </div> 
+          <div class="flex w-3/12 justify-center" >
+            <a class="flex items-center  text-blue-600 hover:text-blue-700" href="/login">
               <i class="fa-solid fa-arrow-right-to-bracket block text-sm login"></i>  
               <p class="w-9/12 md:text-base">登入</p>      
-            </div>     
-          </a>
+            </a>     
+          </div>
           
           <!-- 登入時顯示 -->
           <!-- <a class="flex  w-3/12 justify-center" href="/signup">

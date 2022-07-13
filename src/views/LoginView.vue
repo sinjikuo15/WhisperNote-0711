@@ -25,30 +25,26 @@
                         </a>
                     </div>
                     <!-- 分隔線 -->
-                    <div class="flex justify-center">
+                    <div class="flex justify-center pb-3">
                         <h1 class="w-11/12 sm:w-full  title-flex  ">或由信箱登入</h1>
                     </div>
                     <div class="flex justify-center">
-                        <div class="w-11/12 sm:w-full">  
-                            <h2 class="font-bold text-start text-gray-700 pt-4">信箱</h2>                    
-                            <input class="w-full border border-gray-300 rounded-md  shadow input-focus h-10" type="email" v-model="email" :class="{ 'is-invalid': emailError }">
-                            <div class="invalid-feedback">
-                                {{ emailErrMsg }}
+                        <div class="w-11/12 sm:w-full">
+                            <div class="relative z-0 w-full pt-3 pb-5 group">
+                                <input type="email" name="floating_email" class="member-input peer" placeholder=" " required v-model="email" :class="{ 'is-invalid': emailError }" />
+                                <label for="floating_email" class="member-label">信箱</label>
+                                <div class="invalid-feedback pt-0.5 p text-red-600">
+                                    {{ emailErrMsg }}
+                                </div>
                             </div>
-                            <h2 class="font-bold text-start text-gray-700 pt-4" >密碼</h2>                    
-                            <input class="w-full  border border-gray-300 rounded-md  shadow input-focus h-10" type="password" v-model="password">
-                            <div  v-if="noLoginMsg" class="alert alert-danger" role="alert">
-                                <span>{{noLoginMsg}}</span>
+                            <div class="relative z-0 w-full pt-3 pb-5 group">
+                                <input type="password" name="floating_password" id="floating_password" class="member-input peer" placeholder=" " required v-model="password"/>
+                                <label for="floating_password" class="member-label">密碼</label>
+                                <div  v-if="noLoginMsg" class="alert alert-danger pt-0.5" role="alert">
+                                <span class="text-red-600">{{noLoginMsg}}</span>
+                                </div>
                             </div>
-                            <!-- <div class="flex sm:block md:flex justify-between py-4">
-                                <div class="flex justify-center">
-                                    <input type="checkbox" name="" id="">
-                                    <p class="text-gray-700 font-bold"> 記住我</p>
-                               </div>                               
-                                <a href="">
-                                    <p class="text-indigo-500 font-bold hover:underline">忘記您的密碼?</p>
-                                </a>
-                            </div> -->
+                            
                             <div class="pt-5">
                                 <button class="w-full btn-primary   font-bold p-2 mt-1 mb-1 " @click.prevent="postLogin">登入</button>
                             </div>                            
@@ -131,7 +127,7 @@ export default {
 
 <style scoped>
     .logo-wrap{
-        width: 100px;
+        width: 75px;
     }
     .logo{
         width: 100%;
@@ -140,7 +136,7 @@ export default {
         margin:auto
     }
     .house{
-        background-image: url(https://img.ixintu.com/download/jpg/202010/131e4919c3a16c0f10998ae489bf4fea_800_291.jpg!con);
+        background-image: url(https://img01.sc115.com/uploads3/sc/jpgs/1912/hpic1808_sc115.com.jpg);
         background-repeat: no-repeat;
         background-position:center ;
         background-size:cover;

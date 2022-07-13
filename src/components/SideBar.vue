@@ -104,6 +104,7 @@
     right:4px;
     }
     @media screen and (max-width:640px) {
+
     .sidebar,
     .search-bar
          {

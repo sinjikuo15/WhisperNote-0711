@@ -103,7 +103,7 @@ export default {
             await this.axios.post('/login', submitForm)
                 .then((res) => {
                   console.log(res.data)
-                  let status = res.data.loginSuccess
+                  let status = res.data.status
                   let vm = this
                   switch (status){
                     case 0 :
@@ -111,7 +111,7 @@ export default {
                       break;
                     case 1 :
                       // this.reload()
-                      vm.$store.dispatch('getLoginStatus')
+                    //   vm.$store.dispatch('getLoginStatus')
                       vm.$router.push('/')
                       break;
                   }

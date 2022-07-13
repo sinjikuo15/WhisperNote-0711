@@ -50,7 +50,7 @@
 
 </template>
 
-<style >
+<style scoped>
 .logo-wrap{
     width: 50px;
             

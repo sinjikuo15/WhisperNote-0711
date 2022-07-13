@@ -1,16 +1,18 @@
 <template>
- <div class="flex">
-    <SideBar></SideBar>
-    <div class="w-full sm:w-10/12 p-5">
-        <div class="container">
-            <h1 class="text-2xl">我的日記</h1>
-        </div>
-        <div class="container flex justify-end gap-4 items-center my-5">
-            <div>
-                <AdjustmentsIcon class="h-8 w-5 text-slate-500"/>
-            </div>
-            <button @click="showModal = true" class="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:w-auto sm:text-sm">新增日記</button>
-        </div>
+  <NavBar></NavBar>
+  <div class="flex py-3 justify-center">
+    <div class="flex w-full lg:w-11/12 justify-center">
+      <SideBar></SideBar>
+    <div class="w-full sm:w-8/12 lg:w-7/12 border border-gray-200">
+<div class="container">
+          <h1 class="text-2xl ">我的日記</h1>
+      </div>
+      <div class="container flex justify-end gap-4 items-center my-5">
+          <div>
+              <AdjustmentsIcon class="h-8 w-5 text-slate-500"/>
+          </div>
+          <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 btn-primary sm:w-auto sm:text-sm">新增日記</button>
+      </div>
 
         <!-- addNewDiaryModal -->
         <AddNewDiaryModal v-model="showModal" @confirm="confirm" @cancel="cancel"/>
@@ -41,7 +43,9 @@
             <p v-html="singleDiaryContent"></p>
         </template>
         <template v-slot:permission>{{ singleDiaryPermission }}</template>
-    </ShowDiaryModal>  
+    </ShowDiaryModal>
+    </div>
+        
 
 
 </template>
@@ -51,13 +55,16 @@ import SideBar from '../components/SideBar.vue'
 import AddNewDiaryModal from '../components/AddNewDiaryModal.vue'
 import ShowDiaryModal from '../components/ShowDiaryModal.vue'
 import { AdjustmentsIcon } from '@heroicons/vue/outline'
+import NavBar from '../components/NavBar.vue'
+
 
 export default {
     components: {
         SideBar,
         AddNewDiaryModal,
         ShowDiaryModal,
-        AdjustmentsIcon
+        AdjustmentsIcon,
+        NavBar
     },
     data() {
         return {

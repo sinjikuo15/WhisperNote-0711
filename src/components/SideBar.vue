@@ -2,44 +2,44 @@
   <div class=" sm:w-3/12 lg:w-2/12 sidebar py-5 bg-gray-800 text-gray-50">           
     <ul class="pt-5 text-gray-900">
       <li class="">
-        <a class="flex " href="/">
+        <router-link to="/" class="flex" >
           <div class="w-2/12 ">
             <i class="fa-solid fa-house md:text-base home"></i>              
           </div>     
           <p class="w-9/12 md:text-base">首頁</p>        
-        </a>          
+        </router-link>          
       </li>
       <li class="">
-        <a class="flex" href="">
+        <router-link to="/all-diary" class="flex" >
           <div class="w-2/12">
             <i class="fa-solid fa-calendar-days md:text-base "></i>             
           </div>     
           <p class="w-9/12 md:text-text-base">日記</p>        
-        </a>          
+        </router-link>          
       </li>
         <li class="">
-          <a class="flex" href="">
+          <router-link to="/" class="flex" >
             <div class="w-2/12">
               <i class="fa-solid fa-user md:text-base"></i>             
             </div>     
             <p class="w-9/12 md:text-base">角色</p>        
-          </a>          
+          </router-link>          
         </li>
       <li class="">
-        <a class="flex" href="">
+        <router-link to="/" class="flex" >
           <div class="w-2/12">
             <i class="fa-solid fa-users md:text-base friends"></i>             
           </div>     
           <p class="w-9/12 md:text-base ">朋友</p>        
-        </a>          
+        </router-link>          
       </li> 
       <li class="">
-        <a class="flex" href="/profile">
+        <router-link to="/profile" class="flex" >
           <div class="w-2/12">
             <i class="fa-solid fa-file md:text-base"></i>             
           </div>     
           <p class="w-9/12 md:text-base">會員資料</p>        
-        </a>          
+        </router-link>          
       </li> 
       <!-- <li class="">
         <a class="flex" href="/signup">
@@ -61,7 +61,7 @@
   </div>
 </template>
 
-<style >
+<style scoped>
     .sidebar{
     height: 80vh;
 

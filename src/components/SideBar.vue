@@ -1,5 +1,5 @@
 <template>
-<div class=" sm:w-4/12 lg:w-3/12 xl:w-2/12 sidebar  py-8  bg-gray-800 text-gray-50 ">
+<div class=" sm:w-4/12 lg:w-3/12 xl:w-2/12 sidebar h-screen py-8  bg-gray-800 text-gray-50 ">
       <div class="bg-gray-900  py-4">
         <div class="flex mr-3 ml-3 ">
         <figure class="logo-wrap w-2/12 ">
@@ -11,20 +11,20 @@
       
       <ul class="pt-5 text-gray-900">
         <li class="">
-          <a class="flex " href="/">
+          <router-link class="flex " to="/">
             <div class="w-2/12 ">
               <i class="fa-solid fa-house md:text-xl home"></i>              
             </div>     
             <p class="w-9/12 md:text-xl">首頁</p>        
-          </a>          
+          </router-link>          
         </li>
         <li class="">
-          <a class="flex" href="">
+          <router-link class="flex" to="/all-diary">
             <div class="w-2/12">
               <i class="fa-solid fa-calendar-days md:text-xl "></i>             
             </div>     
             <p class="w-9/12 md:text-xl">日記</p>        
-          </a>          
+          </router-link>          
         </li>
         <li class="">
           <a class="flex" href="">
@@ -43,33 +43,33 @@
           </a>          
         </li> 
         <li class="">
-          <a class="flex" href="/profile">
+          <router-link class="flex" to="/profile">
             <div class="w-2/12">
               <i class="fa-solid fa-file md:text-xl"></i>             
             </div>     
             <p class="w-9/12 md:text-xl">會員資料</p>        
-          </a>          
+          </router-link>          
         </li> 
         <li class="">
-          <a class="flex" href="/signup">
+          <router-link class="flex" to="/signup">
             <div class="w-2/12">
               <i class="fa-solid fa-clipboard-check md:text-xl"></i>             
             </div>     
             <p class="w-9/12 md:text-xl">註冊</p>        
-          </a>          
+          </router-link>          
         </li> 
         <li class="">
-          <a class="flex" href="/login">
+          <router-link class="flex" to="/login">
             <div class="w-2/12">
               <i class="fa-solid fa-arrow-right-to-bracket md:text-xl login"></i>             
             </div>     
             <p class="w-9/12 md:text-xl">登入</p>        
-          </a>          
+          </router-link>          
         </li>             
        
       </ul>      
     </div>
-</template>>
+</template>
 
 <style>
     .sidebar{
@@ -113,4 +113,9 @@
     position: relative;
     right:4px;
     }
+    @media screen and (max-width:640px) {
+    .sidebar {
+        display: none;
+    }
+}
 </style>

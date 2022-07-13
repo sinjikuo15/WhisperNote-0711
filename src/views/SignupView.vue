@@ -117,10 +117,13 @@ export default {
                 case 0 :
                   this.userCreateSuccessMsg = ''
                   this.userExistMsg = '此帳號已存在！請登入或使用其他 Email'
+                  this.email = ''
+                  this.password = ''
                   break;
                 case 1 :
                   this.userExistMsg = ''
                   this.userCreateSuccessMsg = '註冊成功！'
+                  this.$router.push('/login');
                 //   let navigate = this.$router
                 //   setTimeout(function(){
                 //       navigate.push('/login');

@@ -1,5 +1,5 @@
 <template>
- <div class="flex py-5">
+ <div class="flex">
     <!-- sidebar -->
     <SideBar></SideBar>
     <!-- 右邊日記的部分 -->
@@ -53,7 +53,7 @@
   </div>
 
 <!-- modal -->
-  <div class="fixed bottom-10 right-10 inline-block w-10 h-10 bg-blue-600 rounded-full" @click="showModal = true">
+  <div class="fixed bottom-5 right-5 md:bottom-10 md:right-10 inline-block w-10 h-10 bg-blue-600 rounded-full hover:bg-blue-700 hover:cursor-pointer" @click="showModal = true">
       <PlusIcon class="h-6 w-6 text-[#fff] mt-2 ml-2"/>
   </div>
   <vue-final-modal v-model="showModal" classes="modal-container" content-class="modal-content">
@@ -61,7 +61,7 @@
       <XIcon class="h-8 w-5"/>
     </button>
     <span class="modal__title text-center text-xl leading-6 font-bold text-gray-900">新增日記</span>
-    <div class="modal__content">
+    <div class="modal__content px-3">
       <label class="block mt-3">
         <span class="text-gray-700">標題</span>
         <input type="text" class="
@@ -183,10 +183,10 @@ export default {
 </script>
 
 <style scoped>
-.sidebar{
+/* .sidebar{
 height: 80vh;
 
-}
+} */
 .sidebar-title{
   font-family: 'Prompt', sans-serif;
 }

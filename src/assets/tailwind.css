@@ -9,10 +9,16 @@
         @apply text-xl py-2 w-1/4  border rounded-md border-gray-300 text-blue-500 shadow flex justify-center ;
     };
     .input-focus{/*所有input外圈的設定*/
-        @apply rounded-md focus:border-blue-500 focus:ring-blue-400 
+        @apply rounded-md focus:border-blue-500 focus:ring-blue-400  
     }
-    .btn-primary{
+    .btn-primary{/*按鈕的設定*/
         @apply rounded-md  border border-transparent shadow-sm bg-blue-600 text-base font-medium text-white hover:bg-blue-700
         focus:outline-none 
+    }
+    .member-input{/*登入註冊頁面的input*/
+        @apply block py-1 px-0  w-full text-xl text-gray-900 bg-transparent border-0 border-b-2  border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-500 
+    }
+    .member-label{
+        @apply pt-3 peer-focus:font-bold absolute left-0 text-base text-gray-600 font-bold duration-300 transform -translate-y-6 scale-75 top-3  -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7
     }
 }

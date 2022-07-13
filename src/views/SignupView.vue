@@ -7,30 +7,36 @@
                         <img  class="logo" src="../assets/wslogo.jpeg" alt="">
                     </figure>
                     <h1 class="font-black text-2xl md:text-3xl title ">註冊您的帳號</h1>
-                    <div class="flex justify-center pt-2">
+                    <div class="flex justify-center pt-2 pb-2">
                         <p class="sm:text-sm">或 &nbsp;</p>                     
                         <p class="font-bold text-blue-600 sm:text-sm"> 開始您的14天試用</p>
-                    </div>
-                    
+                    </div>                    
                     
                     <div class="flex justify-center">
-                        <div class="w-11/12 sm:w-full">  
-                            <h2 class="font-bold text-start text-gray-700 pt-4">姓名</h2>                    
-                            <input class="w-full border border-gray-300   shadow rounded-md input-focus h-10" type="text" v-model="displayName" :class="{ 'is-invalid': displayNameError }">
-                            <!-- 錯誤訊息的樣式要再調整 -->
-                            <div class="invalid-feedback">
+                        <div class="w-11/12 sm:w-full"> 
+                            <div class="relative z-0 w-full pt-3 pb-4 group">
+                                <input type="text" name="floating_displayName" class="member-input peer" placeholder=" " v-model="displayName" :class="{ 'is-invalid': displayNameError }"/>
+                                <label for="floating_displayName" class="member-label">姓名</label>
+                                <div class="invalid-feedback text-red-600">
                                 {{ displayNameErrMsg }}
+                                </div>                                
+                            </div>                                           
+                            
+                            <div class="relative z-0 w-full pt-3 pb-4 group">
+                                <input type="email" name="floating_email" class="member-input peer" placeholder=" " required v-model="email" :class="{ 'is-invalid': emailError }" />
+                                <label for="floating_email" class="member-label">信箱</label>
+                                <div class="invalid-feedback pt-0.5 text-red-600">{{ emailErrMsg }}
+                                </div>
                             </div>
-                            <h2 class="font-bold text-start text-gray-700 pt-4">信箱</h2>                    
-                            <input class="w-full border border-gray-300   shadow rounded-md input-focus h-10" type="email" v-model="email" :class="{ 'is-invalid': emailError }">
-                            <div class="invalid-feedback">
-                                {{ emailErrMsg }}
-                            </div>
-                            <h2 class="font-bold text-start text-gray-700 pt-4">密碼</h2>                    
-                            <input class="w-full border border-gray-300  shadow rounded-md input-focus h-10" type="password" minlength="8" maxlength="20" v-model="password" :class="{ 'is-invalid': passwordError }">
-                            <div class="invalid-feedback">
+
+                            <div class="relative z-0 w-full pt-3 pb-5 group">
+                                <input type="password" name="floating_password" id="floating_password" class="member-input peer" placeholder=" " required minlength="8" maxlength="20" v-model="password" :class="{ 'is-invalid': passwordError }"/>
+                                <label for="floating_password" class="member-label">密碼</label>
+                                <div class="invalid-feedback text-red-600">
                                 {{ passwordErrMsg }}
-                            </div>
+                                </div>                               
+                            </div>                            
+                            
                             <div class="flex sm:block md:flex justify-center  py-4">
                                 <div class="flex justify-center ">
                                     <p class="text-gray-700 text-xs text-start"> 點擊註冊代表您同意<b class="text-blue-600">WhisperNote</b>之會員與客戶隱私權條款</p>
@@ -50,7 +56,7 @@
                 </div>                
             </div>
             <div class="md:w-6/12 house">
-                <h1>test0711</h1>
+                
             </div>
         </div>        
     </div>

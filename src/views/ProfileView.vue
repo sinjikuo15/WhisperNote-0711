@@ -3,7 +3,7 @@
   <div class="flex justify-center lg:py-3">
     <div class="flex w-full lg:w-11/12 justify-center">
       <SideBar></SideBar>
-    <div class="flex w-full sm:w-8/12  sm:border lg:w-7/12  border-gray-300 justify-center py-5"> 
+    <div class="flex w-full sm:w-8/12  sm:border lg:w-7/12  border-gray-200 justify-center py-5"> 
       <div class="flex w-11/12 border sm:border-none rounded-md justify-center ">
         <div class="w-10/12 pt-3">
           <h1 class="block text- font-black text-gray-700">Website</h1>

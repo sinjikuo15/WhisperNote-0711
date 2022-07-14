@@ -4,7 +4,9 @@
             <div class="flex justify-center w-full sm:w-8/12 md:w-6/12  text-center py-5">
                 <div class="w-11/12 md:w-10/12 lg:w-8/12">
                     <figure class=" logo-wrap justify-center logo-center py-5">
-                        <img  class="logo" src="../assets/wslogo.jpeg" alt="">
+                        <router-link to="/">
+                            <img  class="logo" src="../assets/wslogo.jpeg" alt="">
+                        </router-link>
                     </figure>
                     <h1 class="font-black text-2xl md:text-3xl title ">登入您的帳號</h1>
                     <div class="flex justify-center pt-2">
@@ -145,7 +147,7 @@ export default {
         width: 30%;       
     }
     .sign-btn :hover{
-        transform: scale(1.3);
+        transform: scale(1.4);
         transition: 0.5s;               
     }
     /* 分隔線 */

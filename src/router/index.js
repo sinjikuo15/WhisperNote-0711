@@ -8,7 +8,6 @@ import DiaryView from '../views/DiaryView.vue'
 import FriendView from '../views/FriendView.vue'
 
 
-
 const routes = [
   {
     path: '/',
@@ -39,11 +38,6 @@ const routes = [
     path:'/all-diary',
     name:'all-diary',
     component:AllDiaryView
-  },
-  {
-    path:'/diary',
-    name:'diary',
-    component:DiaryView
   },
   {
     path:'/profile',

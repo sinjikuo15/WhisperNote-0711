@@ -82,8 +82,8 @@ export default {
                 // The configuration of the editor.
             },
             showModal: false,
-            diaryTitle: '',
-            groupTag: '', //要再抓出該使用者的permission，迴圈顯示option
+            title: '',
+            permission: '', //要再抓出該使用者的permission，迴圈顯示option
             date: '',
             inputDate: ''
         }
@@ -92,14 +92,14 @@ export default {
       addNewDiary(){
         this.$emit('confirm', close); 
         const diaryDetail = {
-          title: this.diaryTitle,
-          permission: this.groupTag,
+          title: this.title,
+          permission: this.permission,
           content: this.editorData,
           date: this.date
         }
         console.log('confirm')
         console.log(diaryDetail)
-        this.axios.post('/add-diary', diaryDetail)
+        this.axios.post('/addDiary', diaryDetail)
           .then((res) => {
             console.log(res.data)
           })

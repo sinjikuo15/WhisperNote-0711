@@ -4,11 +4,11 @@
     <div class="flex w-full lg:w-11/12 justify-center">
       <SideBar></SideBar>
     <div class="w-full sm:w-8/12 lg:w-7/12 border border-gray-200">
-<div class="container">
+      <div class="container">
           <h1 class="text-2xl ">我的日記</h1>
       </div>
       <div class="container flex justify-end gap-4 items-center my-5">
-          <div>
+          <div class="h-10 w-10 hover:bg-slate-200 hover:rounded flex justify-center items-center">
               <AdjustmentsIcon class="h-8 w-5 text-slate-500"/>
           </div>
           <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 btn-primary sm:w-auto sm:text-sm">新增日記</button>

@@ -5,6 +5,8 @@ import SignupView from '../views/SignupView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import AllDiaryView from '../views/AllDiaryView.vue'
 import DiaryView from '../views/DiaryView.vue'
+import FriendView from '../views/FriendView.vue'
+
 
 
 const routes = [
@@ -47,7 +49,13 @@ const routes = [
     path:'/profile',
     name:'profile',
     component:ProfileView
+  },
+  {
+    path:'/friend',
+    name:'friend',
+    component:FriendView
   }
+  
 ]
 
 const router = createRouter({

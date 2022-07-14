@@ -26,7 +26,7 @@
           </router-link>          
         </li>
       <li class="">
-        <router-link to="/" class="flex" >
+        <router-link to="/friend" class="flex" >
           <div class="w-2/12">
             <i class="fa-solid fa-users md:text-base friends"></i>             
           </div>     

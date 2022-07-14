@@ -4,7 +4,6 @@ import LoginView from '../views/LoginView.vue'
 import SignupView from '../views/SignupView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import AllDiaryView from '../views/AllDiaryView.vue'
-import DiaryView from '../views/DiaryView.vue'
 
 
 const routes = [
@@ -37,11 +36,6 @@ const routes = [
     path:'/all-diary',
     name:'all-diary',
     component:AllDiaryView
-  },
-  {
-    path:'/diary',
-    name:'diary',
-    component:DiaryView
   },
   {
     path:'/profile',

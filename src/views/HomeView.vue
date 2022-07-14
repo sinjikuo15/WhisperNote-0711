@@ -6,7 +6,7 @@
     <!-- sidebar -->
     <SideBar></SideBar>
     <!-- 右邊日記的部分 -->    
-    <div class="w-full sm:w-8/12 lg:w-7/12 border border-gray-300 ">     
+    <div class="w-full sm:w-8/12 lg:w-7/12 border border-gray-300 relative">     
       <div class="text-center flex justify-around  py-8 bg-gray-200  ">
         <h2 class="text-start text-2xl"> ＜ </h2>
         <h1 class="font-bold text-xl">6月 2022</h1>
@@ -30,15 +30,17 @@
         <div class="w1/7 vc-day ">6</div>
         <div class="w1/7 vc-day vc-weekday">7</div>
       </div>
+
+      <!-- 新增日記按鈕 -->
+      <div class="absolute bottom-5 right-5 inline-block w-10 h-10 bg-blue-600 rounded-full hover:bg-blue-700 hover:cursor-pointer" @click="showModal = true">
+          <PlusIcon class="h-6 w-6 text-[#fff] mt-2 ml-2"/>
+      </div>
     </div>
   </div>
 </div>
-    
+  
 
 <!-- modal -->
-  <div class="fixed bottom-5 right-5 md:bottom-10 md:right-10 inline-block w-10 h-10 bg-blue-600 rounded-full hover:bg-blue-700 hover:cursor-pointer" @click="showModal = true">
-      <PlusIcon class="h-6 w-6 text-[#fff] mt-2 ml-2"/>
-  </div>
   <vue-final-modal v-model="showModal" classes="modal-container" content-class="modal-content">
     <button class="modal__close" @click="showModal = false">
       <XIcon class="h-8 w-5"/>

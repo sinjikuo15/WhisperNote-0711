@@ -5,8 +5,8 @@
         <div class="container">
             <h1 class="text-2xl">我的日記</h1>
         </div>
-        <div class="container flex justify-end gap-4 items-center my-5">
-            <div>
+        <div class="container flex justify-end gap-2 items-center my-5">
+            <div class="h-10 w-10 hover:bg-slate-200 hover:rounded flex justify-center items-center">
                 <AdjustmentsIcon class="h-8 w-5 text-slate-500"/>
             </div>
             <button @click="showModal = true" class="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:w-auto sm:text-sm">新增日記</button>

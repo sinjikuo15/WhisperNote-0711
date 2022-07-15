@@ -6,7 +6,7 @@
     <!-- sidebar -->
     <SideBar></SideBar>
     <!-- 右邊日記的部分 -->    
-    <div class="w-full sm:w-8/12 lg:w-7/12 border border-gray-200 relative">
+    <div class="w-full sm:w-8/12 lg:w-7/12 border border-gray-200 relative right-content">
       <div class="text-center flex justify-around  py-8 bg-gray-200  ">
         <h2 class="text-start text-2xl"> ＜ </h2>
         <h1 class="font-bold text-xl">6月 2022</h1>
@@ -192,6 +192,10 @@ export default {
   right:4px;
 }
 /* 日記區 */
+.right-content{
+  height: 80vh;
+  overflow-y: scroll;
+}
 .user-wrap{
   width:50px;
   border-radius: 50px;

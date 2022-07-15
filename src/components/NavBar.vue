@@ -27,14 +27,14 @@
                 </svg>
               </button>
         </div>
-          <div class="flex  w-3/12 justify-center" >
+          <div class="hidden sm:flex  w-3/12 justify-center" >
             <router-link to="/signup" class="flex items-center  text-blue-600 hover:text-blue-700" href="/signup">
               <i class="fa-solid fa-clipboard-check block text-xl pr-1"></i>
               <p class="w-9/12 md:text-base">註冊</p>        
             </router-link>     
           </div>
            
-          <div class="flex w-3/12 justify-center" >
+          <div class="hidden sm:flex w-3/12 justify-center" >
             <router-link to="/login" class="flex items-center  text-blue-600 hover:text-blue-700" href="/login">
               <i class="fa-solid fa-arrow-right-to-bracket block text-sm login pr-1"></i>  
               <p class="w-9/12 md:text-base">登入</p>      
@@ -42,12 +42,12 @@
           </div>
           
           <!-- 登入時顯示 -->
-          <!-- <a class="flex  w-3/12 justify-center" href="/signup">
+          <!-- <a class="hidden sm:flex  w-3/12 justify-center" href="/signup">
             <div class="flex items-center  text-blue-600 hover:text-blue-700">
               <i class="fa-regular fa-bell text-xl p-3  text-gray-500 hover:text-red-400"></i>      
             </div>     
           </a> 
-          <a class="flex w-3/12 justify-center" href="/login">
+          <a class="hidden sm:flex w-3/12 justify-center" href="/login">
             <div class="flex items-center  text-blue-600 hover:text-blue-700">
              <figure class="user-wrap w-3/12 justify-center">
               <img class="user" src="https://i.pinimg.com/736x/fa/1f/25/fa1f2501f67e22f7c44478af0f7ae8aa.jpg" alt="">
@@ -95,6 +95,22 @@
                 <div class="pt-6">
                   <router-link to="/signup" class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" >註冊</router-link>
                   <router-link to="/login" class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" >登入</router-link>
+
+                  <!-- 登入時顯示 -->
+                  <!-- <div class="flex">
+                    <div class="flex w-3/12 justify-center">
+                      <router-link to="/login" class="flex items-center  text-blue-600 hover:text-blue-700">
+                      <figure class="user-wrap w-3/12 justify-center">
+                        <img class="user" src="https://i.pinimg.com/736x/fa/1f/25/fa1f2501f67e22f7c44478af0f7ae8aa.jpg" alt="">
+                      </figure>       
+                      </router-link>     
+                    </div>
+                    <div class="flex  w-3/12 justify-center">
+                      <router-link to="/" class="flex items-center  text-blue-600 hover:text-blue-700">
+                        <i class="fa-regular fa-bell text-xl p-3  text-gray-500 hover:text-red-400"></i>      
+                      </router-link>     
+                    </div>                     
+                  </div>                   -->
                 </div>
                 <p class="my-4 text-xs text-center text-gray-500">
                   <span>Copyright © 2022</span>

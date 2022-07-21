@@ -5,7 +5,8 @@
         <div class="flex w-full lg:w-11/12 justify-center">
             <!-- Sidebar -->
             <SideBar></SideBar>
-            <div class="justify-start  w-full sm:w-8/12 lg:w-7/12 border border-gray-200 card-wrap py-4 content-start    px-2">  
+            <!-- 右邊區 -->
+            <div class="justify-start  w-full sm:w-8/12 lg:w-7/12 border border-gray-200 card-wrap py-4 content-start  px-2 right-content">  
                 <!-- 1 -->
                 <div class="w-1/3 p-2">
                     <div class="bg-white rounded-lg border border-gray-200 shadow ">
@@ -70,6 +71,10 @@ export default {
 </script >
 
 <style scoped>
+.right-content{
+  height: 80vh;
+  overflow-y: scroll;
+}
 .card-wrap{
     display: flex;
     flex-wrap: wrap;

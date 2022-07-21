@@ -3,7 +3,8 @@
   <div class="flex justify-center py-3">
     <div class="flex w-full lg:w-11/12 justify-center">
       <SideBar></SideBar>
-    <div class="flex w-full sm:w-8/12  sm:border lg:w-7/12  border-gray-200 justify-center py-5"> 
+      <!-- 右邊區 -->
+    <div class="flex w-full sm:w-8/12  sm:border lg:w-7/12  border-gray-200 justify-center py-5 right-content"> 
       <div class="flex w-11/12 border sm:border-none rounded-md justify-center ">
         <div class="w-11/12 pt-3">
           <h1 class="block text- font-black text-gray-700">Website</h1>
@@ -79,6 +80,10 @@ export default{
 
 </script >
 <style scoped>
+.right-content{
+  height: 80vh;
+  overflow-y: scroll;
+}
 
 @media screen and (max-width:640px) {
     .sidebar,

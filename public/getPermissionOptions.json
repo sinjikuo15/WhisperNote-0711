@@ -1,0 +1,14 @@
+[
+    {
+        "permission_id": "1",
+        "per_name": "工作"
+    },
+    {
+        "permission_id": "2",
+        "per_name": "大學"
+    },
+    {
+        "permission_id": "3",
+        "per_name": "八卦"
+    }
+]

@@ -16,7 +16,7 @@
                     border-gray-300
                     shadow-sm
                     focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                " placeholder="" v-model="diaryTitle">
+                " placeholder="" v-model="title">
             </label>
             <label class="block mt-3">
                 <span class="text-gray-700">日期</span>
@@ -41,12 +41,27 @@
                     border-gray-300
                     shadow-sm
                     focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                " name="groupTag" id="groupTag" v-model="groupTag">
+                " name="groupTag" id="groupTag" v-model="permission">
                 <option value="">請選擇</option>
-                <option value="工作">工作</option>
-                <option value="大學">大學</option>
+                  <template v-for="permissionOption in permissionOptions" :key="permissionOption.permission_id">
+                    <option :value="permissionOption.permission_id">{{ permissionOption.per_name }}</option>
+                  </template>
                 </select>
             </label>
+            <div class="add-permission mt-2 text-sm">
+              <p id="addPermissionBtn" @click="addPermission" class="inline cursor-pointer">新增分類</p>
+              <div id="addPermissionSection" class="hidden">
+                <input type="text" v-model="newPermission" class="
+                    rounded-md
+                    border-gray-300
+                    shadow-sm
+                    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+                ">
+                <button @click="confirmAddPermission" class="rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm">確定</button>
+                <button @click="cancelAddPermission" class="rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">取消</button>
+              </div>
+            </div>
+
             <div class="my-5">
                 <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
             </div>
@@ -85,7 +100,9 @@ export default {
             title: '',
             permission: '', //要再抓出該使用者的permission，迴圈顯示option
             date: '',
-            inputDate: ''
+            inputDate: '',
+            permissionOptions: [],
+            newPermission: ''
         }
     },
     methods: {
@@ -106,6 +123,32 @@ export default {
           .catch((err)=>{
             console.log(err);
           })
+      },
+      switchPermissionMode(){
+        const addPermissionBtn = document.querySelector('#addPermissionBtn')
+        const addPermissionSection = document.querySelector('#addPermissionSection')
+
+        addPermissionBtn.classList.toggle('hidden')
+        addPermissionSection.classList.toggle('hidden')
+      },
+      addPermission(){
+        this.switchPermissionMode()
+      },
+      confirmAddPermission(){
+        this.axios.post('/addPermission', this.newPermission)
+          .then((res)=>{
+            console.log('新增成功！')
+            //新增成功後把newPermission清空
+            this.newPermission = ''
+          })
+          .catch((err)=>{
+            console.log(err)
+          })
+        
+
+      },
+      cancelAddPermission(){
+        this.switchPermissionMode()
       }
     },
     mounted() {
@@ -116,6 +159,15 @@ export default {
         let date = now.getDate();
         if (date<10) date="0"+date
         this.date = year+"-"+month+"-"+date
+
+        this.axios.get('getPermissionOptions.json')
+          .then((res)=>{
+            console.log(res.data)
+            this.permissionOptions = res.data
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
     }
 }
 </script>
@@ -130,13 +182,20 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 70vw;
-  height: 70vh;
+  width: 90vw;
+  height: 80vh;
   margin: 1rem 1rem;
   padding: 1rem;
   border: 1px solid #e2e8f0;
   border-radius: 0.25rem;
   background: #fff;
+}
+
+@media (min-width: 1024px) {
+::v-deep .modal-content {
+    width: 50vw;
+    height: 70vh;
+  }
 }
 /* .modal__title {
   margin: 0 1.5rem 1rem 0;

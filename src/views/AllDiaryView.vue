@@ -27,7 +27,8 @@
                         <p class="text-sm text-slate-400 mt-2">{{ diary.date.slice(0,10) }}</p>
                         <p v-html="diary.content" class="mt-2"></p>
                         <div class="mt-3">
-                            <span class="bg-blue-400 py-1 px-2 rounded-xl text-white text-sm">{{ diary.permission }}</span>
+                            <span style="display:none;">{{ diary.permission_id }}</span>
+                            <span class="bg-blue-400 py-1 px-2 rounded-xl text-white text-sm">{{ diary.per_name }}</span>
                         </div>
                     </div> 
                 </template>
@@ -41,7 +42,8 @@
             <template v-slot:content>
                 <p v-html="singleDiaryContent"></p>
             </template>
-            <template v-slot:permission>{{ singleDiaryPermission }}</template>
+            <template v-slot:permissionId>{{ singleDiaryPermissionId }}</template>
+            <template v-slot:permissionName>{{ singleDiaryPermissionName }}</template>
             <template v-slot:diaryId>{{ singleDiaryId }}</template>
         </ShowDiaryModal> 
 
@@ -82,7 +84,8 @@ export default {
             singleDiaryTitle: '',
             singleDiaryDate: '',
             singleDiaryContent: '',
-            singleDiaryPermission: '',
+            singleDiaryPermissionId: '',
+            singleDiaryPermissionName: '',
             singleDiaryId: ''
         }
     },
@@ -91,7 +94,7 @@ export default {
         const diaryDetail = {
           title: this.title,
           permission: this.permission,
-        //   content: this.editorData,
+          content: this.editorData,
           date: this.date
         }
         console.log(diaryDetail)
@@ -109,7 +112,8 @@ export default {
         this.singleDiaryTitle = diary.title
         this.singleDiaryDate = diary.date
         this.singleDiaryContent = diary.content
-        this.singleDiaryPermission = diary.permission
+        this.singleDiaryPermissionId = diary.permission_id
+        this.singleDiaryPermissionName = diary.per_name
         this.singleDiaryId = diary.diary_id
         console.log(this.singleDiaryId)
       },

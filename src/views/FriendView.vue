@@ -6,66 +6,111 @@
             <!-- Sidebar -->
             <SideBar></SideBar>
             <!-- 右邊區 -->
-            <div class="justify-start  w-full sm:w-8/12 lg:w-7/12 border border-gray-200 card-wrap py-4 content-start  px-2 right-content">  
-                <!-- 1 -->
-                <div class="w-1/3 p-2">
-                    <div class="bg-white rounded-lg border border-gray-200 shadow ">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="http://p1-tt-ipv6.byteimg.com/large/pgc-image/840ad761ff89482b92d04ed111bdff3a?from=detail&index=2" alt="" />
-                        </a>
-                        <div class="py-4">
+            <div class="w-full h-[80vh] sm:w-8/12 lg:w-7/12 border border-gray-200 p-3">
+                <div class="container">
+                    <h1 class="text-2xl ">我的好友</h1>
+                </div>
+                <div class="container flex justify-end gap-3 items-center my-5">
+                    <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 mr-3 btn-primary sm:w-auto sm:text-sm">新增好友</button>
+                </div>
+
+                <!-- add friend modal -->
+                <AddFriendModal v-model="showModal" @confirm="confirm" @cancel="cancel"/>
+
+                <!-- friend cards section -->
+                <div class="container h-[80%] overflow-y-auto pr-3">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"> 
+                        <template v-for="friend in friends" :key="friend.friend_id">
+                            <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
+                                <a href="#">
+                                    <img class="rounded-t-lg" src="http://p1-tt-ipv6.byteimg.com/large/pgc-image/840ad761ff89482b92d04ed111bdff3a?from=detail&index=2" alt="" />
+                                </a>
+                                <div class="py-4">
+                                    <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">{{ friend.displayname }}</h5>                                              
+                                </div>
+                            </div>
+                        </template>
+                        <!-- 1 -->
+                        <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
                             <a href="#">
-                                <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">使用者名稱</h5>
-                            </a>                                              
+                                <img class="rounded-t-lg" src="http://p1-tt-ipv6.byteimg.com/large/pgc-image/840ad761ff89482b92d04ed111bdff3a?from=detail&index=2" alt="" />
+                            </a>
+                            <div class="py-4">
+                                <a href="#">
+                                    <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">使用者名稱</h5>
+                                </a>                                              
+                            </div>
                         </div>
+
+                        <!-- 2 -->
+                        <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
+                            <a href="#">
+                                <img class="rounded-t-lg" src="http://p1-tt-ipv6.byteimg.com/large/pgc-image/840ad761ff89482b92d04ed111bdff3a?from=detail&index=2" alt="" />
+                            </a>
+                            <div class="py-4">
+                                <a href="#">
+                                    <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">使用者名稱</h5>
+                                </a>                                              
+                            </div>
+                        </div>
+                        
+                        <!-- 3 -->
+                        <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
+                            <a href="#">
+                                <img class="rounded-t-lg" src="http://p1-tt-ipv6.byteimg.com/large/pgc-image/840ad761ff89482b92d04ed111bdff3a?from=detail&index=2" alt="" />
+                            </a>
+                            <div class="py-4">
+                                <a href="#">
+                                    <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">使用者名稱</h5>
+                                </a>                                              
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
-                <!-- 2 -->
-
-                <div class="w-1/3 p-2">
-                    <div class="bg-white rounded-lg border border-gray-200 shadow">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="http://p1-tt-ipv6.byteimg.com/large/pgc-image/840ad761ff89482b92d04ed111bdff3a?from=detail&index=2" alt="" />
-                        </a>
-                        <div class="py-4">
-                            <a href="#">
-                                <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">使用者名稱</h5>
-                            </a>                                              
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 3 -->
-                <div class="w-1/3 p-2">
-                    <div class="bg-white rounded-lg border border-gray-200 shadow">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="http://p1-tt-ipv6.byteimg.com/large/pgc-image/840ad761ff89482b92d04ed111bdff3a?from=detail&index=2" alt="" />
-                        </a>
-                        <div class="py-4">
-                            <a href="#">
-                                <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">使用者名稱</h5>
-                            </a>                                              
-                        </div>
-                    </div>
-                </div>                              
-
             </div>
-        </div>    
+        </div>
     </div>
-
-
 
 </template>
 
 <script>
 import SideBar from '../components/SideBar.vue'
 import NavBar from '../components/NavBar.vue'
+import AddFriendModal from '../components/AddFriendModal.vue'
 
 export default {
-  components: {
+    components: {
         SideBar,
-        NavBar
+        NavBar,
+        AddFriendModal
     },
+    data() {
+        return {
+            showModal: false,
+            friends: []
+        }
+    },
+    methods: {
+        confirm() {
+        // some code...
+        this.showModal = false
+        },
+        cancel(close) {
+            // some code...
+            close()
+        },
+    },
+    mounted() {
+        this.axios.get('/getFriend')
+        .then((response) => {
+            console.log(response)
+            this.friends = response.data.data
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+    }
  }
 
 </script >

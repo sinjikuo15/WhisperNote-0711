@@ -5,7 +5,7 @@
                 <XIcon class="h-8 w-5"/>
             </button>
             <span class="modal__title text-center text-xl leading-6 font-bold text-gray-900">新增日記</span>
-            <div class="modal__content px-3">
+            <div class="modal__content px-3 mt-3">
             <label class="block mt-3">
                 <span class="text-gray-700">標題</span>
                 <input type="text" class="
@@ -15,7 +15,7 @@
                     rounded-md
                     border-gray-300
                     shadow-sm
-                    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+                    focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
                 " placeholder="" v-model="title">
             </label>
             <label class="block mt-3">
@@ -27,12 +27,12 @@
                     rounded-md
                     border-gray-300
                     shadow-sm
-                    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+                    focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
                 " v-model="date">
             </label>
 
-            <label class="block mt-3">
-                <span class="text-gray-700">標籤</span>
+            <label class="block mt-3" @click="getPermission">
+                <span class="text-gray-700">分類</span>
                 <select class="
                     block
                     w-full
@@ -40,25 +40,26 @@
                     rounded-md
                     border-gray-300
                     shadow-sm
-                    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+                    focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
                 " name="groupTag" id="groupTag" v-model="permission">
-                <option value="">請選擇</option>
+                <option disabled value="">請選擇</option>
                   <template v-for="permissionOption in permissionOptions" :key="permissionOption.permission_id">
                     <option :value="permissionOption.permission_id">{{ permissionOption.per_name }}</option>
                   </template>
                 </select>
             </label>
             <div class="add-permission mt-2 text-sm">
-              <p id="addPermissionBtn" @click="addPermission" class="inline cursor-pointer">新增分類</p>
+              <p id="addPermissionBtn" @click="addPermission" class="inline cursor-pointer"><PlusIcon class="inline w-3 mb-1"/>新增分類</p>
               <div id="addPermissionSection" class="hidden">
                 <input type="text" v-model="newPermission" class="
+                    mt-1
                     rounded-md
                     border-gray-300
                     shadow-sm
-                    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+                    focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
                 ">
-                <button @click="confirmAddPermission" class="rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm">確定</button>
-                <button @click="cancelAddPermission" class="rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">取消</button>
+                <button @click="confirmAddPermission" class="rounded-md border border-transparent shadow-sm px-2 py-1 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm">確定</button>
+                <button @click="cancelAddPermission" class="rounded-md border border-gray-300 shadow-sm px-2 py-1 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-1 sm:w-auto sm:text-sm">取消</button>
               </div>
             </div>
 
@@ -96,7 +97,6 @@ export default {
             editorConfig: {
                 // The configuration of the editor.
             },
-            showModal: false,
             title: '',
             permission: '', //要再抓出該使用者的permission，迴圈顯示option
             date: '',
@@ -124,6 +124,16 @@ export default {
             console.log(err);
           })
       },
+      getPermission(){
+        this.axios.get('getPer.json')
+          .then((res)=>{
+            console.log(res.data)
+            this.permissionOptions = res.data
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+      },
       switchPermissionMode(){
         const addPermissionBtn = document.querySelector('#addPermissionBtn')
         const addPermissionSection = document.querySelector('#addPermissionSection')
@@ -135,7 +145,8 @@ export default {
         this.switchPermissionMode()
       },
       confirmAddPermission(){
-        this.axios.post('/addPermission', this.newPermission)
+        const newPermission = this.newPermission
+        this.axios.post('/addPer', newPermission)
           .then((res)=>{
             console.log('新增成功！')
             //新增成功後把newPermission清空
@@ -160,14 +171,7 @@ export default {
         if (date<10) date="0"+date
         this.date = year+"-"+month+"-"+date
 
-        this.axios.get('getPermissionOptions.json')
-          .then((res)=>{
-            console.log(res.data)
-            this.permissionOptions = res.data
-          })
-          .catch((err)=>{
-            console.log(err);
-          })
+        this.getPermission()
     }
 }
 </script>

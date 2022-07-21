@@ -5,7 +5,7 @@
                 <XIcon class="h-8 w-5"/>
             </button>
             <span class="modal__title text-center text-xl leading-6 font-bold text-gray-900">我的日記</span>
-            <div class="modal__content px-3">
+            <div class="modal__content px-3 mt-3">
 
               <!-- edit -->
               <div class="hidden" id="editSection">
@@ -18,7 +18,7 @@
                           rounded-md
                           border-gray-300
                           shadow-sm
-                          focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+                          focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
                       " placeholder="" v-model="title">
                 </label>
                 <label class="block mt-3">
@@ -30,11 +30,11 @@
                           rounded-md
                           border-gray-300
                           shadow-sm
-                          focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+                          focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
                       " v-model="date">
                 </label>
-                <label class="block mt-3">
-                      <span class="text-gray-700">標籤</span>
+                <label class="block mt-3" @click="getPermission">
+                      <span class="text-gray-700">分類</span>
                       <select class="
                           block
                           w-full
@@ -42,11 +42,11 @@
                           rounded-md
                           border-gray-300
                           shadow-sm
-                          focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+                          focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
                       " name="groupTag" id="groupTag" v-model="permission">
-                        <option value="">請選擇</option>
+                        <option disabled value="">請選擇</option>
                         <template v-for="permissionOption in permissionOptions" :key="permissionOption.permission_id">
-                          <option :value="permissionOption.per_name">{{ permissionOption.per_name }}</option>
+                          <option :value="permissionOption.permission_id">{{ permissionOption.per_name }}</option>
                         </template>
                       </select>
                 </label>
@@ -66,8 +66,11 @@
                 <div id="date">
                   <slot name="date"></slot>
                 </div>
-                <div id="permission">
-                  <slot name="permission"></slot>
+                <div id="permissionId" style="display:none;">
+                  <slot name="permissionId"></slot>
+                </div>
+                <div id="permissionName">
+                  <slot name="permissionName"></slot>
                 </div>
                 <div class="" id="content">
                   <slot name="content"></slot>
@@ -136,7 +139,7 @@ export default {
         this.switchMode()
         this.diaryId = document.getElementById('diaryId').innerText
         this.title = document.getElementById('title').innerText
-        this.permission = document.getElementById('permission').innerText
+        this.permission = document.getElementById('permissionId').innerText
         this.date = document.getElementById('date').innerText
         this.editorData = document.getElementById('content').innerHTML
         console.log(this.editorData)
@@ -163,6 +166,16 @@ export default {
         //     console.log(err);
         //   })
       },
+      getPermission(){
+        this.axios.get('getPermissionOptions.json')
+          .then((res)=>{
+            console.log(res.data)
+            this.permissionOptions = res.data
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+      },
     },
     mounted() {
         let now = new Date();
@@ -173,14 +186,7 @@ export default {
         if (date<10) date="0"+date
         this.date = year+"-"+month+"-"+date
 
-        this.axios.get('getPermissionOptions.json')
-          .then((res)=>{
-            console.log(res.data)
-            this.permissionOptions = res.data
-          })
-          .catch((err)=>{
-            console.log(err);
-          })
+        this.getPermission()
     }
 }
 </script>

@@ -34,17 +34,17 @@
                         <div class="w-11/12 sm:w-full">
                             <div class="relative z-0 w-full pt-3 pb-5 group">
                                 <input type="email" name="floating_email" class="member-input peer" placeholder=" " required v-model="email" :class="{ 'is-invalid': emailError }" />
-                                <label for="floating_email" class="member-label">信箱</label>
-                                <div class="invalid-feedback pt-0.5 p text-red-600">
-                                    {{ emailErrMsg }}
-                                </div>
+                                <label for="floating_email" class="member-label">信箱
+                                    <span class="text-red-600">{{ emailErrMsg }}</span>
+                                </label>  
                             </div>
                             <div class="relative z-0 w-full pt-3 pb-5 group">
                                 <input type="password" name="floating_password" id="floating_password" class="member-input peer" placeholder=" " required v-model="password"/>
-                                <label for="floating_password" class="member-label">密碼</label>
-                                <div  v-if="noLoginMsg" class="alert alert-danger pt-0.5" role="alert">
+                                <label for="floating_password" class="member-label">密碼                                   
+                                </label>                                
+                            </div>
+                            <div  v-if="noLoginMsg" class="alert alert-danger pt-0.5" role="alert">
                                 <span class="text-red-600">{{noLoginMsg}}</span>
-                                </div>
                             </div>
                             
                             <div class="pt-5">
@@ -84,6 +84,8 @@ export default {
           this.emailErrMsg = "請輸入正確Email格式";
         } else {
           this.emailError = false;
+          this.emailErrMsg = "";
+
         }
       },
     //   password: function () {

@@ -18,25 +18,24 @@
                         <div class="w-11/12 sm:w-full"> 
                             <div class="relative z-0 w-full pt-3 pb-4 group">
                                 <input type="text" name="floating_displayName" class="member-input peer" placeholder=" " v-model="displayName" :class="{ 'is-invalid': displayNameError }"/>
-                                <label for="floating_displayName" class="member-label">姓名</label>
-                                <div class="invalid-feedback text-red-600">
-                                {{ displayNameErrMsg }}
-                                </div>                                
+                                <label for="floating_displayName" class="member-label">姓名
+                                    <span class="text-red-600">{{ displayNameErrMsg }}</span>
+                                </label>
+                                                              
                             </div>                                           
                             
                             <div class="relative z-0 w-full pt-3 pb-4 group">
                                 <input type="email" name="floating_email" class="member-input peer" placeholder=" " required v-model="email" :class="{ 'is-invalid': emailError }" />
-                                <label for="floating_email" class="member-label">信箱</label>
-                                <div class="invalid-feedback pt-0.5 text-red-600">{{ emailErrMsg }}
-                                </div>
+                                <label for="floating_email" class="member-label">信箱
+                                    <span class="text-red-600">{{ emailErrMsg }}</span>
+                                </label>                                
                             </div>
 
                             <div class="relative z-0 w-full pt-3 pb-5 group">
                                 <input type="password" name="floating_password" id="floating_password" class="member-input peer" placeholder=" " required minlength="8" maxlength="20" v-model="password" :class="{ 'is-invalid': passwordError }"/>
-                                <label for="floating_password" class="member-label">密碼</label>
-                                <div class="invalid-feedback text-red-600">
-                                {{ passwordErrMsg }}
-                                </div>                               
+                                <label for="floating_password" class="member-label">密碼 
+                                    <span class="text-red-600">{{ passwordErrMsg }}</span>
+                                </label>                                                           
                             </div>                            
                             
                             <div class="flex sm:block md:flex justify-center  py-4">
@@ -83,12 +82,19 @@ export default {
         }
     },
     watch: {
-      displayName: function(){
+      displayName: 
+        function(){
         if(this.displayName.length==0) {
           this.displayNameError = true;
           this.displayNameErrMsg = "請輸入姓名"
+        }else{
+          this.displayNameError = false;
+          this.displayNameErrMsg = ""
+
         }
       },
+      deep:true,
+
       email: function () {
         var isMail =
           /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
@@ -96,7 +102,8 @@ export default {
           this.emailError = true;
           this.emailErrMsg = "請輸入正確Email格式";
         } else {
-          this.emailError = false;
+          this.emailError = false;          
+          this.emailErrMsg = "";
         }
       },
       password: function () {
@@ -105,6 +112,7 @@ export default {
           this.passwordErrMsg = "密碼需至少8個字元";
         } else {
           this.passwordError = false;
+          this.passwordErrMsg = null;
         }
       },
     },

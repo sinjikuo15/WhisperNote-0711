@@ -115,8 +115,8 @@ export default {
                       break;
                     case 1 :
                       // this.reload()
-                    //   vm.$store.dispatch('getLoginStatus')
-                      vm.$router.push('/')
+                      this.$store.dispatch('getLoginStatus')
+                      this.$router.push('/')
                       break;
                   }
                   

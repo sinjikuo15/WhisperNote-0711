@@ -5,78 +5,92 @@
                 <XIcon class="h-8 w-5"/>
             </button>
             <span class="modal__title text-center text-xl leading-6 font-bold text-gray-900">我的日記</span>
-            <div class="modal__content px-3">
-            <label class="block mt-3">
-                <div class="hidden" id="titleInput">
-                  <span class="text-gray-700">標題</span>
-                  <input type="text" class="
-                      mt-1
-                      block
-                      w-full
-                      rounded-md
-                      border-gray-300
-                      shadow-sm
-                      focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                  " placeholder="" v-model="title">
+            <div class="modal__content px-3 mt-3">
+
+              <!-- edit -->
+              <div class="hidden" id="editSection">
+                <label class="block mt-3">
+                      <span class="text-gray-700">標題</span>
+                      <input type="text" class="
+                          mt-1
+                          block
+                          w-full
+                          rounded-md
+                          border-gray-300
+                          shadow-sm
+                          focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
+                      " placeholder="" v-model="title">
+                </label>
+                <label class="block mt-3">
+                      <span class="text-gray-700">日期</span>
+                      <input type="date" class="
+                          mt-1
+                          block
+                          w-full
+                          rounded-md
+                          border-gray-300
+                          shadow-sm
+                          focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
+                      " v-model="date">
+                </label>
+                <label class="block mt-3" @click="getPermission">
+                      <span class="text-gray-700">分類</span>
+                      <select class="
+                          block
+                          w-full
+                          mt-1
+                          rounded-md
+                          border-gray-300
+                          shadow-sm
+                          focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
+                      " name="groupTag" id="groupTag" v-model="permission">
+                        <option disabled value="">請選擇</option>
+                        <template v-for="permissionOption in permissionOptions" :key="permissionOption.permission_id">
+                          <option :value="permissionOption.permission_id">{{ permissionOption.per_name }}</option>
+                        </template>
+                      </select>
+                </label>
+                <div class="my-5">
+                      <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+                </div>
+              </div>
+
+              <!-- show -->
+              <div id="showSection">
+                <div id="diaryId" style="display:none;">
+                  <slot name="diaryId"></slot>
                 </div>
                 <div id="title">
                   <slot name="title"></slot>
                 </div>
-            </label>
-            <label class="block mt-3">
-                <div class="hidden" id="dateInput">
-                  <span class="text-gray-700">日期</span>
-                  <input type="date" class="
-                      mt-1
-                      block
-                      w-full
-                      rounded-md
-                      border-gray-300
-                      shadow-sm
-                      focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                  " v-model="date">
-                </div>
                 <div id="date">
                   <slot name="date"></slot>
                 </div>
-            </label>
-
-            <label class="block mt-3">
-                <div class="hidden" id="permissionInput">
-                  <span class="text-gray-700">標籤</span>
-                  <select class="
-                      block
-                      w-full
-                      mt-1
-                      rounded-md
-                      border-gray-300
-                      shadow-sm
-                      focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                  " name="groupTag" id="groupTag" v-model="permission">
-                  <option value="">請選擇</option>
-                  <option value="工作">工作</option>
-                  <option value="大學">大學</option>
-                  </select>
+                <div id="permissionId" style="display:none;">
+                  <slot name="permissionId"></slot>
                 </div>
-                <div id="permission">
-                  <slot name="permission"></slot>
-                </div>
-            </label>
-            <div class="my-5">
-                <div class="hidden" id="ckeditorContent">
-                  <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+                <div id="permissionName">
+                  <slot name="permissionName"></slot>
                 </div>
                 <div class="" id="content">
                   <slot name="content"></slot>
                 </div>
-            </div>
+              </div>
+
             </div>
             <div class="flex justify-end mt-3">
-            <div class="modal__action">
-                <button type="button" id="editBtn" class="w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm" @click="editDiary">編輯</button>
-                <button type="button" id="updateBtn" class="hidden w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm" @click="updateDiary">儲存</button>
-                <button type="button"  class="mt-3 w-full justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" @click="$emit('cancelShow', close)">取消</button>
-            </div>
+              <div class="modal__action">
+                <!-- show -->
+                <div id="showModeBtn">
+                  <button type="button" class="w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm" @click="editDiary">編輯</button>
+                  <button type="button" class="mt-3 w-full justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" @click="$emit('cancelShow', close)">取消</button>
+                </div>
+                <!-- edit -->
+                <div class="hidden" id="editModeBtn">
+                  <button type="button" class="w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm" @click="updateDiary">儲存</button>
+                  <button type="button" class="mt-3 w-full justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" @click="cancelEdit">取消編輯</button>
+                </div>
+              </div>
             </div>
         </vue-final-modal>
 </template>
@@ -96,7 +110,6 @@ export default {
     },
     data() {
         return {
-            diaries: [],
             editor: ClassicEditor,
             editorData: '',
             editorConfig: {
@@ -106,42 +119,44 @@ export default {
             title: '',
             permission: '', //要再抓出該使用者的permission，迴圈顯示option
             date: '',
-            inputDate: ''
+            diaryId: '',
+            permissionOptions: []
         }
     },
     methods: {
-      editDiary() {
-        const editBtn = document.querySelector('#editBtn')
-        const updateBtn = document.querySelector('#updateBtn')
-        const ckeditorContent = document.querySelector('#ckeditorContent')
-        const content = document.querySelector('#content')
-        const titleInput = document.querySelector('#titleInput')
-        const title = document.querySelector('#title')
-        const dateInput = document.querySelector('#dateInput')
-        const date = document.querySelector('#date')
-        const permissionInput = document.querySelector('#permissionInput')
-        const permission = document.querySelector('#permission')
+      switchMode() {
+        const showModeBtn = document.querySelector('#showModeBtn')
+        const editModeBtn = document.querySelector('#editModeBtn')
+        const showSection = document.querySelector('#showSection')
+        const editSection = document.querySelector('#editSection')
 
-        editBtn.classList.toggle('hidden')
-        updateBtn.classList.toggle('hidden')
-        titleInput.classList.toggle('hidden')
-        title.classList.toggle('hidden')
-        dateInput.classList.toggle('hidden')
-        date.classList.toggle('hidden')
-        permissionInput.classList.toggle('hidden')
-        permission.classList.toggle('hidden')
-        ckeditorContent.classList.toggle('hidden')
-        content.classList.toggle('hidden')
+        showModeBtn.classList.toggle('hidden')
+        editModeBtn.classList.toggle('hidden')
+        showSection.classList.toggle('hidden')
+        editSection.classList.toggle('hidden')
+      },
+      editDiary() {
+        this.switchMode()
+        this.diaryId = document.getElementById('diaryId').innerText
+        this.title = document.getElementById('title').innerText
+        this.permission = document.getElementById('permissionId').innerText
+        this.date = document.getElementById('date').innerText
+        this.editorData = document.getElementById('content').innerHTML
+        console.log(this.editorData)
+
+      },
+      cancelEdit() {
+        this.switchMode()
       },
       updateDiary() {
-        this.$emit('confirmShow', close); 
+        // this.$emit('confirmShow', close); 
         const diaryDetail = {
+          diary_id: this.diaryId,
           title: this.title,
           permission: this.permission,
           content: this.editorData,
           date: this.date
         }
-        console.log('confirm')
         console.log(diaryDetail)
         // this.axios.post('/addDiary', diaryDetail)
         //   .then((res) => {
@@ -150,7 +165,17 @@ export default {
         //   .catch((err)=>{
         //     console.log(err);
         //   })
-      }
+      },
+      getPermission(){
+        this.axios.get('getPer.json')
+          .then((res)=>{
+            console.log(res.data)
+            this.permissionOptions = res.data
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+      },
     },
     mounted() {
         let now = new Date();
@@ -160,6 +185,8 @@ export default {
         let date = now.getDate();
         if (date<10) date="0"+date
         this.date = year+"-"+month+"-"+date
+
+        this.getPermission()
     }
 }
 </script>
@@ -170,17 +197,25 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 ::v-deep .modal-content {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 70vw;
-  height: 70vh;
+  width: 90vw;
+  height: 80vh;
   margin: 1rem 1rem;
   padding: 1rem;
   border: 1px solid #e2e8f0;
   border-radius: 0.25rem;
   background: #fff;
+}
+
+@media (min-width: 1024px) {
+::v-deep .modal-content {
+    width: 50vw;
+    height: 70vh;
+  }
 }
 /* .modal__title {
   margin: 0 1.5rem 1rem 0;
@@ -206,7 +241,7 @@ export default {
 }
 
 /* 覆蓋tailwind預設樣式來顯示ckeditor結果 */
-.content > blockquote,
+/* .content > blockquote,
 .content > dl, 
 .content > dd, 
 .content > h1, 
@@ -240,7 +275,7 @@ export default {
 .content > h6 {
   font-size: revert !important;
   font-weight: revert !important;
-}
+} */
 
 
 

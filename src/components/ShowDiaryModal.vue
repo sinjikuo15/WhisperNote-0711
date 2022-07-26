@@ -167,7 +167,7 @@ export default {
         //   })
       },
       getPermission(){
-        this.axios.get('getPermissionOptions.json')
+        this.axios.get('getPer.json')
           .then((res)=>{
             console.log(res.data)
             this.permissionOptions = res.data

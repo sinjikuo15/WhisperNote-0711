@@ -18,7 +18,7 @@
         </div>
         
         <!-- 使用者登出登入註冊 -->
-        <div class="flex w-8/12 sm:w-6/12 lg:w-4/12 justify-end">
+        <div class="flex w-8/12 sm:w-6/12 lg:w-4/12 justify-end items-center">
           <div class="sm:hidden">
               <button class="navbar-burger flex items-center rounded border-2 border-blue-300 text-blue-600 hover:border-blue-600 p-2" type="button">
                 <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -26,34 +26,38 @@
                   <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
                 </svg>
               </button>
-        </div>
-          <div class="hidden sm:flex  w-3/12 justify-center" >
-            <router-link to="/signup" class="flex items-center  text-blue-600 hover:text-blue-700" href="/signup">
-              <i class="fa-solid fa-clipboard-check block text-xl pr-1"></i>
-              <p class="w-9/12 md:text-base">註冊</p>        
-            </router-link>     
           </div>
-           
-          <div class="hidden sm:flex w-3/12 justify-center" >
-            <router-link to="/login" class="flex items-center  text-blue-600 hover:text-blue-700" href="/login">
-              <i class="fa-solid fa-arrow-right-to-bracket block text-sm login pr-1"></i>  
-              <p class="w-9/12 md:text-base">登入</p>      
-            </router-link>     
-          </div>
-          
+          <template v-if="$store.state.loginStatus === 0">
+            <div class="hidden sm:flex  w-3/12 justify-center" >
+              <router-link to="/signup" class="flex items-center  text-blue-600 hover:text-blue-700" href="/signup">
+                <i class="fa-solid fa-clipboard-check block text-xl pr-1"></i>
+                <p class="w-9/12 md:text-base">註冊</p>        
+              </router-link>     
+            </div>
+            <div class="hidden sm:flex w-3/12 justify-center" >
+              <router-link to="/login" class="flex items-center  text-blue-600 hover:text-blue-700" href="/login">
+                <i class="fa-solid fa-arrow-right-to-bracket block text-sm login pr-1"></i>  
+                <p class="w-9/12 md:text-base">登入</p>      
+              </router-link>     
+            </div>
+          </template>
           <!-- 登入時顯示 -->
-          <!-- <a class="hidden sm:flex  w-3/12 justify-center" href="/signup">
-            <div class="flex items-center  text-blue-600 hover:text-blue-700">
-              <i class="fa-regular fa-bell text-xl p-3  text-gray-500 hover:text-red-400"></i>      
-            </div>     
-          </a> 
-          <a class="hidden sm:flex w-3/12 justify-center" href="/login">
-            <div class="flex items-center  text-blue-600 hover:text-blue-700">
-             <figure class="user-wrap w-3/12 justify-center">
-              <img class="user" src="https://i.pinimg.com/736x/fa/1f/25/fa1f2501f67e22f7c44478af0f7ae8aa.jpg" alt="">
-            </figure>       
-            </div>     
-          </a>          -->
+          <template v-else>
+            <router-link class="hidden sm:flex  w-3/12 justify-center" to="/signup">
+              <div class="flex items-center  text-blue-600 hover:text-blue-700">
+                <i class="fa-regular fa-bell text-xl p-3  text-gray-500 hover:text-red-400"></i>      
+              </div>     
+            </router-link> 
+            <router-link class="hidden sm:flex w-3/12 justify-center" to="/login">
+              <div class="flex items-center  text-blue-600 hover:text-blue-700">
+               <figure class="user-wrap w-3/12 justify-center">
+                <img class="user" src="https://i.pinimg.com/736x/fa/1f/25/fa1f2501f67e22f7c44478af0f7ae8aa.jpg" alt="">
+              </figure>       
+              </div>     
+            </router-link>  
+            <router-link to="/" class="p-2" @click="logout">登出</router-link>       
+          </template> 
+          
 
           <!-- 漢堡內容 -->
           <div class="navbar-menu relative z-50 hidden">
@@ -93,24 +97,27 @@
               </div>
               <div class="mt-auto">
                 <div class="pt-6">
-                  <router-link to="/signup" class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" >註冊</router-link>
-                  <router-link to="/login" class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" >登入</router-link>
-
+                  <template v-if="$store.state.loginStatus === 0">
+                    <router-link to="/signup" class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" >註冊</router-link>
+                    <router-link to="/login" class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" >登入</router-link>
+                  </template>
                   <!-- 登入時顯示 -->
-                  <!-- <div class="flex">
-                    <div class="flex w-3/12 justify-center">
-                      <router-link to="/login" class="flex items-center  text-blue-600 hover:text-blue-700">
-                      <figure class="user-wrap w-3/12 justify-center">
-                        <img class="user" src="https://i.pinimg.com/736x/fa/1f/25/fa1f2501f67e22f7c44478af0f7ae8aa.jpg" alt="">
-                      </figure>       
-                      </router-link>     
-                    </div>
-                    <div class="flex  w-3/12 justify-center">
-                      <router-link to="/" class="flex items-center  text-blue-600 hover:text-blue-700">
-                        <i class="fa-regular fa-bell text-xl p-3  text-gray-500 hover:text-red-400"></i>      
-                      </router-link>     
-                    </div>                     
-                  </div>                   -->
+                  <template v-else>
+                    <div class="flex">
+                      <div class="flex w-3/12 justify-center">
+                        <router-link to="/login" class="flex items-center  text-blue-600 hover:text-blue-700">
+                        <figure class="user-wrap w-3/12 justify-center">
+                          <img class="user" src="https://i.pinimg.com/736x/fa/1f/25/fa1f2501f67e22f7c44478af0f7ae8aa.jpg" alt="">
+                        </figure>       
+                        </router-link>     
+                      </div>
+                      <div class="flex  w-3/12 justify-center">
+                        <router-link to="/" class="flex items-center  text-blue-600 hover:text-blue-700">
+                          <i class="fa-regular fa-bell text-xl p-3  text-gray-500 hover:text-red-400"></i>      
+                        </router-link>     
+                      </div>                     
+                    </div>                  
+                  </template>
                 </div>
                 <p class="my-4 text-xs text-center text-gray-500">
                   <span>Copyright © 2022</span>
@@ -125,46 +132,71 @@
 </template>
 
 <script>
-// Burger menus
-document.addEventListener('DOMContentLoaded', function() {
-    // open
-    const burger = document.querySelectorAll('.navbar-burger');
-    const menu = document.querySelectorAll('.navbar-menu');
+export default {
+  // computed: {
+  //   loginStatus(){
+  //     return this.$store.getters.loginStatus
+  //   }
+  // },
+  mounted() {
+    this.$store.dispatch("getLoginStatus");
+    console.log("loginStatus", this.$store.state.loginStatus);
 
-    if (burger.length && menu.length) {
-        for (let i = 0; i < burger.length; i++) {
-            burger[i].addEventListener('click', function(e) {
-              e.stopPropagation()
-                for (var j = 0; j < menu.length; j++) {
-                    menu[j].classList.toggle('hidden');
-                }
-            });
-        }
-    }
-    // close
-    const close = document.querySelectorAll('.navbar-close');
-    const backdrop = document.querySelectorAll('.navbar-backdrop');
+    // Burger menus
+    document.addEventListener('DOMContentLoaded', function() {
+        // open
+        const burger = document.querySelectorAll('.navbar-burger');
+        const menu = document.querySelectorAll('.navbar-menu');
 
-    if (close.length) {
-        for (var i = 0; i < close.length; i++) {
-            close[i].addEventListener('click', function(e) {
-              e.stopPropagation()
-                for (var j = 0; j < menu.length; j++) {
-                    menu[j].classList.toggle('hidden');
-                }
-            });
+        if (burger.length && menu.length) {
+            for (let i = 0; i < burger.length; i++) {
+                burger[i].addEventListener('click', function(e) {
+                  e.stopPropagation()
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
         }
-    }
-    if (backdrop.length) {
-        for (var i = 0; i < backdrop.length; i++) {
-            backdrop[i].addEventListener('click', function() {
-                for (var j = 0; j < menu.length; j++) {
-                    menu[j].classList.toggle('hidden');
-                }
-            });
+        // close
+        const close = document.querySelectorAll('.navbar-close');
+        const backdrop = document.querySelectorAll('.navbar-backdrop');
+
+        if (close.length) {
+            for (var i = 0; i < close.length; i++) {
+                close[i].addEventListener('click', function(e) {
+                  e.stopPropagation()
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
         }
+        if (backdrop.length) {
+            for (var i = 0; i < backdrop.length; i++) {
+                backdrop[i].addEventListener('click', function() {
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
+        }
+    });
+  },
+  methods: {
+    async logout() {
+      await this.axios.post("/logout").then((response) => {
+        console.log("logout", response);
+        this.$store.dispatch("getLoginStatus");
+      });
     }
-});
+  }
+
+
+
+}
+
+
 </script>
 
 

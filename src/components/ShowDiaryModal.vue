@@ -50,6 +50,22 @@
                         </template>
                       </select>
                 </label>
+                <!-- add permission -->
+                <div class="add-permission mt-2 text-sm">
+                  <p id="addPermissionBtn1" @click="addPermission" class="inline cursor-pointer"><PlusIcon class="inline w-3 mb-1"/>新增分類</p>
+                  <div id="addPermissionSection1" class="hidden">
+                    <input type="text" class="
+                        mt-1
+                        rounded-md
+                        border-gray-300
+                        shadow-sm
+                        focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
+                    " v-model="newPermission">
+                    <button @click="confirmAddPermission" class="rounded-md border border-transparent shadow-sm px-2 py-1 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm">確定</button>
+                    <button @click="cancelAddPermission" class="rounded-md border border-gray-300 shadow-sm px-2 py-1 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-1 sm:w-auto sm:text-sm">取消</button>
+                  </div>
+                </div>
+
                 <div class="my-5">
                       <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
                 </div>
@@ -60,16 +76,16 @@
                 <div id="diaryId" style="display:none;">
                   <slot name="diaryId"></slot>
                 </div>
-                <div id="title">
+                <div id="title" class="text-xl mb-3">
                   <slot name="title"></slot>
                 </div>
-                <div id="date">
+                <div id="date" class="mb-3 text-slate-400">
                   <slot name="date"></slot>
                 </div>
                 <div id="permissionId" style="display:none;">
                   <slot name="permissionId"></slot>
                 </div>
-                <div id="permissionName">
+                <div id="permissionName" class="mb-3">
                   <slot name="permissionName"></slot>
                 </div>
                 <div class="" id="content">
@@ -120,7 +136,8 @@ export default {
             permission: '', //要再抓出該使用者的permission，迴圈顯示option
             date: '',
             diaryId: '',
-            permissionOptions: []
+            permissionOptions: [],
+            newPermission: ''
         }
     },
     methods: {
@@ -167,15 +184,47 @@ export default {
         //   })
       },
       getPermission(){
-        this.axios.get('getPer.json')
+        this.axios.get('/getPer')
           .then((res)=>{
-            console.log(res.data)
-            this.permissionOptions = res.data
+            // console.log(res.data.data)
+            localStorage.setItem('permissionOptions', JSON.stringify(res.data.data))
+            this.permissionOptions = res.data.data
           })
           .catch((err)=>{
             console.log(err);
           })
       },
+      switchPermissionMode(){
+        const addPermissionBtn1 = document.querySelector('#addPermissionBtn1')
+        const addPermissionSection1 = document.querySelector('#addPermissionSection1')
+        console.log('add')
+        addPermissionBtn1.classList.toggle('hidden')
+        addPermissionSection1.classList.toggle('hidden')
+      },
+      addPermission(){
+        this.switchPermissionMode()
+        console.log('click')
+        //先清空newPermission
+        this.newPermission = ''
+      },
+      async confirmAddPermission(){
+        const newPermission = this.newPermission
+        await this.axios.post('/addPer', {newPermission})
+          .then((res)=>{
+            console.log('新增成功！', res.data)
+            //新增成功後把newPermission塞到permission(讓選項選到newPermission的值)
+            // this.permission = this.newPermission
+            this.switchPermissionMode()
+          })
+          .catch((err)=>{
+            console.log(err)
+          })
+        
+
+      },
+      cancelAddPermission(){
+        this.switchPermissionMode()
+      }
     },
     mounted() {
         let now = new Date();

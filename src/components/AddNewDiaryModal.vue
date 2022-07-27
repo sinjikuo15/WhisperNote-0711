@@ -48,16 +48,17 @@
                   </template>
                 </select>
             </label>
+            <!-- add permission -->
             <div class="add-permission mt-2 text-sm">
               <p id="addPermissionBtn" @click="addPermission" class="inline cursor-pointer"><PlusIcon class="inline w-3 mb-1"/>新增分類</p>
               <div id="addPermissionSection" class="hidden">
-                <input type="text" v-model="newPermission" class="
+                <input type="text" class="
                     mt-1
                     rounded-md
                     border-gray-300
                     shadow-sm
                     focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
-                ">
+                " v-model="newPermission">
                 <button @click="confirmAddPermission" class="rounded-md border border-transparent shadow-sm px-2 py-1 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm">確定</button>
                 <button @click="cancelAddPermission" class="rounded-md border border-gray-300 shadow-sm px-2 py-1 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-1 sm:w-auto sm:text-sm">取消</button>
               </div>
@@ -100,13 +101,17 @@ export default {
             title: '',
             permission: '', //要再抓出該使用者的permission，迴圈顯示option
             date: '',
-            inputDate: '',
             permissionOptions: [],
             newPermission: ''
         }
     },
     methods: {
       addNewDiary(){
+        //表單驗證
+        // if(!this.title){
+        //   alert('請輸入標題');
+        //   return
+        // } 
         this.$emit('confirm', close); 
         const diaryDetail = {
           title: this.title,
@@ -123,12 +128,14 @@ export default {
           .catch((err)=>{
             console.log(err);
           })
+        
       },
       getPermission(){
-        this.axios.get('getPer.json')
+        this.axios.get('/getPer')
           .then((res)=>{
-            console.log(res.data)
-            this.permissionOptions = res.data
+            // console.log(res.data.data)
+            localStorage.setItem('permissionOptions', JSON.stringify(res.data.data))
+            this.permissionOptions = res.data.data
           })
           .catch((err)=>{
             console.log(err);
@@ -143,14 +150,17 @@ export default {
       },
       addPermission(){
         this.switchPermissionMode()
+        //先清空newPermission
+        this.newPermission = ''
       },
-      confirmAddPermission(){
+      async confirmAddPermission(){
         const newPermission = this.newPermission
-        this.axios.post('/addPer', newPermission)
+        await this.axios.post('/addPer', {newPermission})
           .then((res)=>{
-            console.log('新增成功！')
-            //新增成功後把newPermission清空
-            this.newPermission = ''
+            console.log('新增成功！', res.data)
+            //新增成功後把newPermission塞到permission(讓選項選到newPermission的值)
+            // this.permission = this.newPermission
+            this.switchPermissionMode()
           })
           .catch((err)=>{
             console.log(err)

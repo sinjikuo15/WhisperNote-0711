@@ -40,7 +40,7 @@
             <template v-slot:title>{{ singleDiaryTitle }}</template>
             <template v-slot:date>{{ singleDiaryDate.slice(0,10) }}</template>
             <template v-slot:content>
-                <p v-html="singleDiaryContent"></p>
+                <div v-html="singleDiaryContent"></div>
             </template>
             <template v-slot:permissionId>{{ singleDiaryPermissionId }}</template>
             <template v-slot:permissionName>{{ singleDiaryPermissionName }}</template>
@@ -115,7 +115,7 @@ export default {
         this.singleDiaryPermissionId = diary.permission_id
         this.singleDiaryPermissionName = diary.per_name
         this.singleDiaryId = diary.diary_id
-        console.log(this.singleDiaryId)
+        // console.log(this.singleDiaryId)
       },
       confirm() {
         // some code...

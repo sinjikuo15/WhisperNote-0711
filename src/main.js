@@ -9,4 +9,4 @@ import './assets/tailwind.css'
 import './assets/style.css'
 import store from './store'
 
-createApp(App).use(store).use(store).use(router).use(VueAxios, axios).use(CKEditor).use(vfmPlugin).mount('#app')
+createApp(App).use(store).use(store).use(store).use(router).use(VueAxios, axios).use(CKEditor).use(vfmPlugin).mount('#app')

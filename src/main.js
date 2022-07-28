@@ -12,4 +12,4 @@ import VCalendar from 'v-calendar';
 
 
 
-createApp(App).use(store).use(store).use(router).use(VueAxios, axios).use(CKEditor).use(vfmPlugin).use(VCalendar).mount('#app')
+createApp(App).use(store).use(router).use(VueAxios, axios).use(CKEditor).use(vfmPlugin).use(VCalendar).mount('#app')

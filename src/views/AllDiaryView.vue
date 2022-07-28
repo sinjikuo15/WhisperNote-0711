@@ -136,7 +136,7 @@ export default {
     mounted() {
         this.axios.get('/getDiary')
         .then((response) => {
-            console.log(response)
+            console.log(response.data.data)
             this.diaries = response.data.data
           })
           .catch((err)=>{

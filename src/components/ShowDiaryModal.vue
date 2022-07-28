@@ -19,7 +19,7 @@
                           border-gray-300
                           shadow-sm
                           focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
-                      " placeholder="" v-model="title">
+                      " placeholder="" v-model="title" :class="{ 'border-red-600 focus:border-red-600 focus:ring focus:ring-red-600 focus:ring-opacity-20': titleError }">
                 </label>
                 <label class="block mt-3">
                       <span class="text-gray-700">日期</span>
@@ -43,7 +43,7 @@
                           border-gray-300
                           shadow-sm
                           focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
-                      " name="groupTag" id="groupTag" v-model="permission">
+                      " name="groupTag" id="permissionTag" v-model="permission" :class="{ 'border-red-600 focus:border-red-600 focus:ring focus:ring-red-600 focus:ring-opacity-20': permissionError }">
                         <option disabled value="">請選擇</option>
                         <template v-for="permissionOption in permissionOptions" :key="permissionOption.permission_id">
                           <option :value="permissionOption.permission_id">{{ permissionOption.per_name }}</option>
@@ -68,6 +68,7 @@
 
                 <div class="my-5">
                       <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+                      <p class="text-red-600 mt-1">{{ contentErrorMsg }}</p>
                 </div>
               </div>
 
@@ -98,8 +99,9 @@
               <div class="modal__action">
                 <!-- show -->
                 <div id="showModeBtn">
-                  <button type="button" class="w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm" @click="editDiary">編輯</button>
                   <button type="button" class="mt-3 w-full justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" @click="$emit('cancelShow', close)">取消</button>
+                  <button type="button" class="w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm" @click="editDiary">編輯</button>
+                  <button type="button" class="w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 sm:ml-3 sm:w-auto sm:text-sm" @click="deleteDiary">刪除</button>
                 </div>
                 <!-- edit -->
                 <div class="hidden" id="editModeBtn">
@@ -137,8 +139,34 @@ export default {
             date: '',
             diaryId: '',
             permissionOptions: [],
-            newPermission: ''
+            newPermission: '',
+            titleError: false,
+            permissionError: false,
+            contentErrorMsg: '',
         }
+    },
+    watch: {
+      title: function () {
+        if (!this.title) {
+          this.titleError = true;
+        } else {
+          this.titleError = false;
+        }
+      },
+      permission: function () {
+        if (!this.permission) {
+          this.permissionError = true;
+        } else {
+          this.permissionError = false;
+        }
+      },
+      editorData: function () {
+        if (!this.editorData) {
+          this.contentErrorMsg = '請輸入內容';
+        } else {
+          this.contentErrorMsg = '';
+        }
+      },
     },
     methods: {
       switchMode() {
@@ -159,29 +187,54 @@ export default {
         this.permission = document.getElementById('permissionId').innerText
         this.date = document.getElementById('date').innerText
         this.editorData = document.getElementById('content').innerHTML
-        console.log(this.editorData)
+        // console.log(this.editorData)
 
       },
       cancelEdit() {
         this.switchMode()
       },
       updateDiary() {
-        // this.$emit('confirmShow', close); 
-        const diaryDetail = {
-          diary_id: this.diaryId,
-          title: this.title,
-          permission: this.permission,
-          content: this.editorData,
-          date: this.date
+        //表單驗證
+        if(!this.title){
+          this.titleError = true;
+        } else if(!this.permission){
+          this.permissionError = true;
+        } else if(!this.editorData){
+          this.contentErrorMsg = '請輸入內容';
+          return;
+        } else {
+          let permission_id = document.getElementById('permissionTag').value
+          const diaryDetail = {
+            diary_id: this.diaryId,
+            title: this.title,
+            permission_id: permission_id,
+            content: this.editorData,
+            date: this.date
+          }
+          console.log(diaryDetail)
+          this.axios.post('/editDiary', {diaryDetail})
+            .then((res) => {
+              console.log(res.data)
+            })
+            .catch((err)=>{
+              console.log(err);
+            })
+          
+          this.$emit('confirmShow', close); 
         }
-        console.log(diaryDetail)
-        // this.axios.post('/addDiary', diaryDetail)
-        //   .then((res) => {
-        //     console.log(res.data)
-        //   })
-        //   .catch((err)=>{
-        //     console.log(err);
-        //   })
+      },
+      deleteDiary() {
+        this.diaryId = document.getElementById('diaryId').innerText
+        let diary_id = this.diaryId
+        console.log(diary_id)
+        this.axios.post('/deleteDiary', {diary_id})
+          .then((res) => {
+            console.log(res.data)
+            alert('刪除成功')
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
       },
       getPermission(){
         this.axios.get('/getPer')

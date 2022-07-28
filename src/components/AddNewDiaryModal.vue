@@ -16,7 +16,7 @@
                     border-gray-300
                     shadow-sm
                     focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
-                " placeholder="" v-model="title">
+                " placeholder="" v-model="title" :class="{ 'border-red-600 focus:border-red-600 focus:ring focus:ring-red-600 focus:ring-opacity-20': titleError }">
             </label>
             <label class="block mt-3">
                 <span class="text-gray-700">日期</span>
@@ -28,7 +28,7 @@
                     border-gray-300
                     shadow-sm
                     focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
-                " v-model="date">
+                " v-model="date" >
             </label>
 
             <label class="block mt-3" @click="getPermission">
@@ -41,7 +41,7 @@
                     border-gray-300
                     shadow-sm
                     focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50
-                " name="groupTag" id="groupTag" v-model="permission">
+                " name="groupTag" id="groupTag" v-model="permission" :class="{ 'border-red-600 focus:border-red-600 focus:ring focus:ring-red-600 focus:ring-opacity-20': permissionError }">
                 <option disabled value="">請選擇</option>
                   <template v-for="permissionOption in permissionOptions" :key="permissionOption.permission_id">
                     <option :value="permissionOption.permission_id">{{ permissionOption.per_name }}</option>
@@ -66,6 +66,7 @@
 
             <div class="my-5">
                 <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+                <p class="text-red-600 mt-1">{{ contentErrorMsg }}</p>
             </div>
             </div>
             <div class="flex justify-end mt-3">
@@ -102,17 +103,48 @@ export default {
             permission: '', //要再抓出該使用者的permission，迴圈顯示option
             date: '',
             permissionOptions: [],
-            newPermission: ''
+            newPermission: '',
+            titleError: false,
+            permissionError: false,
+            contentErrorMsg: '',
         }
+    },
+    watch: {
+      title: function () {
+        if (!this.title) {
+          this.titleError = true;
+        } else {
+          this.titleError = false;
+        }
+      },
+      permission: function () {
+        if (!this.permission) {
+          this.permissionError = true;
+        } else {
+          this.permissionError = false;
+        }
+      },
+      editorData: function () {
+        if (!this.editorData) {
+          this.contentErrorMsg = '請輸入內容';
+        } else {
+          this.contentErrorMsg = '';
+        }
+      },
     },
     methods: {
       addNewDiary(){
         //表單驗證
-        // if(!this.title){
-        //   alert('請輸入標題');
-        //   return
-        // } 
-        this.$emit('confirm', close); 
+        if(!this.title){
+          this.titleError = true;
+        } 
+        if(!this.permission){
+          this.permissionError = true;
+        } 
+        if(!this.editorData){
+          this.contentErrorMsg = '請輸入內容';
+          return
+        } 
         const diaryDetail = {
           title: this.title,
           permission: this.permission,
@@ -124,11 +156,14 @@ export default {
         this.axios.post('/addDiary', diaryDetail)
           .then((res) => {
             console.log(res.data)
+            alert('新增成功')
+            this.$router.push('/all-diary')
           })
           .catch((err)=>{
             console.log(err);
           })
         
+        this.$emit('confirm', close); 
       },
       getPermission(){
         this.axios.get('/getPer')

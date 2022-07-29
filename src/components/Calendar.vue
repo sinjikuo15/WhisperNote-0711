@@ -12,7 +12,9 @@
           <div class="flex-grow overflow-y-auto overflow-x-auto">
             <!-- <p v-for="attr in attributes" :key="attr.diary_id" class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1"
               :class="attr.customData.class"> -->
-            <p v-for="attr in attributes" :key="attr.diary_id" class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1 bg-blue-600 text-white">
+            <p v-for="attr in attributes" :key="attr.diary_id"
+            class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1 bg-blue-600 text-white hover:cursor-pointer"
+            @click="showCalendar(attr)">
               {{ attr.customData.title }}
               
             </p>
@@ -20,13 +22,29 @@
         </div>
       </template>
     </v-calendar>
+
+    <!-- 單篇日記modal -->
+    <ShowCalendarModal v-model="showCalendarModal" @confirmShow="confirmShow" @cancelShow="cancelShow">
+        <template v-slot:title>{{ singleDiaryTitle }}</template>
+        <template v-slot:date>{{ singleDiaryDate.slice(0,10) }}</template>
+        <template v-slot:content>
+            <div v-html="singleDiaryContent"></div>
+        </template>
+        <template v-slot:permissionId>{{ singleDiaryPermissionId }}</template>
+        <template v-slot:permissionName>{{ singleDiaryPermissionName }}</template>
+        <template v-slot:diaryId>{{ singleDiaryId }}</template>
+    </ShowCalendarModal>     
   </div>
 </template>
 
 <script>
 import 'v-calendar/dist/style.css';
+import ShowCalendarModal from '../components/ShowCalendarModal.vue'
 
 export default {
+  components: {
+    ShowCalendarModal
+  },
   data() {
     // const month = new Date().getMonth();
     // const year = new Date().getFullYear();
@@ -35,7 +53,33 @@ export default {
         weekdays: 'WWW',
       },
       attributes: [],
+      showCalendarModal: false,
+      singleDiaryTitle: '',
+      singleDiaryDate: '',
+      singleDiaryContent: '',
+      singleDiaryPermissionId: '',
+      singleDiaryPermissionName: '',
+      singleDiaryId: ''
     };
+  },
+  methods: {
+    showCalendar(attr) {
+      this.showCalendarModal = true
+      // console.log(diary)
+      this.singleDiaryTitle = attr.customData.title
+      this.singleDiaryDate = attr.customData.date
+      this.singleDiaryContent = attr.customData.content
+      this.singleDiaryPermissionId = attr.customData.permission_id
+      this.singleDiaryPermissionName = attr.customData.per_name
+      this.singleDiaryId = attr.customData.diary_id
+    },
+    confirmShow() {
+      this.showCalendarModal = false
+    },
+    cancelShow(close) {
+      // some code...
+      close()
+    },
   },
   mounted() {
     this.axios('/getDiary')
@@ -44,7 +88,7 @@ export default {
         // console.log(response)
 
         const oldDiary = response.data.data
-        // console.log(oldDiary)
+        console.log(oldDiary)
         let newDiaryArray = oldDiary.map(e => {
           const result = {
             customData: {
@@ -55,6 +99,7 @@ export default {
           return result
         })
         this.attributes = newDiaryArray
+        console.log(this.attributes)
 
       })
       .catch((err) => {

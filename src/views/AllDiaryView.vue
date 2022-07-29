@@ -8,9 +8,9 @@
             <h1 class="text-2xl ">我的日記</h1>
         </div>
         <div class="container flex justify-end gap-3 items-center my-5">
-            <div class="h-10 w-10 hover:bg-slate-200 hover:rounded flex justify-center items-center">
+            <!-- <div class="h-10 w-10 hover:bg-slate-200 hover:rounded flex justify-center items-center">
                 <AdjustmentsIcon class="h-8 w-5 text-slate-500"/>
-            </div>
+            </div> -->
             <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 btn-primary sm:w-auto sm:text-sm">新增日記</button>
         </div>
 

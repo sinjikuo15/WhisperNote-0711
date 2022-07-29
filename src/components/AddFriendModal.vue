@@ -16,8 +16,9 @@
                       border-gray-300
                       shadow-sm
                       focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                  " placeholder="" v-model="friendEmail">
+                  " placeholder="" v-model="friendEmail" :class="{ 'border-red-600 focus:border-red-600 focus:ring focus:ring-red-600 focus:ring-opacity-20': emailError }">
               </label>
+              <p class="text-red-600 mt-1">{{ emailErrMsg }}</p>
             </div>
             <div class="flex justify-end mt-3">
               <div class="modal__action">
@@ -42,8 +43,24 @@ export default {
     },
     data() {
         return {
-            friendEmail: ''
+            friendEmail: '',
+            emailError: false,
+            emailErrMsg: "",
         }
+    },
+    watch: {
+      friendEmail: function () {
+        var isMail =
+          /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+        if (!isMail.test(this.friendEmail)) {
+          this.emailError = true;
+          this.emailErrMsg = "請輸入正確Email格式";
+        } else {
+          this.emailError = false;
+          this.emailErrMsg = "";
+
+        }
+      },
     },
     methods: {
       addFriend(){

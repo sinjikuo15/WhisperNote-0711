@@ -8,9 +8,9 @@
             <h1 class="text-2xl ">我的日記</h1>
         </div>
         <div class="container flex justify-end gap-3 items-center my-5">
-            <div class="h-10 w-10 hover:bg-slate-200 hover:rounded flex justify-center items-center">
+            <!-- <div class="h-10 w-10 hover:bg-slate-200 hover:rounded flex justify-center items-center">
                 <AdjustmentsIcon class="h-8 w-5 text-slate-500"/>
-            </div>
+            </div> -->
             <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 btn-primary sm:w-auto sm:text-sm">新增日記</button>
         </div>
 
@@ -40,7 +40,7 @@
             <template v-slot:title>{{ singleDiaryTitle }}</template>
             <template v-slot:date>{{ singleDiaryDate.slice(0,10) }}</template>
             <template v-slot:content>
-                <p v-html="singleDiaryContent"></p>
+                <div v-html="singleDiaryContent"></div>
             </template>
             <template v-slot:permissionId>{{ singleDiaryPermissionId }}</template>
             <template v-slot:permissionName>{{ singleDiaryPermissionName }}</template>
@@ -115,7 +115,7 @@ export default {
         this.singleDiaryPermissionId = diary.permission_id
         this.singleDiaryPermissionName = diary.per_name
         this.singleDiaryId = diary.diary_id
-        console.log(this.singleDiaryId)
+        // console.log(this.singleDiaryId)
       },
       confirm() {
         // some code...
@@ -136,7 +136,7 @@ export default {
     mounted() {
         this.axios.get('/getDiary')
         .then((response) => {
-            console.log(response)
+            console.log(response.data.data)
             this.diaries = response.data.data
           })
           .catch((err)=>{

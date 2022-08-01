@@ -12,7 +12,7 @@
           <div class="flex-grow overflow-y-auto overflow-x-auto">
             <!-- <p v-for="attr in attributes" :key="attr.diary_id" class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1"
               :class="attr.customData.class"> -->
-            <p v-for="attr in attributes" :key="attr.diary_id"
+            <p v-for="attr in attributes" :key="attr.customData.diary_id"
             class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1 bg-blue-600 text-white hover:cursor-pointer"
             @click="showCalendar(attr)">
               {{ attr.customData.title }}
@@ -99,7 +99,7 @@ export default {
           return result
         })
         this.attributes = newDiaryArray
-        console.log(this.attributes)
+        // console.log(this.attributes)
 
       })
       .catch((err) => {

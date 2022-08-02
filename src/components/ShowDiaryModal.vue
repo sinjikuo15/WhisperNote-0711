@@ -101,7 +101,7 @@
                 <div id="showModeBtn">
                   <button type="button" class="mt-3 w-full justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" @click="$emit('cancelShow', close)">取消</button>
                   <button type="button" class="w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm" @click="editDiary">編輯</button>
-                  <button type="button" class="w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 sm:ml-3 sm:w-auto sm:text-sm" @click="deleteDiary">刪除</button>
+                  <button type="button" class="w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 sm:ml-3 sm:w-auto sm:text-sm" @click="confirmDelete">刪除</button>
                 </div>
                 <!-- edit -->
                 <div class="hidden" id="editModeBtn">
@@ -110,6 +110,9 @@
                 </div>
               </div>
             </div>
+
+            <!-- confirm delete modal -->
+            <DeleteDiaryModal v-model="showDeleteModal" @confirmDelete="confirmDelete" @cancelDelete="cancelDelete"/>
         </vue-final-modal>
 </template>
 
@@ -118,6 +121,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal'
 import { PlusIcon } from '@heroicons/vue/solid'
 import { XIcon } from '@heroicons/vue/solid'
+import DeleteDiaryModal from '../components/DeleteDiaryModal.vue'
 
 export default {
     components: {
@@ -125,6 +129,7 @@ export default {
         ModalsContainer,
         PlusIcon,
         XIcon,
+        DeleteDiaryModal
     },
     data() {
         return {
@@ -143,6 +148,7 @@ export default {
             titleError: false,
             permissionError: false,
             contentErrorMsg: '',
+            showDeleteModal: false,
         }
     },
     watch: {
@@ -223,19 +229,13 @@ export default {
           this.$emit('confirmShow', close); 
         }
       },
-      deleteDiary() {
-        this.diaryId = document.getElementById('diaryId').innerText
-        let diary_id = this.diaryId
-        console.log(diary_id)
-        this.axios.post('/deleteDiary', {diary_id})
-          .then((res) => {
-            console.log(res.data)
-            alert('刪除成功')
-          })
-          .catch((err)=>{
-            console.log(err);
-          })
-        this.$emit('confirmShow', close); 
+      confirmDelete() {
+        this.showDeleteModal = true
+      },
+      cancelDelete() {
+        // some code...
+        this.showDeleteModal = false
+        this.$emit('confirmShow', close);
       },
       getPermission(){
         this.axios.get('/getPer')

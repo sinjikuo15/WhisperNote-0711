@@ -66,6 +66,7 @@ import NavBar from '../components/NavBar.vue'
 
 
 export default {
+    inject: ['reload'],
     components: {
         SideBar,
         AddNewDiaryModal,
@@ -105,6 +106,7 @@ export default {
           .catch((err)=>{
             console.log(err);
           })
+        this.reload()
       },
       showDiary(diary){
         this.showDiaryModal = true

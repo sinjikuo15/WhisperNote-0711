@@ -235,6 +235,7 @@ export default {
           .catch((err)=>{
             console.log(err);
           })
+        this.$emit('confirmShow', close); 
       },
       getPermission(){
         this.axios.get('/getPer')

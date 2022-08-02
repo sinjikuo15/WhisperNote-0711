@@ -50,8 +50,13 @@ export default {
     },
     watch: {
       friendEmail: function () {
-        var isMail =
+        const isMail =
           /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+        if(!this.friendEmail){
+          this.emailError = true;
+          this.emailErrMsg = "請輸入Email";
+          return;
+        }
         if (!isMail.test(this.friendEmail)) {
           this.emailError = true;
           this.emailErrMsg = "請輸入正確Email格式";
@@ -64,15 +69,27 @@ export default {
     },
     methods: {
       addFriend(){
-        // this.$emit('confirm', close);
-        const friendEmail = this.friendEmail
-        this.axios.post('/addFriend', friendEmail)
-          .then((res) => {
-            console.log('新增好友成功！')
-          })
-          .catch((err)=>{
-            console.log(err);
-          })
+        const isMail =
+          /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+        if(!this.friendEmail) {
+          this.emailError = true;
+          this.emailErrMsg = "請輸入Email";
+          return;
+        } 
+        if(!isMail.test(this.friendEmail)){
+          this.emailError = true;
+          this.emailErrMsg = "請輸入正確Email格式";
+        } else {
+          const email = this.friendEmail
+          this.axios.post('/addFriend', {email})
+            .then((res) => {
+              console.log('新增好友成功！')
+            })
+            .catch((err)=>{
+              console.log(err);
+            })
+          this.$emit('confirm', close);
+        }
       },
     },
     

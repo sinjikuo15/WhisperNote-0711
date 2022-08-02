@@ -157,7 +157,6 @@ export default {
           .then((res) => {
             console.log(res.data)
             alert('新增成功')
-            this.$router.push('/all-diary')
           })
           .catch((err)=>{
             console.log(err);

@@ -50,8 +50,13 @@ export default {
     },
     watch: {
       friendEmail: function () {
-        var isMail =
+        const isMail =
           /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+        if(!this.friendEmail){
+          this.emailError = true;
+          this.emailErrMsg = "請輸入Email";
+          return;
+        }
         if (!isMail.test(this.friendEmail)) {
           this.emailError = true;
           this.emailErrMsg = "請輸入正確Email格式";

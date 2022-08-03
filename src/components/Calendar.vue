@@ -99,7 +99,11 @@ export default {
           return result
         })
         this.attributes = newDiaryArray
-        // console.log(this.attributes)
+
+        console.log(this.attributes)
+        // for(let i=0; i<this.attributes.length; i++){
+        //   console.log(this.attributes[i].customData.title)
+        // }
 
       })
       .catch((err) => {

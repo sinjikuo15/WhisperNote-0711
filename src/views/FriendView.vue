@@ -41,31 +41,7 @@
                                 </a>                                              
                             </div>
                         </div>
-
-                        <!-- 2 -->
-                        <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
-                            <a href="#">
-                                <img class="rounded-t-lg" src="http://p1-tt-ipv6.byteimg.com/large/pgc-image/840ad761ff89482b92d04ed111bdff3a?from=detail&index=2" alt="" />
-                            </a>
-                            <div class="py-4">
-                                <a href="#">
-                                    <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">使用者名稱</h5>
-                                </a>                                              
-                            </div>
-                        </div>
-                        
-                        <!-- 3 -->
-                        <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
-                            <a href="#">
-                                <img class="rounded-t-lg" src="http://p1-tt-ipv6.byteimg.com/large/pgc-image/840ad761ff89482b92d04ed111bdff3a?from=detail&index=2" alt="" />
-                            </a>
-                            <div class="py-4">
-                                <a href="#">
-                                    <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">使用者名稱</h5>
-                                </a>                                              
-                            </div>
-                        </div>
-                        
+                
                     </div>
                 </div>
             </div>
@@ -103,8 +79,9 @@ export default {
     },
     mounted() {
         this.axios.get('/getFriend')
+        //TODO:打不到API
         .then((response) => {
-            console.log(response)
+            console.log('friendList',response)
             this.friends = response.data.data
           })
           .catch((err)=>{

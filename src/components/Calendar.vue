@@ -1,20 +1,24 @@
 <template>
-  <div class="text-center section">
+  <div class="text-center section h-full">
     <!-- <h2 class="h2">Custom Calendars</h2>
     <p class="text-lg font-medium text-gray-600 mb-6">
       Roll your own calendars using scoped slots
     </p> -->
-    <v-calendar class="custom-calendar max-w-full" :masks="masks" :attributes="attributes" disable-page-swipe
+    <v-calendar class="custom-calendar h-full overflow-y-auto" :masks="masks" :attributes="attributes" disable-page-swipe
       is-expanded>
       <template v-slot:day-content="{ day, attributes }">
-        <div class="flex flex-col h-full z-10 overflow-hidden">
+        <div class="flex flex-col h-full z-10">
           <span class="day-label text-sm text-gray-900">{{ day.day }}</span>
+<<<<<<< HEAD
           <!-- <div class="flex-grow overflow-y-auto overflow-x-auto"> -->
             <div class="flex-grow bg-blue-300">
+=======
+          <div class="flex-grow h-20 overflow-y-auto overflow-x-auto">
+>>>>>>> 5e99caab9dfa04dba869821900b7ec85b8503335
             <!-- <p v-for="attr in attributes" :key="attr.diary_id" class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1"
               :class="attr.customData.class"> -->
             <p v-for="attr in attributes" :key="attr.customData.diary_id"
-            class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1 bg-blue-600 text-white hover:cursor-pointer"
+            class="text-xs leading-tight rounded-sm p-1 m-1 bg-blue-600 text-white hover:cursor-pointer"
             @click="showCalendar(attr)">
               {{ attr.customData.title }}
               
@@ -152,7 +156,7 @@ export default {
   & .vc-day {
     padding: 0 5px 3px 5px;
     text-align: left;
-    height: var(--day-height);
+    min-height: var(--day-height);
     min-width: var(--day-width);
     background-color: white;
 
@@ -177,5 +181,9 @@ export default {
   & .vc-day-dots {
     margin-bottom: 5px;
   }
+}
+.vc-weekday {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
 }
 </style>

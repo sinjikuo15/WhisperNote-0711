@@ -73,9 +73,14 @@ import NavBar from '../components/NavBar.vue'
 
 export default{
   components: {
-        SideBar,
-        NavBar
-    },
+      SideBar,
+      NavBar
+  },
+  // mounted() {
+  //   if(this.$store.state.loginStatus === 0) {
+  //     this.$router.push('/login')
+  //   }
+  // }
 }
 
 </script >

@@ -30,8 +30,7 @@
                                 </div>
                             </div>
                         </template>
-                    
-                
+
                     </div>
                 </div>
             </div>
@@ -68,6 +67,9 @@ export default {
         },
     },
     mounted() {
+        // if(this.$store.state.loginStatus === 0) {
+        //     this.$router.push('/login')
+        // }
         this.axios.get('/getFriend')
         .then((response) => {
             console.log('friendList',response)

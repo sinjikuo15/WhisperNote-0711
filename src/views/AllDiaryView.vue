@@ -11,7 +11,7 @@
             <!-- <div class="h-10 w-10 hover:bg-slate-200 hover:rounded flex justify-center items-center">
                 <AdjustmentsIcon class="h-8 w-5 text-slate-500"/>
             </div> -->
-            <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 btn-primary sm:w-auto sm:text-sm">新增日記</button>
+            <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 mr-3 btn-primary sm:w-auto sm:text-sm">新增日記</button>
         </div>
 
         <!-- addNewDiaryModal -->
@@ -136,14 +136,19 @@ export default {
       },
     },
     mounted() {
-        this.axios.get('/getMyDiary')
-        .then((response) => {
-            console.log('getMyDiary',response.data.data)
-            this.diaries = response.data.data
-          })
-          .catch((err)=>{
-            console.log(err);
-          })
+
+      // if(this.$store.state.loginStatus === 0) {
+      //   this.$router.push('/login')
+      // }
+      this.axios.get('/getDiary')
+      .then((response) => {
+          console.log(response.data.data)
+          this.diaries = response.data.data
+        })
+        .catch((err)=>{
+          console.log(err);
+        })
+
     }
 
 

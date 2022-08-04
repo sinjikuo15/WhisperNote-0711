@@ -9,7 +9,8 @@
       <template v-slot:day-content="{ day, attributes }">
         <div class="flex flex-col h-full z-10 overflow-hidden">
           <span class="day-label text-sm text-gray-900">{{ day.day }}</span>
-          <div class="flex-grow overflow-y-auto overflow-x-auto">
+          <!-- <div class="flex-grow overflow-y-auto overflow-x-auto"> -->
+            <div class="flex-grow bg-blue-300">
             <!-- <p v-for="attr in attributes" :key="attr.diary_id" class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1"
               :class="attr.customData.class"> -->
             <p v-for="attr in attributes" :key="attr.customData.diary_id"
@@ -123,7 +124,7 @@ export default {
 }
 
 /deep/ .custom-calendar.vc-container {
-  --day-border: 1px solid #b8c2cc;
+  day-border: 1px solid #b8c2cc;
   --day-border-highlight: 1px solid #b8c2cc;
   --day-width: 90px;
   --day-height: 90px;

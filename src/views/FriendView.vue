@@ -30,8 +30,8 @@
                                 </div>
                             </div>
                         </template>
-                        <!-- 1 -->
-                        <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
+                        <!-- example -->
+                        <!-- <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
                             <a href="#">
                                 <img class="rounded-t-lg" src="http://p1-tt-ipv6.byteimg.com/large/pgc-image/840ad761ff89482b92d04ed111bdff3a?from=detail&index=2" alt="" />
                             </a>
@@ -42,7 +42,6 @@
                             </div>
                         </div>
 
-                        <!-- 2 -->
                         <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
                             <a href="#">
                                 <img class="rounded-t-lg" src="http://p1-tt-ipv6.byteimg.com/large/pgc-image/840ad761ff89482b92d04ed111bdff3a?from=detail&index=2" alt="" />
@@ -54,7 +53,6 @@
                             </div>
                         </div>
                         
-                        <!-- 3 -->
                         <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
                             <a href="#">
                                 <img class="rounded-t-lg" src="http://p1-tt-ipv6.byteimg.com/large/pgc-image/840ad761ff89482b92d04ed111bdff3a?from=detail&index=2" alt="" />
@@ -64,7 +62,7 @@
                                     <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">使用者名稱</h5>
                                 </a>                                              
                             </div>
-                        </div>
+                        </div> -->
                         
                     </div>
                 </div>
@@ -102,6 +100,9 @@ export default {
         },
     },
     mounted() {
+        // if(this.$store.state.loginStatus === 0) {
+        //     this.$router.push('/login')
+        // }
         this.axios.get('/getFriend')
         .then((response) => {
             console.log(response)

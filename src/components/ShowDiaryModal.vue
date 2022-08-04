@@ -124,6 +124,7 @@ import { XIcon } from '@heroicons/vue/solid'
 import DeleteDiaryModal from '../components/DeleteDiaryModal.vue'
 
 export default {
+    inject: ['reload'],
     components: {
         VueFinalModal,
         ModalsContainer,
@@ -221,14 +222,30 @@ export default {
           this.axios.post('/editDiary', {diaryDetail})
             .then((res) => {
               console.log(res.data)
+              this.switchMode()
+              // this.$emit('confirmShow', close); 
+              this.reload()
             })
             .catch((err)=>{
               console.log(err);
             })
           
-          this.$emit('confirmShow', close); 
         }
       },
+      // deleteDiary() {
+      //   this.diaryId = document.getElementById('diaryId').innerText
+      //   let diary_id = this.diaryId
+      //   console.log(diary_id)
+      //   this.axios.post('/deleteDiary', {diary_id})
+      //     .then((res) => {
+      //       console.log(res.data)
+      //       alert('刪除成功')
+      //     })
+      //     .catch((err)=>{
+      //       console.log(err);
+      //     })
+      //   this.$emit('confirmShow', close); 
+      // },
       confirmDelete() {
         this.showDeleteModal = true
       },

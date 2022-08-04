@@ -56,6 +56,10 @@ export default {
       }
     },
     mounted(){
+      // if(this.$store.state.loginStatus === 0) {
+      //   this.$router.push('/login')
+      // }
+
       let now = new Date();
       let year = now.getFullYear();
       let month = now.getMonth()+1;

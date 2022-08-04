@@ -63,6 +63,7 @@
 <script>
 export default {
   name: "login",
+  inject: ['reload'],
   data() {
         return {
             email: '',
@@ -114,9 +115,9 @@ export default {
                       vm.noLoginMsg = '找不到此 user 或密碼錯誤'
                       break;
                     case 1 :
-                      // this.reload()
                       this.$store.dispatch('getLoginStatus')
                       this.$router.push('/')
+                      this.reload()
                       break;
                   }
                   

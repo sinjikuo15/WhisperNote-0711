@@ -152,7 +152,6 @@ export default {
           content: this.editorData,
           date: this.date
         }
-        console.log('confirm')
         console.log(diaryDetail)
         this.axios.post('/addDiary', diaryDetail)
           .then((res) => {

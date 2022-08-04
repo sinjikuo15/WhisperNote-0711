@@ -23,10 +23,10 @@
                         <template v-for="friend in friends" :key="friend.friend_id">
                             <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
                                 <a href="#">
-                                    <img class="rounded-t-lg" src="http://p1-tt-ipv6.byteimg.com/large/pgc-image/840ad761ff89482b92d04ed111bdff3a?from=detail&index=2" alt="" />
+                                    <img :src="friend.friend_pic" class="rounded-t-lg" alt="">
                                 </a>
                                 <div class="py-4">
-                                    <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">{{ friend.displayname }}</h5>                                              
+                                    <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">{{ friend.friend_displayname }}</h5>                                              
                                 </div>
                             </div>
                         </template>
@@ -105,7 +105,7 @@ export default {
         // }
         this.axios.get('/getFriend')
         .then((response) => {
-            console.log(response)
+            console.log(response.data)
             this.friends = response.data.data
           })
           .catch((err)=>{

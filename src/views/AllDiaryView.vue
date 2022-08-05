@@ -22,10 +22,10 @@
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <template v-for="diary in diaries" :key="diary.diary_id">
                     <div class="border border-slate-100 rounded shadow-md p-3 hover:cursor-pointer overflow-hidden" @click="showDiary(diary)">
-                        <h3 class="text-xl font-bold">{{ diary.title }}</h3>
+                        <h3 class="text-xl font-bold truncate">{{ diary.title }}</h3>
                         <p style="display:none;">{{diary.diary_id}}</p>
                         <p class="text-sm text-slate-400 mt-2">{{ diary.date.slice(0,10) }}</p>
-                        <p v-html="diary.content" class="mt-2"></p>
+                        <p v-html="diary.content" class="mt-2 truncate"></p>
                         <div class="mt-3">
                             <span style="display:none;">{{ diary.permission_id }}</span>
                             <span class="bg-blue-400 py-1 px-2 rounded-xl text-white text-sm">{{ diary.per_name }}</span>

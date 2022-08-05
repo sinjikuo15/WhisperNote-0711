@@ -10,7 +10,7 @@
       <Calendar></Calendar>
 
       <!-- 新增日記按鈕 -->
-      <div class="absolute bottom-5 right-5 inline-block w-10 h-10 bg-blue-600 rounded-full hover:bg-blue-700 hover:cursor-pointer" @click="showModal = true">
+      <div class="absolute z-50 bottom-5 right-5 inline-block w-10 h-10 bg-blue-600 rounded-full hover:bg-blue-700 hover:cursor-pointer" @click="showModal = true">
           <PlusIcon class="h-6 w-6 text-[#fff] mt-2 ml-2"/>
       </div>
     </div>

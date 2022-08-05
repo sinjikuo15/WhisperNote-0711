@@ -6,6 +6,7 @@ import ProfileView from '../views/ProfileView.vue'
 import AllDiaryView from '../views/AllDiaryView.vue'
 import DiaryView from '../views/DiaryView.vue'
 import FriendView from '../views/FriendView.vue'
+import CharacterView from '../views/CharacterView.vue'
 import MainView from '../views/MainView.vue'
 
 
@@ -50,6 +51,11 @@ const routes = [
     path:'/friend',
     name:'friend',
     component:FriendView
+  },
+  {
+    path:'/character',
+    name:'character',
+    component:CharacterView
   },
   {
     path:'/main',

@@ -18,7 +18,7 @@
         </router-link>          
       </li>
         <li class="">
-          <router-link to="/" class="flex" >
+          <router-link to="/character" class="flex" >
             <div class="w-2/12">
               <i class="fa-solid fa-user md:text-base"></i>             
             </div>     

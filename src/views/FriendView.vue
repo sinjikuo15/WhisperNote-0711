@@ -22,15 +22,12 @@
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"> 
                         <template v-for="friend in friends" :key="friend.friend_id">
                             <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
-                                <a href="#">
-                                    <img :src="friend.friend_pic" class="rounded-t-lg" alt="">
-                                </a>
+                                <img :src="friend.friend_pic" class="rounded-t-lg" alt="">
                                 <div class="py-4">
                                     <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">{{ friend.friend_displayname }}</h5>                                              
                                 </div>
                             </div>
                         </template>
-
                     </div>
                 </div>
             </div>

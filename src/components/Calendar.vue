@@ -9,11 +9,11 @@
       <template v-slot:day-content="{ day, attributes }">
         <div class="flex flex-col h-full z-10">
           <span class="day-label text-sm text-gray-900">{{ day.day }}</span>
-          <div class="flex-grow h-20 overflow-y-auto overflow-x-auto">
+          <div class="w-20 h-20 overflow-y-auto overflow-x-auto">
             <!-- <p v-for="attr in attributes" :key="attr.diary_id" class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1"
               :class="attr.customData.class"> -->
             <p v-for="attr in attributes" :key="attr.customData.diary_id"
-            class="text-xs leading-tight rounded-sm p-1 m-1 bg-blue-600 text-white hover:cursor-pointer"
+            class="text-xs leading-tight truncate rounded-sm p-1 m-1 bg-blue-600 text-white hover:cursor-pointer"
             @click="showCalendar(attr)">
               {{ attr.customData.title }}
               

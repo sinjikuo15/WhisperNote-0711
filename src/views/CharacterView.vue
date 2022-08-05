@@ -15,18 +15,17 @@
                 </div>
 
                 <!-- add friend modal -->
-                <AddFriendModal v-model="showModal" @confirm="confirm" @cancel="cancel"/>
+                <AddCharacterModal v-model="showModal" @confirm="confirm" @cancel="cancel"/>
 
                 <!-- friend cards section -->
                 <div class="container h-[80%] overflow-y-auto pr-3">
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"> 
-                        <template v-for="friend in friends" :key="friend.friend_id">
+
+                        <template v-for="character in characters" :key="character.character_id">
                             <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
-                                <a href="#">
-                                    <img :src="friend.friend_pic" class="rounded-t-lg" alt="">
-                                </a>
+                                <img :src="character.character_pic" class="rounded-t-lg" alt="">
                                 <div class="py-4">
-                                    <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">{{ friend.friend_displayname }}</h5>                                              
+                                    <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">{{ character.character_name }}</h5>                                              
                                 </div>
                             </div>
                         </template>
@@ -42,18 +41,18 @@
 <script>
 import SideBar from '../components/SideBar.vue'
 import NavBar from '../components/NavBar.vue'
-import AddFriendModal from '../components/AddFriendModal.vue'
+import AddCharacterModal from '../components/AddCharacterModal.vue'
 
 export default {
     components: {
         SideBar,
         NavBar,
-        AddFriendModal
+        AddCharacterModal
     },
     data() {
         return {
             showModal: false,
-            friends: []
+            characters: []
         }
     },
     methods: {
@@ -73,7 +72,7 @@ export default {
         this.axios.get('/getCharacter')
         .then((response) => {
             console.log(response.data)
-            this.friends = response.data.data
+            this.characters = response.data.data
           })
           .catch((err)=>{
             console.log(err);

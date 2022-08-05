@@ -9,12 +9,7 @@
       <template v-slot:day-content="{ day, attributes }">
         <div class="flex flex-col h-full z-10">
           <span class="day-label text-sm text-gray-900">{{ day.day }}</span>
-<<<<<<< HEAD
-          <!-- <div class="flex-grow overflow-y-auto overflow-x-auto"> -->
-            <div class="flex-grow bg-blue-300">
-=======
           <div class="flex-grow h-20 overflow-y-auto overflow-x-auto">
->>>>>>> 5e99caab9dfa04dba869821900b7ec85b8503335
             <!-- <p v-for="attr in attributes" :key="attr.diary_id" class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1"
               :class="attr.customData.class"> -->
             <p v-for="attr in attributes" :key="attr.customData.diary_id"

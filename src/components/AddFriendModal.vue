@@ -19,6 +19,7 @@
                   " placeholder="" v-model="friendEmail" :class="{ 'border-red-600 focus:border-red-600 focus:ring focus:ring-red-600 focus:ring-opacity-20': emailError }">
               </label>
               <p class="text-red-600 mt-1">{{ emailErrMsg }}</p>
+              <p class="text-green-800 mt-1">{{ emailSuccessMsg }}</p>
             </div>
             <div class="flex justify-end mt-3">
               <div class="modal__action">
@@ -35,6 +36,7 @@ import { PlusIcon } from '@heroicons/vue/solid'
 import { XIcon } from '@heroicons/vue/solid'
 
 export default {
+    inject: ['reload'],
     components: {
         VueFinalModal,
         ModalsContainer,
@@ -46,6 +48,7 @@ export default {
             friendEmail: '',
             emailError: false,
             emailErrMsg: "",
+            emailSuccessMsg: "",
         }
     },
     watch: {
@@ -83,12 +86,34 @@ export default {
           const email = this.friendEmail
           this.axios.post('/addFriend', {email})
             .then((res) => {
-              console.log('新增好友成功！')
+              console.log(res.data)
+              let message = res.data.message
+              switch(message) {
+                case "沒有這個user，請重新輸入！":
+                  this.emailError = true;
+                  this.emailErrMsg = "此Email不是會員"
+                  break;
+                case "已經是好友了，請重新輸入！":
+                  this.emailError = true;
+                  this.emailErrMsg = "此Email已是好友"
+                  break;
+                case "不要輸入自己的email":
+                  this.emailError = true;
+                  this.emailErrMsg = "請輸入好友Email"
+                  break;
+                case "新增好友成功！":
+                  this.emailError = false;
+                  this.emailErrMsg = "";
+                  // this.emailSuccessMsg = "新增好友成功！";
+                  alert("新增好友成功！");
+                  this.reload();
+                  break;
+              }
             })
             .catch((err)=>{
               console.log(err);
             })
-          this.$emit('confirm', close);
+          // this.$emit('confirm', close);
         }
       },
     },

@@ -72,7 +72,7 @@ export default {
         // }
         this.axios.get('/getFriend')
         .then((response) => {
-            console.log('friendList',response)
+            console.log(response.data)
             this.friends = response.data.data
           })
           .catch((err)=>{

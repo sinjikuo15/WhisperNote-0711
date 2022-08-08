@@ -71,7 +71,7 @@ export default {
         // }
         this.axios.get('/getCharacter')
         .then((response) => {
-            console.log(response.data)
+            console.log('getCharacter', response.data)
             this.characters = response.data.data
           })
           .catch((err)=>{

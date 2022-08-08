@@ -4,8 +4,8 @@
     <p class="text-lg font-medium text-gray-600 mb-6">
       Roll your own calendars using scoped slots
     </p> -->
-    <v-calendar class="custom-calendar h-full overflow-y-auto" :masks="masks" :attributes="attributes" disable-page-swipe
-      is-expanded>
+    <v-calendar class="custom-calendar h-full overflow-y-auto" :masks="masks" :attributes="attributes"
+      disable-page-swipe is-expanded>
       <template v-slot:day-content="{ day, attributes }">
         <div class="flex flex-col h-full z-10">
           <span class="day-label text-sm text-gray-900">{{ day.day }}</span>
@@ -13,10 +13,10 @@
             <!-- <p v-for="attr in attributes" :key="attr.diary_id" class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1"
               :class="attr.customData.class"> -->
             <p v-for="attr in attributes" :key="attr.customData.diary_id"
-            class="text-xs leading-tight truncate rounded-sm p-1 m-1 bg-blue-600 text-white hover:cursor-pointer"
-            @click="showCalendar(attr)">
+              class="text-xs leading-tight truncate rounded-sm p-1 m-1 hover:cursor-pointer" :class="attr.customData.class"
+              @click="showCalendar(attr)">
               {{ attr.customData.title }}
-              
+
             </p>
           </div>
         </div>
@@ -25,15 +25,15 @@
 
     <!-- 單篇日記modal -->
     <ShowCalendarModal v-model="showCalendarModal" @confirmShow="confirmShow" @cancelShow="cancelShow">
-        <template v-slot:title>{{ singleDiaryTitle }}</template>
-        <template v-slot:date>{{ singleDiaryDate.slice(0,10) }}</template>
-        <template v-slot:content>
-            <div v-html="singleDiaryContent"></div>
-        </template>
-        <template v-slot:permissionId>{{ singleDiaryPermissionId }}</template>
-        <template v-slot:permissionName>{{ singleDiaryPermissionName }}</template>
-        <template v-slot:diaryId>{{ singleDiaryId }}</template>
-    </ShowCalendarModal>     
+      <template v-slot:title>{{ singleDiaryTitle }}</template>
+      <template v-slot:date>{{ singleDiaryDate.slice(0, 10) }}</template>
+      <template v-slot:content>
+        <div v-html="singleDiaryContent"></div>
+      </template>
+      <template v-slot:permissionId>{{ singleDiaryPermissionId }}</template>
+      <template v-slot:permissionName>{{ singleDiaryPermissionName }}</template>
+      <template v-slot:diaryId>{{ singleDiaryId }}</template>
+    </ShowCalendarModal>
   </div>
 </template>
 
@@ -81,30 +81,46 @@ export default {
       close()
     },
   },
-  mounted() {
-    this.axios('/getDiary')
+  async mounted() {
+    let newDiaryArray = []
+    await this.axios('/getDiary')
       .then((response) => {
-        // this.attributes = response.data.data
-        // console.log(response)
-
         const oldDiary = response.data.data
-        console.log(oldDiary)
-        let newDiaryArray = oldDiary.map(e => {
+        let myDiaryArray = oldDiary.map(e => {
           const result = {
             customData: {
-              ...e
+              ...e,
+              class: 'bg-blue-600 text-white'
             },
             dates: new Date(e.date).toString()
           }
           return result
         })
-        this.attributes = newDiaryArray
-
+        newDiaryArray = myDiaryArray
+        console.log(myDiaryArray)
+        this.attributes = myDiaryArray
         console.log(this.attributes)
-        // for(let i=0; i<this.attributes.length; i++){
-        //   console.log(this.attributes[i].customData.title)
-        // }
-
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    await this.axios('/getFriendDiary')
+      .then((response) => {
+        // console.log(response.data.data)
+        const oldFriendDiary = response.data.data
+        // console.log(oldDiary)
+        let newFriendDiaryArray = oldFriendDiary.map(e => {
+          const result = {
+            customData: {
+              ...e,
+              class: 'bg-red-600 text-white'
+            },
+            dates: new Date(e.date).toString()
+          }
+          return result
+        })
+        this.attributes = newDiaryArray.concat(newFriendDiaryArray)
+        console.log(newFriendDiaryArray)
       })
       .catch((err) => {
         console.log(err);
@@ -177,6 +193,7 @@ export default {
     margin-bottom: 5px;
   }
 }
+
 .vc-weekday {
   padding-top: 10px !important;
   padding-bottom: 10px !important;

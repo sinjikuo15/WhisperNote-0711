@@ -13,8 +13,8 @@
             <!-- <p v-for="attr in attributes" :key="attr.diary_id" class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1"
               :class="attr.customData.class"> -->
             <p v-for="attr in attributes" :key="attr.customData.diary_id"
-              class="text-xs leading-tight truncate rounded-sm p-1 m-1 hover:cursor-pointer" :class="attr.customData.class"
-              @click="showCalendar(attr)">
+            class="text-xs leading-tight truncate rounded-sm p-1 m-1 bg-blue-600 text-white hover:cursor-pointer"
+            @click="showCalendar(attr)">
               {{ attr.customData.title }}
 
             </p>

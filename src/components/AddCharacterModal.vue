@@ -44,9 +44,8 @@
                       border-gray-300
                       shadow-sm
                       focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                  " placeholder="請輸入圖片連結" v-model="characterPic" :class="{ 'border-red-600 focus:border-red-600 focus:ring focus:ring-red-600 focus:ring-opacity-20': characterPicError }">
+                  " placeholder="請輸入圖片連結" v-model="characterPic">
               </label>
-              <p class="text-red-600 mt-1">{{ characterPicErrMsg }}</p>
             </div>
             <div class="flex justify-end mt-3">
               <div class="modal__action">
@@ -79,8 +78,6 @@ export default {
             characterNameErrMsg: "",
             characterInfoError: false,
             characterInfoErrMsg: "",
-            characterPicError: false,
-            characterPicErrMsg: "",
         }
     },
     watch: {
@@ -104,16 +101,6 @@ export default {
           this.characterInfoErrMsg = "";
         }
       },
-      characterPic: function () {
-        if(!this.characterPic){
-          this.characterPicError = true;
-          this.characterPicErrMsg = "請輸入圖片連結";
-          return;
-        } else {
-          this.characterPicError = false;
-          this.characterPicErrMsg = "";
-        }
-      },
     },
     methods: {
       addCharacter(){
@@ -124,12 +111,8 @@ export default {
         if(!this.characterInfo){
           this.characterInfoError = true;
           this.characterInfoErrMsg = "請輸入敘述";
-        }
-        if(!this.characterPic){
-          this.characterPicError = true;
-          this.characterPicErrMsg = "請輸入圖片連結";
           return
-        } 
+        }
         const characterContent = {
           name: this.characterName,
           pic: this.characterPic,
@@ -164,7 +147,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 90vw;
-  height: 50vh;
+  height: 80vh;
   margin: 1rem 1rem;
   padding: 1rem;
   border: 1px solid #e2e8f0;

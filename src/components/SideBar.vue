@@ -33,14 +33,6 @@
           <p class="w-9/12 md:text-base ">朋友</p>        
         </router-link>          
       </li> 
-      <li class="">
-        <router-link to="/profile" class="flex" >
-          <div class="w-2/12">
-            <i class="fa-solid fa-file md:text-base"></i>             
-          </div>     
-          <p class="w-9/12 md:text-base">會員資料</p>        
-        </router-link>          
-      </li> 
     </ul>      
   </div>
 

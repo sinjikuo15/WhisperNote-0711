@@ -168,6 +168,7 @@ export default {
       await this.axios.post("/logout").then((response) => {
         console.log("logout", response);
         this.$store.dispatch("getLoginStatus");
+        this.$router.push('/login')
       });
     }
   },

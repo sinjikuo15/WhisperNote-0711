@@ -20,6 +20,7 @@
                 <!-- friend cards section -->
                 <div class="container h-[80%] overflow-y-auto pr-3">
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"> 
+
                         <template v-for="character in characters" :key="character.character_id">
                             <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
                                 <img :src="character.character_pic" class="rounded-t-lg" alt="">
@@ -28,6 +29,7 @@
                                 </div>
                             </div>
                         </template>
+
                     </div>
                 </div>
             </div>
@@ -69,7 +71,7 @@ export default {
         // }
         this.axios.get('/getCharacter')
         .then((response) => {
-            console.log(response.data)
+            console.log('getCharacter', response.data)
             this.characters = response.data.data
           })
           .catch((err)=>{

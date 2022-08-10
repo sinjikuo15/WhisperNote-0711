@@ -136,6 +136,7 @@ export default {
       },
     },
     mounted() {
+
       // if(this.$store.state.loginStatus === 0) {
       //   this.$router.push('/login')
       // }
@@ -147,6 +148,7 @@ export default {
         .catch((err)=>{
           console.log(err);
         })
+
     }
 
 

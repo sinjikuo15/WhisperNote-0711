@@ -118,7 +118,7 @@ export default {
           pic: this.characterPic,
           info: this.characterInfo
         }
-        console.log(characterContent)
+        console.log('characterContent', characterContent)
         this.axios.post('/addCharacter', characterContent)
           .then((res) => {
             console.log(res.data)

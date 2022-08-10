@@ -1,11 +1,11 @@
 <template>
   <NavBar></NavBar>
-  <div class="flex py-3 justify-center">
-    <div class="flex w-full lg:w-11/12 justify-center">
+  <div class="flex justify-start main-content">
+    <div class="flex w-full justify-start sm:pt-3">
       <SideBar></SideBar>
-      <div class="w-full h-[80vh] sm:w-8/12 lg:w-7/12 border border-gray-200 p-3">
+      <div class="w-full h-[80vh] sm:w-8/12 rounded-lg p-10 bg-white">
         <div class="container">
-            <h1 class="text-2xl ">我的日記</h1>
+            <h1 class="text-2xl font-semibold">我的日記</h1>
         </div>
         <div class="container flex justify-end gap-3 items-center my-5">
             <!-- <div class="h-10 w-10 hover:bg-slate-200 hover:rounded flex justify-center items-center">
@@ -157,4 +157,13 @@ export default {
 </script>
 
 <style scoped>
+.main-content{
+  background-color: #4E393A;
+}
+.btn-primary{
+    background-color: #b2af73;
+}
+.btn-primary:hover{
+   background-color: #8b8957;
+}
 </style>

@@ -1,14 +1,14 @@
 <template>
     <!-- navbar -->
     <NavBar></NavBar>
-    <div class="flex py-3 justify-center"> 
-        <div class="flex w-full lg:w-11/12 justify-center">
+    <div class="flex  justify-center main-content"> 
+        <div class="flex w-full justify-start sm:pt-3">
             <!-- Sidebar -->
             <SideBar></SideBar>
             <!-- 右邊區 -->
-            <div class="w-full h-[80vh] sm:w-8/12 lg:w-7/12 border border-gray-200 p-3">
+            <div class="w-full h-[80vh] sm:w-8/12 border-gray-400 rounded-lg p-10 bg-white">
                 <div class="container">
-                    <h1 class="text-2xl ">我的好友</h1>
+                    <h1 class="text-2xl font-semibold">我的好友</h1>
                 </div>
                 <div class="container flex justify-end gap-3 items-center my-5">
                     <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 mr-3 btn-primary sm:w-auto sm:text-sm">新增好友</button>
@@ -81,6 +81,9 @@ export default {
 </script >
 
 <style scoped>
+.main-content{
+    background-color: #4E393A;
+}
 .right-content{
   height: 80vh;
   overflow-y: scroll;
@@ -88,6 +91,12 @@ export default {
 .card-wrap{
     display: flex;
     flex-wrap: wrap;
+}
+.btn-primary{
+    background-color: #b2af73;
+}
+.btn-primary:hover{
+   background-color: #8b8957;
 }
 
 .user-wrap{

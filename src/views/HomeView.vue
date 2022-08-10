@@ -1,17 +1,20 @@
 <template>
   <!-- navbar -->
   <NavBar></NavBar>
-  <div class="flex py-3 justify-center">
-    <div class="flex w-full lg:w-11/12 justify-center">
+  <div class="flex justify-center main-content">
+    <div class="flex w-full justify-start sm:pt-3">
       <!-- sidebar -->
       <SideBar></SideBar>
       <!-- 右邊日記的部分 -->
-      <div class="w-full sm:w-8/12 lg:w-7/12 border border-gray-200 relative right-content">
+      <div class="w-full sm:w-8/12 rounded-lg relative right-content">
+        <div class="sm:p-10  sm:rounded-lg bg-white">
         <Calendar></Calendar>
+
+        </div>
 
         <!-- 新增日記按鈕 -->
         <div
-          class="absolute z-50 bottom-5 right-5 inline-block w-10 h-10 bg-blue-600 rounded-full hover:bg-blue-700 hover:cursor-pointer"
+          class="absolute z-50 bottom-5 right-5 sm:right-12 inline-block w-10 h-10 btn-add rounded-full hover:bg-blue-700 hover:cursor-pointer"
           @click="showModal = true">
           <PlusIcon class="h-6 w-6 text-[#fff] mt-2 ml-2" />
         </div>
@@ -75,6 +78,9 @@ export default {
 </script>
 
 <style scoped>
+.main-content{
+  background-color:#4E393A ;
+}
 .logo-wrap {
   width: 50px;
 
@@ -126,6 +132,12 @@ export default {
 
 .vc-weekday {
   background-color: #eff8ff;
+}
+.btn-add{
+    background-color: #b2af73;
+}
+.btn-add:hover{
+   background-color: #8b8957;
 }
 
 

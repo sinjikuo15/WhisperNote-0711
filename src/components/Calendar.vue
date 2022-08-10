@@ -1,15 +1,16 @@
 <template>
-  <div class="text-center section h-full">
+
+  <div class="text-center section h-full  ">
     <!-- <h2 class="h2">Custom Calendars</h2>
     <p class="text-lg font-medium text-gray-600 mb-6">
       Roll your own calendars using scoped slots
     </p> -->
-    <v-calendar class="custom-calendar h-full overflow-y-auto" :masks="masks" :attributes="attributes"
+    <v-calendar class="custom-calendar h-full overflow-y-auto "  :masks="masks" :attributes="attributes"
       disable-page-swipe is-expanded>
       <template v-slot:day-content="{ day, attributes }">
-        <div class="flex flex-col h-full z-10">
+        <div class="flex flex-col h-full z-10 ">
           <span class="day-label text-sm text-gray-900">{{ day.day }}</span>
-          <div class="w-20 h-20 overflow-y-auto overflow-x-auto">
+          <div class="w-15 h-20 lg:w-20 overflow-y-auto overflow-x-auto">
             <!-- <p v-for="attr in attributes" :key="attr.diary_id" class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1"
               :class="attr.customData.class"> -->
             <p v-for="attr in attributes" :key="attr.customData.diary_id"
@@ -35,6 +36,8 @@
       <template v-slot:diaryId>{{ singleDiaryId }}</template>
     </ShowCalendarModal>
   </div>
+
+  
 </template>
 
 <script>
@@ -145,7 +148,7 @@ export default {
   --day-height: 90px;
   --weekday-bg: #f8fafc;
   --weekday-border: 1px solid #eaeaea;
-  border-radius: 0;
+  border-radius: 8;
   width: 100%;
 
   & .vc-header {

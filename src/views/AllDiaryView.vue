@@ -11,7 +11,7 @@
             <!-- <div class="h-10 w-10 hover:bg-slate-200 hover:rounded flex justify-center items-center">
                 <AdjustmentsIcon class="h-8 w-5 text-slate-500"/>
             </div> -->
-            <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 btn-primary sm:w-auto sm:text-sm">新增日記</button>
+            <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 mr-3 btn-primary sm:w-auto sm:text-sm">新增日記</button>
         </div>
 
         <!-- addNewDiaryModal -->
@@ -22,10 +22,10 @@
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <template v-for="diary in diaries" :key="diary.diary_id">
                     <div class="border border-slate-100 rounded shadow-md p-3 hover:cursor-pointer overflow-hidden" @click="showDiary(diary)">
-                        <h3 class="text-xl font-bold">{{ diary.title }}</h3>
+                        <h3 class="text-xl font-bold truncate">{{ diary.title }}</h3>
                         <p style="display:none;">{{diary.diary_id}}</p>
                         <p class="text-sm text-slate-400 mt-2">{{ diary.date.slice(0,10) }}</p>
-                        <p v-html="diary.content" class="mt-2"></p>
+                        <p v-html="diary.content" class="mt-2 truncate"></p>
                         <div class="mt-3">
                             <span style="display:none;">{{ diary.permission_id }}</span>
                             <span class="bg-blue-400 py-1 px-2 rounded-xl text-white text-sm">{{ diary.per_name }}</span>
@@ -66,6 +66,7 @@ import NavBar from '../components/NavBar.vue'
 
 
 export default {
+    inject: ['reload'],
     components: {
         SideBar,
         AddNewDiaryModal,
@@ -105,6 +106,7 @@ export default {
           .catch((err)=>{
             console.log(err);
           })
+        this.reload()
       },
       showDiary(diary){
         this.showDiaryModal = true
@@ -134,14 +136,19 @@ export default {
       },
     },
     mounted() {
-        this.axios.get('/getDiary')
-        .then((response) => {
-            console.log(response.data.data)
-            this.diaries = response.data.data
-          })
-          .catch((err)=>{
-            console.log(err);
-          })
+
+      // if(this.$store.state.loginStatus === 0) {
+      //   this.$router.push('/login')
+      // }
+      this.axios.get('/getDiary')
+      .then((response) => {
+          console.log(response.data.data)
+          this.diaries = response.data.data
+        })
+        .catch((err)=>{
+          console.log(err);
+        })
+
     }
 
 

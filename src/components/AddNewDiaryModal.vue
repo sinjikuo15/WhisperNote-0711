@@ -85,6 +85,7 @@ import { PlusIcon } from '@heroicons/vue/solid'
 import { XIcon } from '@heroicons/vue/solid'
 
 export default {
+    inject: ['reload'],
     components: {
         VueFinalModal,
         ModalsContainer,
@@ -100,7 +101,7 @@ export default {
                 // The configuration of the editor.
             },
             title: '',
-            permission: '', //要再抓出該使用者的permission，迴圈顯示option
+            permission: '', 
             date: '',
             permissionOptions: [],
             newPermission: '',
@@ -151,13 +152,12 @@ export default {
           content: this.editorData,
           date: this.date
         }
-        console.log('confirm')
         console.log(diaryDetail)
         this.axios.post('/addDiary', diaryDetail)
           .then((res) => {
             console.log(res.data)
-            alert('新增成功')
-            this.$router.push('/all-diary')
+            // alert('新增成功')
+            this.reload()
           })
           .catch((err)=>{
             console.log(err);

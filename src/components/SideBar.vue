@@ -1,5 +1,5 @@
 <template>
-  <div class=" sm:w-3/12 lg:w-2/12 sidebar py-5 bg-gray-800 text-gray-50">           
+  <div class="sm:w-1/4 lg:w-1/4 sidebar py-5 bg-gray-800 text-gray-50">           
     <ul class="pt-5 text-gray-900">
       <li class="">
         <router-link to="/" class="flex" >
@@ -18,7 +18,7 @@
         </router-link>          
       </li>
         <li class="">
-          <router-link to="/" class="flex" >
+          <router-link to="/character" class="flex" >
             <div class="w-2/12">
               <i class="fa-solid fa-user md:text-base"></i>             
             </div>     
@@ -33,37 +33,53 @@
           <p class="w-9/12 md:text-base ">朋友</p>        
         </router-link>          
       </li> 
-      <li class="">
-        <router-link to="/profile" class="flex" >
-          <div class="w-2/12">
-            <i class="fa-solid fa-file md:text-base"></i>             
-          </div>     
-          <p class="w-9/12 md:text-base">會員資料</p>        
-        </router-link>          
-      </li> 
-      <!-- <li class="">
-        <a class="flex" href="/signup">
-          <div class="w-2/12">
-            <i class="fa-solid fa-clipboard-check md:text-base"></i>             
-          </div>     
-          <p class="w-9/12 md:text-base">註冊</p>        
-        </a>          
-      </li> 
-      <li class="">
-        <a class="flex" href="/login">
-          <div class="w-2/12">
-            <i class="fa-solid fa-arrow-right-to-bracket md:text-base login"></i>             
-          </div>     
-          <p class="w-9/12 md:text-base">登入</p>        
-        </a>          
-      </li>            -->
     </ul>      
   </div>
+
+  <!-- <div class="w-full lg:w-1/5 lg:px-6 text-xl text-gray-800 leading-normal">
+            <p class="text-base font-bold py-2 lg:pb-6 text-gray-700">Menu</p>
+            <div class="block lg:hidden sticky inset-0">
+               <button id="menu-toggle" class="flex w-full justify-end px-3 py-3 bg-white lg:bg-transparent border rounded border-gray-600 hover:border-purple-500 appearance-none focus:outline-none">
+                  <svg class="fill-current h-3 float-right" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                  </svg>
+               </button>
+            </div>
+            <div class="w-full sticky inset-0 hidden h-64 lg:h-auto overflow-x-hidden overflow-y-auto lg:overflow-y-hidden lg:block mt-0 border border-gray-400 lg:border-transparent bg-white shadow lg:shadow-none lg:bg-transparent z-20" style="top:5em;" id="menu-content">
+               <ul class="list-reset">
+                  <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
+                     <router-link to="/" class="block pl-4 align-middle text-gray-700 no-underline hover:text-purple-500 border-l-4 border-transparent lg:border-purple-500 lg:hover:border-purple-500">
+                     <span class="pb-1 md:pb-0 text-sm text-gray-900 font-bold">Home</span>
+                     </router-link>
+                  </li>
+                  <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
+                     <router-link to="/all-diary" class="block pl-4 align-middle text-gray-700 no-underline hover:text-purple-500 border-l-4 border-transparent lg:hover:border-gray-400">
+                     <span class="pb-1 md:pb-0 text-sm">My Diary</span>
+                     </router-link>
+                  </li>
+                  <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
+                     <router-link to="/character" class="block pl-4 align-middle text-gray-700 no-underline hover:text-purple-500 border-l-4 border-transparent lg:hover:border-gray-400">
+                     <span class="pb-1 md:pb-0 text-sm">Characters</span>
+                     </router-link>
+                  </li>
+                  <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
+                     <router-link to="/friend" class="block pl-4 align-middle text-gray-700 no-underline hover:text-purple-500 border-l-4 border-transparent lg:hover:border-gray-400">
+                     <span class="pb-1 md:pb-0 text-sm">Friends</span>
+                     </router-link>
+                  </li>
+                  <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
+                     <router-link to="/profile" class="block pl-4 align-middle text-gray-700 no-underline hover:text-purple-500 border-l-4 border-transparent lg:hover:border-gray-400">
+                     <span class="pb-1 md:pb-0 text-sm">Profile</span>
+                     </router-link>
+                  </li>
+               </ul>
+            </div>
+         </div> -->
 </template>
 
 <style scoped>
     .sidebar{
-    height: 80vh;
+    height: 100vh;
 
     }
     .sidebar-title{
@@ -86,7 +102,7 @@
     .logo-wrap{
     width: 50px;
             
-        }
+    }
     .logo{
     width: 100%;
     }
@@ -110,5 +126,5 @@
          {
         display: none;
     }    
-}
+} 
 </style>

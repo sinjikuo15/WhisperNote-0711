@@ -21,7 +21,7 @@
                 <div class="container h-[80%] overflow-y-auto pr-3">
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"> 
                         <template v-for="friend in friends" :key="friend.friend_id">
-                            <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
+                            <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden hover:cursor-pointer" @click="showFriend(friend)">
                                 <img :src="friend.friend_pic" class="rounded-t-lg" alt="">
                                 <div class="py-4">
                                     <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">{{ friend.friend_displayname }}</h5>                                              
@@ -30,6 +30,13 @@
                         </template>
                     </div>
                 </div>
+
+                <ShowFriendModal v-model="showFriendModal" @confirmShow="confirmShow" @cancelShow="cancelShow">
+                    <template v-slot:friendId>{{ singleFriendId }}</template>
+                    <template v-slot:friendName>{{ singleFriendName }}</template>
+                    <template v-slot:friendEmail>{{ singleFriendEmail }}</template>
+                </ShowFriendModal>
+
             </div>
         </div>
     </div>
@@ -40,17 +47,23 @@
 import SideBar from '../components/SideBar.vue'
 import NavBar from '../components/NavBar.vue'
 import AddFriendModal from '../components/AddFriendModal.vue'
+import ShowFriendModal from '../components/ShowFriendModal.vue'
 
 export default {
     components: {
         SideBar,
         NavBar,
-        AddFriendModal
+        AddFriendModal,
+        ShowFriendModal
     },
     data() {
         return {
             showModal: false,
-            friends: []
+            friends: [],
+            showFriendModal: false,
+            singleFriendId: '',
+            singleFriendName: '',
+            singleFriendEmail: ''
         }
     },
     methods: {
@@ -59,6 +72,19 @@ export default {
         this.showModal = false
         },
         cancel(close) {
+            // some code...
+            close()
+        },
+        showFriend(friend){
+            this.showFriendModal = true
+            this.singleFriendId = friend.friend_id
+            this.singleFriendName = friend.friend_displayname
+            this.singleFriendEmail = friend.friend_email
+        },
+        confirmShow() {
+        this.showFriendModal = false
+        },
+        cancelShow(close) {
             // some code...
             close()
         },

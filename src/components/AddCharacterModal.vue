@@ -155,7 +155,7 @@ export default {
   background: #fff;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 640px) {
 ::v-deep .modal-content {
     width: 50vw;
     height: 60vh;

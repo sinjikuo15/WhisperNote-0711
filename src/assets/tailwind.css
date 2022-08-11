@@ -9,11 +9,10 @@
         @apply text-xl py-2 w-1/4  border rounded-md border-gray-300 text-blue-500 shadow flex justify-center ;
     };
     .input-focus{/*所有input外圈的設定*/
-        @apply rounded-md focus:border-blue-500 focus:ring-blue-400  
+        @apply rounded-md focus:border-amber-800 focus:ring-amber-700  
     }
     .btn-primary{/*按鈕的設定*/
-        @apply rounded-md  border border-transparent shadow-sm bg-blue-600 text-base font-medium text-white hover:bg-blue-700
-        focus:outline-none 
+        @apply rounded-md  border border-transparent shadow-sm bg-blue-600 text-base font-medium text-white  focus:outline-none 
     }
     .member-input{/*登入註冊頁面的input*/
         @apply block py-1 px-0  w-full text-xl text-gray-900 bg-transparent border-0 border-b-2  border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-500 

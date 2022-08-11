@@ -1,63 +1,66 @@
 <template>
-    <div class="flex justify-center py-8">
-        <div class="flex w-11/12 border border-gray-100 rounded-lg justify-center ">
-            <div class="flex justify-center w-full sm:w-8/12 md:w-6/12  text-center py-5">
-                <div class="w-11/12 md:w-10/12 lg:w-8/12">
-                    <figure class=" logo-wrap justify-center logo-center py-5">
-                        <router-link to="/">
-                            <img  class="logo" src="../assets/wslogo.jpeg" alt="">
-                        </router-link>
-                    </figure>
-                    <h1 class="font-black text-2xl md:text-3xl title ">登入您的帳號</h1>
-                    <div class="flex justify-center pt-2">
-                        <p class="sm:text-sm">或 &nbsp;</p>                     
-                        <p class="font-bold text-blue-600 sm:text-sm"> 開始您的14天試用</p>
-                    </div>
-                    <p class="pt-5 font-bold text-gray-700">快速登入</p>
-                    <!-- 三個按鈕區 -->
-                    <div class=" pb-5  flex justify-center sm:justify-between ">
-                        <a class="sign-btn " href="">
-                            <i class="fa-brands fa-facebook "></i> 
-                        </a>                                             
-                        <a class="sign-btn" href="">
-                            <i class="fa-brands fa-twitter "></i>
-                        </a>
-                        <a class="sign-btn" href="">
-                            <i class="fa-brands fa-line text-green-600"></i>
-                        </a>
-                    </div>
-                    <!-- 分隔線 -->
-                    <div class="flex justify-center pb-3">
-                        <h1 class="w-11/12 sm:w-full  title-flex  ">或由信箱登入</h1>
-                    </div>
-                    <div class="flex justify-center">
-                        <div class="w-11/12 sm:w-full">
-                            <div class="relative z-0 w-full pt-3 pb-5 group">
-                                <input type="email" name="floating_email" class="member-input peer" placeholder=" " required v-model="email" :class="{ 'is-invalid': emailError }" />
-                                <label for="floating_email" class="member-label">信箱
-                                    <span class="text-red-600">{{ emailErrMsg }}</span>
-                                </label>  
-                            </div>
-                            <div class="relative z-0 w-full pt-3 pb-5 group">
-                                <input type="password" name="floating_password" id="floating_password" class="member-input peer" placeholder=" " required v-model="password"/>
-                                <label for="floating_password" class="member-label">密碼                                   
-                                </label>                                
-                            </div>
-                            <div  v-if="noLoginMsg" class="alert alert-danger pt-0.5" role="alert">
-                                <span class="text-red-600">{{noLoginMsg}}</span>
-                            </div>
-                            
-                            <div class="pt-5">
-                                <button class="w-full btn-primary   font-bold p-2 mt-1 mb-1 " @click.prevent="postLogin">登入</button>
-                            </div>                            
-                        </div>                        
-                    </div>             
-                </div>                
-            </div>
-            <div class="md:w-6/12 house">                
-            </div>
-        </div>        
+    <div>
+        <div class="flex justify-center py-8 main-content">
+            <div class="flex w-11/12 border border-gray-100 rounded-lg justify-center ">
+                <div class="flex justify-center w-full sm:w-8/12 md:w-6/12  text-center py-5">
+                    <div class="w-11/12 md:w-10/12 lg:w-8/12">
+                        <figure class=" logo-wrap justify-center logo-center py-5">
+                            <router-link to="/">
+                                <img  class="logo" src="../assets/navbar_logo.png" alt="">
+                            </router-link>
+                        </figure>
+                        <h1 class="font-black text-white text-2xl md:text-3xl title ">登入您的帳號</h1>
+                        <div class="flex justify-center pt-2">
+                            <p class="sm:text-sm text-white">或 &nbsp;</p>                     
+                            <p class="font-bold text-orange-400 sm:text-sm"> 開始您的14天試用</p>
+                        </div>
+                        <p class="pt-5 font-bold text-gray-300">快速登入</p>
+                        <!-- 三個按鈕區 -->
+                        <div class=" pb-5 flex justify-center sm:justify-between ">
+                            <a class="sign-btn " href="">
+                                <i class="fa-brands fa-facebook "></i> 
+                            </a>                                             
+                            <a class="sign-btn" href="">
+                                <i class="fa-brands fa-twitter "></i>
+                            </a>
+                            <a class="sign-btn" href="">
+                                <i class="fa-brands fa-line "></i>
+                            </a>
+                        </div>
+                        <!-- 分隔線 -->
+                        <div class="flex justify-center pb-3">
+                            <h1 class="w-11/12 sm:w-full  title-flex ">或由信箱登入</h1>
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="w-11/12 sm:w-full">
+                                <div class="relative z-0 w-full pt-3 pb-5 group">
+                                    <input type="email" name="floating_email" class="member-input peer" placeholder=" " required v-model="email" :class="{ 'is-invalid': emailError }" />
+                                    <label for="floating_email" class="member-label">信箱
+                                        <span class="text-red-600">{{ emailErrMsg }}</span>
+                                    </label>  
+                                </div>
+                                <div class="relative z-0 w-full pt-3 pb-5 group">
+                                    <input type="password" name="floating_password" id="floating_password" class="member-input peer" placeholder=" " required v-model="password"/>
+                                    <label for="floating_password" class="member-label">密碼                                   
+                                    </label>                                
+                                </div>
+                                <div  v-if="noLoginMsg" class="alert alert-danger pt-0.5" role="alert">
+                                    <span class="text-red-600">{{noLoginMsg}}</span>
+                                </div>
+                                
+                                <div class="pt-5">
+                                    <button class="w-full btn-primary   font-bold p-2 mt-1 mb-1 btn-login" @click.prevent="postLogin">登入</button>
+                                </div>                            
+                            </div>                        
+                        </div>             
+                    </div>                
+                </div>
+                <div class="md:w-6/12 house">                
+                </div>
+            </div>        
+        </div>
     </div>
+    
 </template>
 
 <script>
@@ -131,6 +134,10 @@ export default {
 </script>
 
 <style scoped>
+    .main-content{
+    background-color:#4E393A;
+    height: 100vh;
+    }
     .logo-wrap{
         width: 75px;
     }
@@ -153,12 +160,19 @@ export default {
         transform: scale(1.4);
         transition: 0.5s;               
     }
+    .btn-login{
+    background-color: #b2af73;
+    box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.3);
+    }
+    .btn-login:hover{
+    background-color: #8b8957;
+    }
     /* 分隔線 */
     .title-flex {
         display: flex;
         align-items: center;
         font-size: 1.2rem;
-        color: gray;
+        color: white;
         /* font-weight: bold; */
     }
 
@@ -167,7 +181,7 @@ export default {
         content: '';
         flex: 1;
         height: 1px;
-        background: rgb(137, 135, 135);
+        background: rgb(235, 232, 232);
     }
 
     .title-flex::before {

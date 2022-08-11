@@ -1,17 +1,18 @@
 <template>
-    <div class="flex justify-center py-8">
+<div class=" ">
+    <div class="flex justify-center py-8 main-content">
         <div class="flex w-11/12 border border-gray-100 rounded-lg justify-center ">
             <div class="flex justify-center  w-full sm:w-8/12  md:w-6/12 text-center py-5">
                 <div class="w-11/12 md:w-10/12 lg:w-8/12">
                     <figure class=" logo-wrap justify-center logo-center py-5">
                         <router-link to="/">
-                            <img  class="logo" src="../assets/wslogo.jpeg" alt="">
+                            <img  class="logo" src="../assets/navbar_logo.png" alt="">
                         </router-link>
                     </figure>
-                    <h1 class="font-black text-2xl md:text-3xl title ">註冊您的帳號</h1>
+                    <h1 class="font-black text-white text-2xl md:text-3xl title ">註冊您的帳號</h1>
                     <div class="flex justify-center pt-2 pb-2">
-                        <p class="sm:text-sm">或 &nbsp;</p>                     
-                        <p class="font-bold text-blue-600 sm:text-sm"> 開始您的14天試用</p>
+                        <p class="sm:text-sm text-white">或 &nbsp;</p>                     
+                        <p class="font-bold text-orange-400 sm:text-sm"> 開始您的14天試用</p>
                     </div>                    
                     
                     <div class="flex justify-center">
@@ -40,7 +41,7 @@
                             
                             <div class="flex sm:block md:flex justify-center  py-4">
                                 <div class="flex justify-center ">
-                                    <p class="text-gray-700 text-xs text-start"> 點擊註冊代表您同意<b class="text-blue-600">WhisperNote</b>之會員與客戶隱私權條款</p>
+                                    <p class="text-gray-200 text-xs text-start"> 點擊註冊代表您同意<b class="text-orange-400">WhisperNote</b>之會員與客戶隱私權條款</p>
                                 </div>                          
                                
                             </div>
@@ -76,7 +77,7 @@
                             <!-- <div v-if="userCreateSuccessMsg" class="alert alert-success" role="alert">
                                 <span>{{userCreateSuccessMsg}}</span>
                             </div>   -->
-                            <button class="w-full btn-primary font-bold p-2 mt-1 mb-1" @click.prevent="postSignup">註冊</button>
+                            <button class="w-full btn-primary font-bold p-2 mt-1 mb-1 btn-signup" @click.prevent="postSignup">註冊</button>
                         </div>                        
                     </div>                
                 </div>                
@@ -86,6 +87,7 @@
             </div>
         </div>        
     </div>
+</div>
 </template>
 
 <script>
@@ -181,6 +183,10 @@ export default {
 </script>
 
 <style scoped>
+    .main-content{
+    background-color:#4E393A;
+    height: 100vh;
+    }
     .logo-wrap{
         width: 75px;
     }
@@ -197,6 +203,13 @@ export default {
         background-size:cover;
         border-radius: 0px 5px 5px 0px;
 
+    }
+    .btn-signup{
+    background-color: #b2af73;
+    box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.3);
+    }
+    .btn-signup:hover{
+    background-color: #8b8957;
     }
     /* .title{
         font-family: 'Prompt', sans-serif;

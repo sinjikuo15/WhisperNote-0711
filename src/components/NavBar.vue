@@ -73,15 +73,15 @@
           
 
           <!-- 漢堡內容 -->
-          <div class="navbar-menu relative z-50 hidden">
-            <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
-            <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-4/6  py-5 px-5 bg-white border-r overflow-y-auto">
+          <div class="navbar-menu relative z-50 hidden ">
+            <div class="navbar-backdrop fixed inset-0 bg-gray-100 opacity-25"></div>
+            <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-4/6  py-5 px-5 overflow-y-auto nav-hamburger">
               <div class="flex items-center mb-5 justify-between">
                 <router-link class="flex items-center" to="/">
                   <figure class="logo-wrap ">
-                    <img class="logo" src="../assets/wslogo.jpeg" alt="">          
+                    <img class="logo" src="../assets/navbar_logo.png" alt="">          
                   </figure>
-                  <h1 class="text-  font-black sidebar-title">WhisperNote</h1>
+                  <h1 class="text-white  font-black sidebar-title">WhisperNote</h1>
                 </router-link>
                 <!-- <button class="navbar-close">
                   <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -92,24 +92,24 @@
               <div>
                 <ul>
                   <li class="mb-1">
-                    <router-link to="/" class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" >首頁</router-link>
+                    <router-link to="/" class="block p-4 text-sm font-semibold text-white hover:bg-black  rounded" >首頁</router-link>
                   </li>
                   <li class="mb-1">
-                    <router-link to="/all-diary" class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" >日記</router-link>
+                    <router-link to="/all-diary" class="block p-4 text-sm font-semibold text-white hover:bg-black  rounded" >日記</router-link>
                   </li>
                   <li class="mb-1">
-                    <router-link to="/character" class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" >角色</router-link>
+                    <router-link to="/character" class="block p-4 text-sm font-semibold text-white hover:bg-black  rounded" >角色</router-link>
                   </li>
                   <li class="mb-1">
-                    <router-link to="/friend" class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" >朋友</router-link>
+                    <router-link to="/friend" class="block p-4 text-sm font-semibold text-white hover:bg-black  rounded" >朋友</router-link>
                   </li>
                 </ul>
               </div>
               <div class="mt-auto">
                 <div class="pt-6">
                   <template v-if="$store.state.loginStatus === 0">
-                    <router-link to="/signup" class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" >註冊</router-link>
-                    <router-link to="/login" class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" >登入</router-link>
+                    <router-link to="/signup" class="block px-4 py-3 mb-3 leading-loose text-sm text-center font-semibold  bg-gray-50 hover:bg-gray-100 rounded-xl hamburger-signup" >註冊</router-link>
+                    <router-link to="/login" class="block px-4 py-3 mb-2 leading-loose text-sm text-center text-white font-semibold  rounded-xl hamburger-login" >登入</router-link>
                   </template>
                   <!-- 登入時顯示 -->
                   <template v-else>
@@ -133,7 +133,7 @@
                     <router-link to="/" class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" @click="logout">登出</router-link>                       
                   </template>
                 </div>
-                <p class="my-4 text-xs text-center text-gray-500">
+                <p class="my-4 text-xs text-center text-white">
                   <span>Copyright © 2022</span>
                 </p>
               </div>
@@ -237,9 +237,26 @@ export default {
 .main-navbar{
   background-color: #DB663D;
 }
+.nav-hamburger{
+  background-color:#4E393A ;
+  box-shadow: 15px 0 40px 15px rgba(0, 0, 0, 0.5);
+}
+.hamburger-signup{
+  background-color:#a57c7d ;
+  color: white;  
+}
+.hamburger-signup:hover{
+  background-color:#856565 ;   
+}
+.hamburger-login{
+background-color: #DB663D;
+}
+.hamburger-login:hover{
+background-color: #bc5733;
+}
 .logo-wrap{
     width: 40px;   
-}
+} 
 .logo{
   width: 100%;
 }

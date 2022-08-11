@@ -148,7 +148,7 @@ export default {
   --day-height: 90px;
   --weekday-bg: #f8fafc;
   --weekday-border: 1px solid #eaeaea;
-  border-radius: 8;
+  border-radius: 0;
   width: 100%;
 
   & .vc-header {

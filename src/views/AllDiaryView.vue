@@ -3,7 +3,7 @@
   <div class="flex justify-start main-content">
     <div class="flex w-full justify-start sm:pt-3">
       <SideBar></SideBar>
-      <div class="w-full h-[80vh] sm:w-8/12 rounded-lg p-10 bg-white">
+      <div class="w-full h-[80vh] sm:w-8/12 sm:rounded-lg p-10 bg-white">
         <div class="container">
             <h1 class="text-2xl font-semibold">我的日記</h1>
         </div>

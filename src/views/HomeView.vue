@@ -14,7 +14,7 @@
 
         <!-- 新增日記按鈕 -->
         <div
-          class="absolute z-50 bottom-5 right-5 sm:right-12 inline-block w-10 h-10 btn-add rounded-full hover:bg-blue-700 hover:cursor-pointer"
+          class="absolute z-50 bottom-5 right-5 sm:right-12 inline-block w-10 h-10 btn-add rounded-full hover:cursor-pointer"
           @click="showModal = true">
           <PlusIcon class="h-6 w-6 text-[#fff] mt-2 ml-2" />
         </div>
@@ -135,6 +135,7 @@ export default {
 }
 .btn-add{
     background-color: #b2af73;
+    box-shadow: 0 5px 10px -1px rgba(0, 0, 0, 0.5);
 }
 .btn-add:hover{
    background-color: #8b8957;

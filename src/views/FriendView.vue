@@ -6,7 +6,7 @@
             <!-- Sidebar -->
             <SideBar></SideBar>
             <!-- 右邊區 -->
-            <div class="w-full h-[80vh] sm:w-8/12 border-gray-400 rounded-lg p-10 bg-white">
+            <div class="w-full h-[80vh] sm:w-8/12 border-gray-400 sm:rounded-lg p-10 bg-white">
                 <div class="container">
                     <h1 class="text-2xl font-semibold">我的好友</h1>
                 </div>

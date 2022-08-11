@@ -8,14 +8,17 @@
             <div class="modal__content px-3 mt-3">
 
               <!-- show -->
-              <div id="showSection">
+              <div id="showSection" class="flex flex-col items-center mt-5">
                 <div id="friendId" style="display:none;">
                   <slot name="friendId"></slot>
                 </div>
-                <div id="friendName" class="text-xl mb-3">
+                <div id="friendPic" class="w-36 h-36 rounded-full overflow-hidden">
+                  <slot name="friendPic"></slot>
+                </div>
+                <div id="friendName" class="text-xl font-bold mt-5 mb-3 text-center">
                   <slot name="friendName"></slot>
                 </div>
-                <div id="friendEmail" class="mb-3">
+                <div id="friendEmail" class="mb-3 text-center">
                   <slot name="friendEmail"></slot>
                 </div>
               </div>
@@ -88,7 +91,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 70vw;
-  height: 45vh;
+  height: 60vh;
   margin: 1rem 1rem;
   padding: 1rem;
   border: 1px solid #e2e8f0;
@@ -99,7 +102,7 @@ export default {
 @media (min-width: 1024px) {
 ::v-deep .modal-content {
     width: 30vw;
-    height: 45vh;
+    height: 60vh;
   }
 }
 /* .modal__title {

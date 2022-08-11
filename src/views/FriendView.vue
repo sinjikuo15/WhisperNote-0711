@@ -35,6 +35,9 @@
                     <template v-slot:friendId>{{ singleFriendId }}</template>
                     <template v-slot:friendName>{{ singleFriendName }}</template>
                     <template v-slot:friendEmail>{{ singleFriendEmail }}</template>
+                    <template v-slot:friendPic>
+                        <img :src="singleFriendPic">
+                    </template>
                 </ShowFriendModal>
 
             </div>
@@ -63,7 +66,8 @@ export default {
             showFriendModal: false,
             singleFriendId: '',
             singleFriendName: '',
-            singleFriendEmail: ''
+            singleFriendEmail: '',
+            singleFriendPic: ''
         }
     },
     methods: {
@@ -80,6 +84,7 @@ export default {
             this.singleFriendId = friend.friend_id
             this.singleFriendName = friend.friend_displayname
             this.singleFriendEmail = friend.friend_email
+            this.singleFriendPic = friend.friend_pic
         },
         confirmShow() {
         this.showFriendModal = false

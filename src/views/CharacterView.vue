@@ -22,13 +22,22 @@
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"> 
 
                         <template v-for="character in characters" :key="character.character_id">
-                            <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden">
+                            <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden hover:cursor-pointer" @click="showCharacter(character)">
                                 <img :src="character.character_pic" class="rounded-t-lg" alt="">
                                 <div class="py-4">
                                     <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">{{ character.character_name }}</h5>                                              
                                 </div>
                             </div>
                         </template>
+
+                        <ShowCharacterModal v-model="showCharacterModal" @confirmShow="confirmShow" @cancelShow="cancelShow">
+                            <template v-slot:characterId>{{ singleCharacterId }}</template>
+                            <template v-slot:characterName>{{ singleCharacterName }}</template>
+                            <template v-slot:characterInfo>{{ singleCharacterInfo }}</template>
+                            <template v-slot:characterPic>
+                                <img :src="singleCharacterPic">
+                            </template>
+                        </ShowCharacterModal>
 
                     </div>
                 </div>
@@ -42,17 +51,24 @@
 import SideBar from '../components/SideBar.vue'
 import NavBar from '../components/NavBar.vue'
 import AddCharacterModal from '../components/AddCharacterModal.vue'
+import ShowCharacterModal from '../components/ShowCharacterModal.vue'
 
 export default {
     components: {
         SideBar,
         NavBar,
-        AddCharacterModal
+        AddCharacterModal,
+        ShowCharacterModal
     },
     data() {
         return {
             showModal: false,
-            characters: []
+            characters: [],
+            showCharacterModal: false,
+            singleCharacterId: '',
+            singleCharacterName: '',
+            singleCharacterInfo: '',
+            singleCharacterPic: ''
         }
     },
     methods: {
@@ -61,6 +77,20 @@ export default {
         this.showModal = false
         },
         cancel(close) {
+            // some code...
+            close()
+        },
+        showCharacter(character){
+            this.showCharacterModal = true
+            this.singleCharacterId = character.character_id
+            this.singleCharacterName = character.character_name
+            this.singleCharacterInfo = character.character_info
+            this.singleCharacterPic = character.character_pic
+        },
+        confirmShow() {
+        this.showFriendModal = false
+        },
+        cancelShow(close) {
             // some code...
             close()
         },

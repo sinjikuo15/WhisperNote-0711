@@ -1,12 +1,12 @@
 <template>
     <!-- navbar -->
     <NavBar></NavBar>
-    <div class="flex  justify-center main-content"> 
-        <div class="flex w-full sm:py-3 justify-start">
+    <div class="flex  justify-center main-content h-[90vh]"> 
+        <div class="flex w-full justify-start">
             <!-- Sidebar -->
             <SideBar></SideBar>
             <!-- 右邊區 -->
-            <div class="w-full h-[80vh] sm:w-8/12  border-gray-400 sm:rounded-lg p-10 bg-white">
+            <div class="w-full sm:my-8 sm:w-8/12  border-gray-400 sm:rounded-lg py-5 pl-5 pr-2 sm:p-10 bg-white">
                 <div class="container">
                     <h1 class="text-2xl font-semibold">角色</h1>
                 </div>

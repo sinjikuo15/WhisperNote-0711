@@ -1,9 +1,9 @@
 <template>
   <NavBar></NavBar>
-  <div class="flex justify-start main-content">
-    <div class="flex w-full justify-start sm:pt-3">
+  <div class="flex justify-start main-content h-[90vh]">
+    <div class="flex w-full justify-start">
       <SideBar></SideBar>
-      <div class="w-full h-[80vh] sm:w-8/12 sm:rounded-lg p-10 bg-white">
+      <div class="w-full sm:my-8 sm:w-8/12 sm:rounded-lg py-5 pl-5 pr-2 sm:p-10 bg-white">
         <div class="container">
             <h1 class="text-2xl font-semibold">我的日記</h1>
         </div>
@@ -28,7 +28,7 @@
                         <p v-html="diary.content" class="mt-2 truncate"></p>
                         <div class="mt-3">
                             <span style="display:none;">{{ diary.permission_id }}</span>
-                            <span class="bg-blue-400 py-1 px-2 rounded-xl text-white text-sm">{{ diary.per_name }}</span>
+                            <span class="bg-[#b2af73] py-1 px-2 rounded-xl text-white text-sm">{{ diary.per_name }}</span>
                         </div>
                     </div> 
                 </template>

@@ -14,8 +14,8 @@ import MainView from '../views/MainView.vue'
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'main',
+    component: MainView
   },
   {
     path: '/about',
@@ -58,9 +58,9 @@ const routes = [
     component:CharacterView
   },
   {
-    path:'/main',
-    name:'main',
-    component:MainView
+    path:'/home',
+    name:'home',
+    component:HomeView
   }
   
 ]

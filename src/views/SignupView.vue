@@ -77,6 +77,9 @@
                             <!-- <div v-if="userCreateSuccessMsg" class="alert alert-success" role="alert">
                                 <span>{{userCreateSuccessMsg}}</span>
                             </div>   -->
+                            <div class=" text-start">
+                                    <router-link to="/login" class="text-orange-400 font-bold hover:text-orange-500">已有帳號? 請登入</router-link>
+                                </div>
                             <button class="w-full btn-primary font-bold p-2 mt-1 mb-1 btn-signup" @click.prevent="postSignup">註冊</button>
                         </div>                        
                     </div>                

@@ -47,9 +47,11 @@
                                 <div  v-if="noLoginMsg" class="alert alert-danger pt-0.5" role="alert">
                                     <span class="text-red-600">{{noLoginMsg}}</span>
                                 </div>
-                                
-                                <div class="pt-5">
-                                    <button class="w-full btn-primary   font-bold p-2 mt-1 mb-1 btn-login" @click.prevent="postLogin">登入</button>
+                                <div class="pt-3 text-start">
+                                    <router-link to="/signup" class="text-orange-400 font-bold hover:text-orange-500">沒有帳號? 請註冊</router-link>
+                                </div>
+                                <div class="">
+                                    <button class="w-full btn-primary  font-bold p-2 mt-1 mb-1 btn-login" @click.prevent="postLogin">登入</button>
                                 </div>                            
                             </div>                        
                         </div>             

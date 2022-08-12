@@ -1,7 +1,7 @@
 <template>
   <!-- navbar -->
   <NavBar></NavBar>
-  <div class="flex justify-center main-content">
+  <div class="flex justify-center main-bg">
     <div class="flex w-full justify-start sm:pt-3">
       <!-- sidebar -->
       <SideBar></SideBar>
@@ -78,9 +78,7 @@ export default {
 </script>
 
 <style scoped>
-.main-content{
-  background-color:#4E393A ;
-}
+
 .logo-wrap {
   width: 50px;
 

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="flex justify-center py-8 main-content">
-            <div class="flex w-11/12 border border-gray-100 rounded-lg justify-center ">
+            <div class="flex w-11/12  justify-center ">
                 <div class="flex justify-center w-full sm:w-8/12 md:w-6/12  text-center py-5">
                     <div class="w-11/12 md:w-10/12 lg:w-8/12">
                         <figure class=" logo-wrap justify-center logo-center py-5">
@@ -16,7 +16,7 @@
                         </div>
                         <p class="pt-5 font-bold text-gray-300">快速登入</p>
                         <!-- 三個按鈕區 -->
-                        <div class=" pb-5 flex justify-center sm:justify-between ">
+                        <div class=" pb-5 flex justify-center sm:justify-between contact-btn">
                             <a class="sign-btn " href="">
                                 <i class="fa-brands fa-facebook "></i> 
                             </a>                                             
@@ -158,7 +158,7 @@ export default {
     .sign-btn{
         width: 30%;       
     }
-    .sign-btn :hover{
+    .sign-btn:hover i{
         transform: scale(1.4);
         transition: 0.5s;               
     }

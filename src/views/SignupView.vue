@@ -1,7 +1,7 @@
 <template>
 <div class=" ">
     <div class="flex justify-center py-8 main-content">
-        <div class="flex w-11/12 border border-gray-100 rounded-lg justify-center ">
+        <div class="flex w-11/12   justify-center ">
             <div class="flex justify-center  w-full sm:w-8/12  md:w-6/12 text-center py-5">
                 <div class="w-11/12 md:w-10/12 lg:w-8/12">
                     <figure class=" logo-wrap justify-center logo-center py-5">

@@ -107,7 +107,7 @@ export default {
 /* 日記區 */
 .right-content {
   height: 80vh;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
 }
 
 .user-wrap {

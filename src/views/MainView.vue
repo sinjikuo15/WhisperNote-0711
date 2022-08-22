@@ -3,7 +3,7 @@
     <div class="flex w-full lg:w-11/12 justify-center">
         <!-- sidebar -->
         <!-- <SideBar></SideBar> -->
-        <div class="w-10/12 sm:w-7/12 md:w-6/12 lg:w-4/12  border border-gray-200 rounded-md p-8">
+        <div class="w-10/12 sm:w-7/12 md:w-6/12 lg:w-4/12  rounded-md p-8">
             <div class="flex items-center justify-center">
                 <figure class="logo-wrap ">
                     <img class="logo" src="../assets/navbar_logo.png" alt="">

@@ -93,7 +93,7 @@ export default {
           const result = {
             customData: {
               ...e,
-              class: 'bg-blue-600 text-white'
+              class: 'bg-[#b2af73] text-white'
             },
             dates: new Date(e.date).toString()
           }
@@ -116,7 +116,7 @@ export default {
           const result = {
             customData: {
               ...e,
-              class: 'bg-red-600 text-white'
+              class: 'bg-[#db663d] text-white'
             },
             dates: new Date(e.date).toString()
           }

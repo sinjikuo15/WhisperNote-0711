@@ -1,22 +1,28 @@
 <template>
   <!-- navbar -->
   <NavBar></NavBar>
+
+  <div class="flex justify-center main-content h-[90vh]">
+    <div class="flex w-full justify-start">
+
   <div class="flex justify-center main-bg">
     <div class="flex w-full justify-start sm:pt-3">
+
       <!-- sidebar -->
       <SideBar></SideBar>
       <!-- 右邊日記的部分 -->
-      <div class="w-full sm:w-8/12 rounded-lg relative right-content">
-        <div class="sm:p-10  sm:rounded-lg bg-white">
+      <div class="w-full sm:w-8/12 sm:rounded-lg relative right-content overflow-y-auto sm:my-8">
+        <div class="sm:p-10 sm:rounded-lg bg-white">
         <Calendar></Calendar>
 
         </div>
 
         <!-- 新增日記按鈕 -->
-        <div
-          class="absolute z-50 bottom-5 right-5 sm:right-12 inline-block w-10 h-10 btn-add rounded-full hover:cursor-pointer"
-          @click="showModal = true">
-          <PlusIcon class="h-6 w-6 text-[#fff] mt-2 ml-2" />
+        <div class="absolute -bottom-2 right-14 sm:bottom-14 sm:right-24">
+          <div class="fixed z-50 inline-block w-10 h-10 btn-add rounded-full hover:cursor-pointer"
+            @click="showModal = true">
+            <PlusIcon class="h-6 w-6 text-white mt-2 ml-2" />
+          </div>
         </div>
       </div>
     </div>
@@ -105,9 +111,15 @@ export default {
 }
 
 /* 日記區 */
-.right-content {
+/* .right-content {
   height: 80vh;
   overflow-y: scroll;
+
+} */
+.right-content::-webkit-scrollbar {
+    display: none;
+
+
 }
 
 .user-wrap {

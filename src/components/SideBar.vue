@@ -1,5 +1,5 @@
 <template>
-  <div class="sm:w-1/4 lg:w-1/5 xl:w-1/6 sidebar py-5  text-gray-50">           
+  <div class="sm:w-1/4 lg:w-1/5 xl:w-1/6 sidebar py-5 pl-8 text-gray-50">           
     <ul class="pt-5 text-gray-900">
       <li class="">
         <router-link to="/" class="flex" >
@@ -79,7 +79,7 @@
 
 <style scoped>
     .sidebar{
-    height: 90vh;
+    /* height: 90vh; */
     background-color:#4E393A ;
 
     }

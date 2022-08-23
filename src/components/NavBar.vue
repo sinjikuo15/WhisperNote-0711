@@ -1,6 +1,6 @@
 <template>
-    <div class="flex justify-start py-3 pl-1 main-navbar">
-    <form class="flex items-center justify-around w-full pl-2"> 
+    <div class="flex justify-start py-3 px-3 sm:px-12 main-navbar h-[10vh]">
+    <form class="flex items-center justify-around w-full px-2"> 
       <div class=" w-4/12">
         <router-link to="/" class="flex items-center" href="/">
           <figure class="logo-wrap">
@@ -29,23 +29,23 @@
           </div>
           <template v-if="$store.state.loginStatus === 0">
             <div class="hidden sm:flex  w-3/12 justify-end" >
-              <router-link to="/signup" class="flex items-center  text-blue-600 hover:text-blue-700" href="/signup">
-                <i class="fa-solid fa-clipboard-check block text-xl pr-1 text-gray-50"></i>
-                <p class="w-9/12 md:text-base text-gray-50">註冊</p>        
+              <router-link to="/signup" class="flex items-center" href="/signup">
+                <i class="fa-solid fa-clipboard-check block text-xl pr-1 text-white"></i>
+                <p class="w-9/12 md:text-base text-white">註冊</p>        
               </router-link>     
             </div>
             <div class="hidden sm:flex w-3/12 justify-center" >
-              <router-link to="/login" class="flex items-center  text-blue-600 hover:text-blue-700" href="/login">
-                <i class="fa-solid fa-arrow-right-to-bracket block text-sm login pr-1 text-gray-50"></i>  
-                <p class="w-9/12 md:text-base text-gray-50">登入</p>      
+              <router-link to="/login" class="flex items-center" href="/login">
+                <i class="fa-solid fa-arrow-right-to-bracket block text-sm login pr-1 text-white"></i>  
+                <p class="w-9/12 md:text-base text-white">登入</p>      
               </router-link>     
             </div>
           </template>
           <!-- 登入時顯示 -->
           <template v-else>
             <router-link class="hidden sm:flex justify-center" to="/">
-              <div class="flex items-center  text-blue-600 hover:text-blue-700" >
-                <i class="fa-regular fa-bell text-xl p-3  text-gray-500 hover:text-blue-400"></i>      
+              <div class="flex items-center" >
+                <i class="fa-regular fa-bell text-xl p-3  text-white hover:text-[#FCDCBF]"></i>      
               </div>     
             </router-link>
             <div class="hidden sm:flex justify-center relative hover:cursor-pointer nmsl" @click="openUserMenu">
@@ -61,10 +61,10 @@
                 <div class="hidden user-menu absolute top-11 right-0 bg-white rounded border-2 border-slate-300/50 shadow-xl w-max z-50">
                   <ul>
                     <li class="mb-1">
-                      <router-link to="/profile" class="block p-4 text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded" >會員中心</router-link>
+                      <router-link to="/profile" class="block p-4 text-sm font-semibold text-gray-600 hover:bg-[#FCDCBF] hover:text-[#DB663D] rounded" >會員中心</router-link>
                     </li>
                     <li class="mb-1">
-                      <router-link to="/" class="block p-4 text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded" @click="logout">登出</router-link> 
+                      <router-link to="/" class="block p-4 text-sm font-semibold text-gray-600 hover:bg-[#FCDCBF] hover:text-[#DB663D] rounded" @click="logout">登出</router-link> 
                     </li>
                   </ul>
                 </div>

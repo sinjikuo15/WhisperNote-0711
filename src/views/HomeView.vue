@@ -2,10 +2,9 @@
   <!-- navbar -->
   <NavBar></NavBar>
 
-  <div class="flex justify-center main-content h-[90vh]">
-    <div class="flex w-full justify-start">
+  
 
-  <div class="flex justify-center main-bg">
+  <div class="flex justify-center main-bg h-[90vh]">
     <div class="flex w-full justify-start sm:pt-3">
 
       <!-- sidebar -->
@@ -27,8 +26,7 @@
       </div>
     </div>
   </div>
-  </div>
-  </div>
+  
 
 
 

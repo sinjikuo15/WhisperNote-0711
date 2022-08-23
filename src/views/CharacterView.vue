@@ -2,11 +2,9 @@
     <!-- navbar -->
     <NavBar></NavBar>
 
-    <div class="flex  justify-center main-content h-[90vh]"> 
-        <div class="flex w-full justify-start">
 
-    <div class="flex  justify-center main-bg"> 
-        <div class="flex w-full sm:py-3 justify-start">
+    <div class="flex  justify-center main-bg h-[90vh]"> 
+        <div class="flex w-full sm:pt-3 justify-start">
 
             <!-- Sidebar -->
             <SideBar></SideBar>
@@ -49,8 +47,7 @@
             </div>
         </div>
     </div>
-  </div>
-  </div>
+ 
 
 
 </template>

@@ -1,8 +1,13 @@
 <template>
     <!-- navbar -->
     <NavBar></NavBar>
+
     <div class="flex  justify-center main-content h-[90vh]"> 
         <div class="flex w-full justify-start">
+
+    <div class="flex  justify-center main-bg"> 
+        <div class="flex w-full sm:py-3 justify-start">
+
             <!-- Sidebar -->
             <SideBar></SideBar>
             <!-- 右邊區 -->
@@ -113,9 +118,7 @@ export default {
 </script >
 
 <style scoped>
-.main-content{
-    background-color: #4E393A;
-}
+
 .right-content{
   height: 80vh;
   overflow-y: scroll;
@@ -123,12 +126,6 @@ export default {
 .card-wrap{
     display: flex;
     flex-wrap: wrap;
-}
-.btn-primary{
-    background-color: #b2af73;
-}
-.btn-primary:hover{
-   background-color: #8b8957;
 }
 
 .user-wrap{

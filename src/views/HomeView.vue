@@ -1,8 +1,13 @@
 <template>
   <!-- navbar -->
   <NavBar></NavBar>
+
   <div class="flex justify-center main-content h-[90vh]">
     <div class="flex w-full justify-start">
+
+  <div class="flex justify-center main-bg">
+    <div class="flex w-full justify-start sm:pt-3">
+
       <!-- sidebar -->
       <SideBar></SideBar>
       <!-- 右邊日記的部分 -->
@@ -79,9 +84,7 @@ export default {
 </script>
 
 <style scoped>
-.main-content{
-  background-color:#4E393A ;
-}
+
 .logo-wrap {
   width: 50px;
 
@@ -111,9 +114,12 @@ export default {
 /* .right-content {
   height: 80vh;
   overflow-y: scroll;
+
 } */
 .right-content::-webkit-scrollbar {
     display: none;
+
+
 }
 
 .user-wrap {

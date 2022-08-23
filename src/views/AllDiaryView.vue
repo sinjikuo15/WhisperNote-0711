@@ -1,7 +1,12 @@
 <template>
   <NavBar></NavBar>
+
   <div class="flex justify-start main-content h-[90vh]">
     <div class="flex w-full justify-start">
+
+  <div class="flex justify-start main-bg">
+    <div class="flex w-full justify-start sm:pt-3">
+
       <SideBar></SideBar>
       <div class="w-full sm:my-8 sm:w-8/12 sm:rounded-lg py-5 pl-5 pr-2 sm:p-10 bg-white">
         <div class="container">
@@ -157,13 +162,6 @@ export default {
 </script>
 
 <style scoped>
-.main-content{
-  background-color: #4E393A;
-}
-.btn-primary{
-    background-color: #b2af73;
-}
-.btn-primary:hover{
-   background-color: #8b8957;
-}
+
+
 </style>

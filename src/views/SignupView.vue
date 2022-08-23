@@ -1,7 +1,7 @@
 <template>
 <div class=" ">
     <div class="flex justify-center py-8 main-content">
-        <div class="flex w-11/12 border border-gray-100 rounded-lg justify-center ">
+        <div class="flex w-11/12   justify-center ">
             <div class="flex justify-center  w-full sm:w-8/12  md:w-6/12 text-center py-5">
                 <div class="w-11/12 md:w-10/12 lg:w-8/12">
                     <figure class=" logo-wrap justify-center logo-center py-5">
@@ -77,6 +77,9 @@
                             <!-- <div v-if="userCreateSuccessMsg" class="alert alert-success" role="alert">
                                 <span>{{userCreateSuccessMsg}}</span>
                             </div>   -->
+                            <div class=" text-start">
+                                    <router-link to="/login" class="text-orange-400 font-bold hover:text-orange-500">已有帳號? 請登入</router-link>
+                                </div>
                             <button class="w-full btn-primary font-bold p-2 mt-1 mb-1 btn-signup" @click.prevent="postSignup">註冊</button>
                         </div>                        
                     </div>                

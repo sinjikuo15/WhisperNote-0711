@@ -2,7 +2,7 @@
     <div class="flex justify-start py-3 px-3 sm:px-12 main-navbar h-[10vh]">
     <form class="flex items-center justify-around w-full px-2"> 
       <div class=" w-4/12">
-        <router-link to="/" class="flex items-center" href="/">
+        <router-link :to="$store.state.loginStatus === 0 ? '/': '/home'" class="flex items-center" href="/">
           <figure class="logo-wrap">
             <img class="logo " src="../assets/navbar_logo.png" alt="">          
           </figure>
@@ -64,7 +64,7 @@
                       <router-link to="/profile" class="block p-4 text-sm font-semibold text-gray-600 hover:bg-[#FCDCBF] hover:text-[#DB663D] rounded" >會員中心</router-link>
                     </li>
                     <li class="mb-1">
-                      <router-link to="/" class="block p-4 text-sm font-semibold text-gray-600 hover:bg-[#FCDCBF] hover:text-[#DB663D] rounded" @click="logout">登出</router-link> 
+                      <router-link to="#" class="block p-4 text-sm font-semibold text-gray-600 hover:bg-[#FCDCBF] hover:text-[#DB663D] rounded" @click="logout">登出</router-link> 
                     </li>
                   </ul>
                 </div>
@@ -77,7 +77,7 @@
             <div class="navbar-backdrop fixed inset-0 bg-gray-100 opacity-25"></div>
             <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-4/6  py-5 px-5 overflow-y-auto nav-hamburger">
               <div class="flex items-center mb-5 justify-between">
-                <router-link class="flex items-center" to="/">
+                <router-link class="flex items-center" :to="$store.state.loginStatus === 0 ? '/': '/home'">
                   <figure class="logo-wrap ">
                     <img class="logo" src="../assets/navbar_logo.png" alt="">          
                   </figure>
@@ -122,15 +122,15 @@
                           <img class="user" src="../assets/default-user-pic.jpg" alt="">
                         </template>
                       </figure>   
-                      <div class="w-3/12 px-3">
+                      <div class="w-3/12 px-3 text-white">
                         {{ displayname }}
                       </div>
                     </div>  
                     <router-link to="/" class="flex items-center  text-blue-600 hover:text-blue-700">
-                      <i class="fa-regular fa-bell text-xl p-4  text-gray-500 hover:text-blue-400"></i>      
+                      <i class="fa-regular fa-bell text-xl p-4 text-white hover:text-[#DB663D]"></i>      
                     </router-link>     
-                    <router-link to="/profile" class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" >會員資料</router-link>
-                    <router-link to="/" class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" @click="logout">登出</router-link>                       
+                    <router-link to="/profile" class="block p-4 text-sm font-semibold text-white hover:bg-black  rounded" >會員資料</router-link>
+                    <router-link to="/" class="block p-4 text-sm font-semibold text-white hover:bg-black  rounded" @click="logout">登出</router-link>                       
                   </template>
                 </div>
                 <p class="my-4 text-xs text-center text-white">

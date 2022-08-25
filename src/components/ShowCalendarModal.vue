@@ -21,7 +21,7 @@
               <slot name="permissionId"></slot>
             </div>
             <div id="permissionName" class="mb-3">
-              <span class="bg-blue-400 py-1 px-2 rounded-xl text-white text-sm">
+              <span class="bg-[#b2af73] py-1 px-2 rounded-xl text-white text-sm">
                 <slot name="permissionName"></slot>
               </span>
             </div>

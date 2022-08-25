@@ -121,8 +121,7 @@ export default {
                       break;
                     case 1 :
                       this.$store.dispatch('getLoginStatus')
-                      this.$router.push('/')
-                      this.reload()
+                      this.$router.push('/home')
                       break;
                   }
                   

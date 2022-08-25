@@ -10,8 +10,8 @@
             </div>
             <div class="flex justify-end mt-3">
               <div class="modal__action">
-                  <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 sm:ml-3 sm:w-auto sm:text-sm" @click="deleteFriend">確認</button>
-                  <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" @click="$emit('cancelDelete', close)">取消</button>
+                  <button type="button" class="justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-700 text-base font-medium text-white hover:bg-red-800 sm:ml-3 sm:w-auto sm:text-sm" @click="deleteFriend">確認</button>
+                  <button type="button" class="justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 ml-2 sm:w-auto sm:text-sm" @click="$emit('cancelDelete', close)">取消</button>
               </div>
             </div>
         </vue-final-modal>
@@ -66,8 +66,8 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 30vw;
-  height: 30vh;
+  width: 55vw;
+  height: 40vh;
   margin: 1rem 1rem;
   padding: 1rem;
   border: 1px solid #e2e8f0;
@@ -75,9 +75,9 @@ export default {
   background: #fff;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 640px) {
 ::v-deep .delete-modal-content {
-    width: 20vw;
+    width: 30vw;
     height: 30vh;
   }
 }
@@ -91,13 +91,13 @@ export default {
   overflow-y: auto;
   text-align: left;
 }
-/* .modal__action {
+.modal__action {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
   padding: 1rem 0 0;
-} */
+}
 .modal__close {
   position: absolute;
   top: 0.5rem;

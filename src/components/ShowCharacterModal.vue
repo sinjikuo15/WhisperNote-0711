@@ -9,6 +9,7 @@
 
               <!-- edit -->
               <div class="hidden" id="editSection">
+                <p style="display:none;">{{characterId}}</p>
                 <label class="block mt-3">
                   <span class="text-gray-700">角色名稱</span>
                   <input type="text" class="
@@ -78,7 +79,7 @@
                 </div>
                 <!-- edit -->
                 <div class="hidden" id="editModeBtn">
-                  <button type="button" class="w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm" @click="updateCharacter">儲存</button>
+                  <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 btn-primary text-base font-medium text-white  mr-2 sm:mr-0 sm:ml-3 sm:w-auto sm:text-sm" @click="updateCharacter">儲存</button>
                   <button type="button" class="mt-3 w-full justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" @click="cancelEdit">取消編輯</button>
                 </div>
               </div>
@@ -178,13 +179,14 @@ export default {
         const characterContent = {
           name: this.characterName,
           pic: this.characterPic,
-          info: this.characterInfo
+          info: this.characterInfo,
+          id: this.characterId
         }
         console.log('characterContent', characterContent)
         this.axios.post('/editCharacter', characterContent)
           .then((res) => {
             console.log(res.data)
-            alert('新增成功！')
+            alert('修改成功！')
             this.reload()
           })
           .catch((err)=>{
@@ -226,7 +228,7 @@ export default {
 @media (min-width: 640px) {
 ::v-deep .modal-content {
     width: 40vw;
-    height: 70vh;
+    height: 60vh;
   }
 }
 /* .modal__title {

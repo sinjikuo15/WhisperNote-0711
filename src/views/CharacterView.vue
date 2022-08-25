@@ -17,10 +17,10 @@
                     <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 mr-3 btn-primary sm:w-auto sm:text-sm">新增角色</button>
                 </div>
 
-                <!-- add friend modal -->
+                <!-- add character modal -->
                 <AddCharacterModal v-model="showModal" @confirm="confirm" @cancel="cancel"/>
 
-                <!-- friend cards section -->
+                <!-- character cards section -->
                 <div class="container h-[80%] overflow-y-auto pr-3">
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"> 
 

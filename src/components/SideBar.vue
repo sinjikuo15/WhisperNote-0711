@@ -2,19 +2,19 @@
   <div class="sm:w-1/4 lg:w-1/5 xl:w-1/6 sidebar py-5 pl-8 text-gray-50">           
     <ul class="pt-5 text-gray-900">
       <li class="">
-        <router-link to="/" class="flex" >
+        <router-link to="/home" class="flex" >
           <div class="w-2/12 ">
-            <i class="fa-solid fa-house md:text-base home"></i>              
+            <i class="fa-solid fa-calendar-days md:text-base "></i>              
           </div>     
-          <p class="w-9/12 md:text-base sidebar-content pl-1 md:p-0">首頁</p>        
+          <p class="w-9/12 md:text-base sidebar-content pl-1 md:p-0">我們的日記</p>        
         </router-link>          
       </li>
       <li class="">
         <router-link to="/all-diary" class="flex" >
           <div class="w-2/12">
-            <i class="fa-solid fa-calendar-days md:text-base "></i>             
+            <i class="fa-solid fa-list-ul md:text-base"></i>                         
           </div>     
-          <p class="w-9/12 md:text-text-base sidebar-content pl-1 md:p-0">日記</p>        
+          <p class="w-9/12 md:text-text-base sidebar-content pl-1 md:p-0">我的日記</p>        
         </router-link>          
       </li>
         <li class="">

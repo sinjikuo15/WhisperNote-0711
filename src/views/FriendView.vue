@@ -103,7 +103,7 @@ export default {
         // }
         this.axios.get('/getFriend')
         .then((response) => {
-            console.log(response.data)
+            console.log(response.data.data)
             this.friends = response.data.data
           })
           .catch((err)=>{

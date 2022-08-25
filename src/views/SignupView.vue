@@ -1,9 +1,9 @@
 <template>
-<div class=" ">
-    <div class="flex justify-center py-8 main-content">
-        <div class="flex w-11/12   justify-center ">
-            <div class="flex justify-center  w-full sm:w-8/12  md:w-6/12 text-center py-5">
-                <div class="w-11/12 md:w-10/12 lg:w-8/12">
+<div class="">
+    <div class="flex justify-center py-8 main-content ">
+        <div class="flex w-11/12  justify-center ">
+            <div class="flex justify-center  w-full sm:w-8/12  md:w-6/12 text-center py-5 ">
+                <div class="w-11/12 md:w-10/12 lg:w-8/12 ">
                     <figure class=" logo-wrap justify-center logo-center py-5">
                         <router-link to="/">
                             <img  class="logo" src="../assets/navbar_logo.png" alt="">
@@ -186,9 +186,10 @@ export default {
 </script>
 
 <style scoped>
+
     .main-content{
     background-color:#4E393A;
-    height: 100vh;
+    min-height: 100vh;
     }
     .logo-wrap{
         width: 75px;

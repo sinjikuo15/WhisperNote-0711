@@ -38,16 +38,16 @@ export default {
     methods: {
       deleteFriend() {
         console.log('delete friend')
-        // let friend_id = document.getElementById('friendId').innerText
+        let friend_id = document.getElementById('friendId').innerText
         // console.log(diary_id)
-        // this.axios.post('/deleteFriend', {friend_id})
-        //   .then((res) => {
-        //     console.log(res.data)
-        //     alert('刪除成功')
-        //   })
-        //   .catch((err)=>{
-        //     console.log(err);
-        //   })
+        this.axios.post('/deleteFriend', {friend_id})
+          .then((res) => {
+            console.log(res.data)
+            alert('刪除成功')
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
         this.$emit('cancelDelete');
         this.reload()
       },

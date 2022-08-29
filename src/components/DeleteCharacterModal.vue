@@ -40,7 +40,7 @@ export default {
         let character_id = document.getElementById('characterId').innerText
         this.axios.post('/deleteCharacter', {character_id})
           .then((res) => {
-            console.log(res.data)
+            console.log('deleteCharacter',res.data)
             alert('刪除成功')
             this.$emit('cancelDelete');
             this.reload()

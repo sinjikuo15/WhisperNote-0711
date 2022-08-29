@@ -158,7 +158,7 @@ export default {
 @media (min-width: 640px) {
 ::v-deep .modal-content {
     width: 50vw;
-    height: 60vh;
+    height: 70vh;
   }
 }
 /* .modal__title {

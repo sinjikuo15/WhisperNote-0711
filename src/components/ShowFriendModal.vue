@@ -91,7 +91,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 70vw;
-  height: 60vh;
+  height: 70vh;
   margin: 1rem 1rem;
   padding: 1rem;
   border: 1px solid #e2e8f0;
@@ -102,7 +102,7 @@ export default {
 @media (min-width: 1024px) {
 ::v-deep .modal-content {
     width: 30vw;
-    height: 60vh;
+    height: 70vh;
   }
 }
 /* .modal__title {

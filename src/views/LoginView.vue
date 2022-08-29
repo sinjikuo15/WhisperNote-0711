@@ -137,7 +137,7 @@ export default {
 <style scoped>
     .main-content{
     background-color:#4E393A;
-    height: 100vh;
+    min-height: 100vh;
     }
     .logo-wrap{
         width: 75px;

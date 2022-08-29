@@ -243,7 +243,7 @@ export default {
 @media (min-width: 1024px) {
 ::v-deep .modal-content {
     width: 50vw;
-    height: 70vh;
+    height: 80vh;
   }
 }
 /* .modal__title {

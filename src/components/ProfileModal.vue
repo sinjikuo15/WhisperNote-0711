@@ -44,8 +44,8 @@
               <div class="modal__action">
                 <!-- edit -->
                 <div id="editModeBtn">
-                  <button type="button" class="w-full justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm" @click="updateProfile">儲存</button>
-                  <button type="button" class="mt-3 w-full justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" @click="$emit('cancelShow', close)">取消</button>
+                  <button type="button" class="justify-center rounded-md border border-transparent shadow-sm px-4 py-2 btn-primary text-base font-medium text-white sm:ml-3 sm:w-auto sm:text-sm" @click="updateProfile">儲存</button>
+                  <button type="button" class="justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" @click="$emit('cancelShow', close)">取消</button>
                 </div>
               </div>
             </div>
@@ -128,7 +128,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 90vw;
-  height: 60vh;
+  height: 70vh;
   margin: 1rem 1rem;
   padding: 1rem;
   border: 1px solid #e2e8f0;
@@ -139,7 +139,7 @@ export default {
 @media (min-width: 640px) {
 ::v-deep .modal-content {
     width: 40vw;
-    height: 50vh;
+    height: 60vh;
   }
 }
 /* .modal__title {
@@ -152,13 +152,13 @@ export default {
   overflow-y: auto;
   text-align: left;
 }
-/* .modal__action {
+.modal__action {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
   padding: 1rem 0 0;
-} */
+}
 .modal__close {
   position: absolute;
   top: 0.5rem;

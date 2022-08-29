@@ -5,7 +5,7 @@
     <div class="flex w-full justify-start sm:pt-3">
 
       <SideBar></SideBar>
-      <div class="w-full sm:my-8 sm:w-8/12 sm:rounded-lg py-5 pl-5 pr-2 sm:p-10 bg-white">
+      <div class="w-full sm:my-8 sm:w-8/12 sm:rounded-lg p-5 sm:p-10 bg-white">
         <div class="container">
             <h1 class="text-2xl font-semibold">我的日記</h1>
         </div>
@@ -13,22 +13,22 @@
             <!-- <div class="h-10 w-10 hover:bg-slate-200 hover:rounded flex justify-center items-center">
                 <AdjustmentsIcon class="h-8 w-5 text-slate-500"/>
             </div> -->
-            <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 mr-3 btn-primary sm:w-auto sm:text-sm">新增日記</button>
+            <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 btn-primary sm:w-auto sm:text-sm">新增日記</button>
         </div>
 
         <!-- addNewDiaryModal -->
         <AddNewDiaryModal v-model="showModal" @confirm="confirm" @cancel="cancel"/>
     
         <!-- diary section -->
-        <div class="container h-[80%] overflow-y-auto pr-3">
+        <div class="container h-[80%] overflow-y-auto">
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <template v-for="diary in diaries" :key="diary.diary_id">
-                    <div class="border border-slate-100 rounded shadow-md p-3 hover:cursor-pointer overflow-hidden" @click="showDiary(diary)">
+                    <div class="h-48 border border-slate-100 rounded shadow-md p-3 hover:cursor-pointer overflow-hidden relative" @click="showDiary(diary)">
                         <h3 class="text-xl font-bold truncate">{{ diary.title }}</h3>
                         <p style="display:none;">{{diary.diary_id}}</p>
                         <p class="text-sm text-slate-400 mt-2">{{ diary.date.slice(0,10) }}</p>
                         <p v-html="diary.content" class="mt-2 truncate"></p>
-                        <div class="mt-3">
+                        <div class="w-full py-3 absolute bottom-0 bg-white">
                             <span style="display:none;">{{ diary.permission_id }}</span>
                             <span class="bg-[#b2af73] py-1 px-2 rounded-xl text-white text-sm">{{ diary.per_name }}</span>
                         </div>
@@ -159,6 +159,12 @@ export default {
 </script>
 
 <style scoped>
+::-webkit-scrollbar {
+  width: 0px;
+}
 
+::-webkit-scrollbar-track {
+  display: none;
+}
 
 </style>

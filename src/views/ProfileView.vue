@@ -101,6 +101,13 @@ export default {
 </script >
 
 <style scoped>
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+}
 
 .right-content{
   height: 80vh;

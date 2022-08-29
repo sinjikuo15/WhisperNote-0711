@@ -9,24 +9,26 @@
             <!-- Sidebar -->
             <SideBar></SideBar>
             <!-- 右邊區 -->
-            <div class="w-full sm:my-8 sm:w-8/12  border-gray-400 sm:rounded-lg py-5 pl-5 pr-2 sm:p-10 bg-white">
+            <div class="w-full sm:my-8 sm:w-8/12  border-gray-400 sm:rounded-lg p-5 sm:p-10 bg-white">
                 <div class="container">
                     <h1 class="text-2xl font-semibold">角色</h1>
                 </div>
                 <div class="container flex justify-end gap-3 items-center my-5">
-                    <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 mr-3 btn-primary sm:w-auto sm:text-sm">新增角色</button>
+                    <button @click="showModal = true" class="inline-flex justify-center px-4 py-2 btn-primary sm:w-auto sm:text-sm">新增角色</button>
                 </div>
 
                 <!-- add character modal -->
                 <AddCharacterModal v-model="showModal" @confirm="confirm" @cancel="cancel"/>
 
                 <!-- character cards section -->
-                <div class="container h-[80%] overflow-y-auto pr-3">
+                <div class="container h-[80%] overflow-y-auto">
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"> 
 
                         <template v-for="character in characters" :key="character.character_id">
                             <div class="bg-white rounded-lg border border-gray-200 shadow overflow-hidden hover:cursor-pointer" @click="showCharacter(character)">
-                                <img :src="character.character_pic" class="rounded-t-lg" alt="">
+                                <!-- <div class="w-full h-32 sm:h-48 overflow-hidden"> -->
+                                    <img :src="character.character_pic" class="rounded-t-lg" alt="">
+                                <!-- </div> -->
                                 <div class="py-4">
                                     <h5 class="text-xl font-bold tracking-tight text-gray-900 text-center">{{ character.character_name }}</h5>                                              
                                 </div>
@@ -118,6 +120,13 @@ export default {
 </script >
 
 <style scoped>
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+}
 
 .right-content{
   height: 80vh;
